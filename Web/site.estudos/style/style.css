@@ -1,0 +1,289 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0;
+
+}
+
+.nav {
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+ 
+
+.titulo {
+    flex: 25%; 
+    border: solid 1px black;
+    text-align: left;
+
+
+}
+
+.titulo h1 {
+    margin-left: 10px;
+}
+
+.barra {
+    flex: 25%;
+    border: solid 1px red;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.opcoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex: 30%;
+    border: solid orange 1px;
+}
+
+.espaco{
+    display: flex;
+    /* border: solid 2px red; */
+    flex-direction: row;
+    flex: 5%;
+    margin-right: 15px;
+
+}
+
+.text {
+    background-color: red;
+    border-radius: 10%;
+    flex: 7%;
+    /* border: solid 1px yellow; */
+    text-align: center;
+}
+
+
+.conteiner {
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+
+}
+
+.card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 180px;
+    height: 270px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 12px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.img {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 170px;
+    height: 130px;
+    border: solid red 1px;
+    border-radius: 10px;
+}
+
+.img img {
+
+    max-width: 170px;
+    max-height: 130px;
+    border-radius: 10px;
+}
+
+
+.text-card{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 170px;
+    height: 130px;
+    border: solid red 1px;
+    border-radius: 10px;
+    overflow: auto;
+   
+    
+    
+   
+
+}
+
+.conteiner2{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: greenyellow;
+
+    
+}
+
+.card2{
+    display: flex;
+    width: 200px;
+    height: 320px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px;
+    background-color: #fff;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.img2{
+    margin-top: 5px;
+    display: flex;
+    border: solid 1px red;
+    border-radius: 5px ;
+    height: 140px;
+    width: 180px;
+   
+}
+
+.img2 img{
+    max-width: 180px;
+    max-height: 140px;
+    border-radius: 5px;
+}
+
+.texto2{
+     margin-top: 15px;
+    display: flex;
+    border: solid 1px red;
+    border-radius: 5px ;
+    height: 140px;
+    width: 180px;
+
+}
+
+
+/* criando nova tela inicial para treinar  */
+.nave{
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center; 
+    justify-content: flex-start;
+    background-color: blue;
+    height: 150px;
+    
+    
+}
+
+.logo{
+    
+    flex: 30%;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    border: solid red 1px;
+    height: 140px;
+}
+
+.DentroLogo{
+    display: flex;
+    flex: 25%;
+    flex-flow: row wrap;
+    border: solid 1px green;
+    height: 138px;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+#titulo{
+    margin-left: 10px;
+    
+}
+
+.search{
+    flex: 35%;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    border: solid red 1px;
+     height: 140px;
+}
+
+.ops{
+    display: flex;
+    flex: 35%;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    border: solid red 1px;
+    height: 140px;
+     
+}
+
+.espaco1{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 1px red;
+    height:138px;
+    flex: 8%;
+    margin-right: 5px;
+}
+
+.espaco1{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 1px red;
+    height:135px;
+    flex: 8%;
+    margin-right: 5px;    
+}
+
+.espaco2{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 1px red;
+    height:135px;
+    flex: 8%;
+    margin-right: 5px;
+}
+
+.espaco3{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 1px red;
+    height:135px;
+    flex: 8%;
+    margin-right: 5px;
+}
+
+.espaco4{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 1px red;
+    height:135px;
+    flex: 8%;
+    margin-right: 5px;
+}
+
