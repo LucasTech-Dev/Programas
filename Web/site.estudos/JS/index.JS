@@ -14,7 +14,7 @@ document.getElementById("texto3"). innerHTML= bote;
 let nome, sobrenome;
 let idade, anoAtual, anoNascimento;
 let pessoa;
-
+ 
 nome= "lucas";
 sobrenome="santana";
 anoAtual=2025; 
