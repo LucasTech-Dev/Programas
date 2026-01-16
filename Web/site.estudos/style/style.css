@@ -181,7 +181,7 @@ body {
     flex-flow: wrap row;
     align-items: center; 
     justify-content: flex-start;
-    background-color: blue;
+    /* background-color: blue; */
     height: 150px;
     
     
@@ -235,7 +235,7 @@ body {
 .espaco1{
     display: flex;
     flex-flow: wrap row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border: solid 1px red;
     height:138px;
@@ -243,47 +243,123 @@ body {
     margin-right: 5px;
 }
 
-.espaco1{
+.dentro1{
     display: flex;
     flex-flow: wrap row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    border: solid 1px red;
-    height:135px;
+    /* border: solid 1px greenyellow; */
+    height:50px;
     flex: 8%;
-    margin-right: 5px;    
+    border-radius: 10px;
+    background-color: #fff;
+    /* box-shadow: 1px 1px 10px; */
+        
+}
+
+.dentro1:hover{
+    box-shadow: 2px 2px 10px;
+    border-radius: 15px;
+    height: 48px;
+}
+
+.dentro1 a{
+    color: black;
+    font-size:16px ;
+    font-weight: 550;
+    text-decoration: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-top: 17px;
+
 }
 
 .espaco2{
     display: flex;
     flex-flow: wrap row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:135px;
+    height:138px;
     flex: 8%;
     margin-right: 5px;
 }
+
+.dentro2{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px greenyellow;
+    height:50px;
+    flex: 8%;
+    border-radius: 10px;
+        
+}
+
+.dentro2:hover{
+    background-color: red;
+    border-radius: 15px;
+    height: 48px;
+}
+
 
 .espaco3{
     display: flex;
     flex-flow: wrap row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:135px;
+    height:138px;
     flex: 8%;
     margin-right: 5px;
 }
+
+.dentro3{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px greenyellow;
+    height:50px;
+    flex: 8%;
+    border-radius: 10px;
+        
+}
+
+.dentro3:hover{
+    background-color: red;
+    border-radius: 15px;
+    height: 48px;
+}
+
 
 .espaco4{
     display: flex;
     flex-flow: wrap row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:135px;
+    height:138px;
     flex: 8%;
     margin-right: 5px;
 }
 
+.dentro4{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px greenyellow;
+    height:50px;
+    flex: 8%;
+    border-radius: 10px;
+        
+}
+
+.dentro4:hover{
+    background-color: red;
+    border-radius: 15px;
+    height: 48px;
+}
