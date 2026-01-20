@@ -7,7 +7,7 @@ body {
     margin: 0;
 
 }
- 
+
 .nav {
     background-color: blue;
     display: flex;
@@ -16,10 +16,10 @@ body {
     justify-content: center;
     align-items: center;
 }
- 
+
 
 .titulo {
-    flex: 25%; 
+    flex: 25%;
     border: solid 1px black;
     text-align: left;
 
@@ -47,7 +47,7 @@ body {
     border: solid orange 1px;
 }
 
-.espaco{
+.espaco {
     display: flex;
     /* border: solid 2px red; */
     flex-direction: row;
@@ -108,7 +108,7 @@ body {
 }
 
 
-.text-card{
+.text-card {
     margin-left: 5px;
     margin-right: 5px;
     width: 170px;
@@ -116,14 +116,14 @@ body {
     border: solid red 1px;
     border-radius: 10px;
     overflow: auto;
-   
-    
-    
-   
+
+
+
+
 
 }
 
-.conteiner2{
+.conteiner2 {
     margin: 0;
     padding: 0;
     display: flex;
@@ -132,10 +132,10 @@ body {
     align-items: center;
     background-color: greenyellow;
 
-    
+
 }
 
-.card2{
+.card2 {
     display: flex;
     width: 200px;
     height: 320px;
@@ -148,47 +148,55 @@ body {
     margin-right: 20px;
 }
 
-.img2{
+.img2 {
     margin-top: 5px;
     display: flex;
     border: solid 1px red;
-    border-radius: 5px ;
+    border-radius: 5px;
     height: 140px;
     width: 180px;
-   
+
 }
 
-.img2 img{
+.img2 img {
     max-width: 180px;
     max-height: 140px;
     border-radius: 5px;
 }
 
-.texto2{
-     margin-top: 15px;
+.texto2 {
+    margin-top: 15px;
     display: flex;
     border: solid 1px red;
-    border-radius: 5px ;
+    border-radius: 5px;
     height: 140px;
     width: 180px;
+    overflow: hidden;
+    overflow: auto;
+    white-space: normal; /*permite quebra de linha quando necessario*/
+    word-wrap: break-word; /*quebra palavras longas*/
 
+}
+
+.texto2 p {
+    max-width: 178px;
 }
 
 
 /* criando nova tela inicial para treinar  */
-.nave{
+.nave {
     display: flex;
     flex-flow: wrap row;
-    align-items: center; 
+    align-items: center;
     justify-content: flex-start;
     /* background-color: blue; */
     height: 150px;
-    
-    
+
+
 }
 
-.logo{
-    
+.logo {
+
     flex: 30%;
     flex-flow: row wrap;
     align-items: center;
@@ -197,7 +205,7 @@ body {
     height: 140px;
 }
 
-.DentroLogo{
+.DentroLogo {
     display: flex;
     flex: 25%;
     flex-flow: row wrap;
@@ -207,21 +215,22 @@ body {
     align-items: center;
 
 }
-#titulo{
+
+#titulo {
     margin-left: 10px;
-    
+
 }
 
-.search{
+.search {
     flex: 35%;
     flex-flow: row wrap;
     align-items: center;
     justify-content: flex-start;
     border: solid red 1px;
-     height: 140px;
+    height: 140px;
 }
 
-.ops{
+.ops {
     display: flex;
     flex: 35%;
     flex-flow: row wrap;
@@ -229,43 +238,43 @@ body {
     justify-content: flex-start;
     border: solid red 1px;
     height: 140px;
-     
+
 }
 
-.espaco1{
+.espaco1 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:138px;
+    height: 138px;
     flex: 8%;
     margin-right: 5px;
 }
 
-.dentro1{
+.dentro1 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     /* border: solid 1px greenyellow; */
-    height:50px;
+    height: 50px;
     flex: 8%;
     border-radius: 10px;
     background-color: #fff;
     /* box-shadow: 1px 1px 10px; */
-        
+
 }
 
-.dentro1:hover{
+.dentro1:hover {
     box-shadow: 2px 2px 10px;
     border-radius: 15px;
     height: 48px;
 }
 
-.dentro1 a{
+.dentro1 a {
     color: black;
-    font-size:16px ;
+    font-size: 16px;
     font-weight: 550;
     text-decoration: none;
     padding-left: 30px;
@@ -275,90 +284,90 @@ body {
 
 }
 
-.espaco2{
+.espaco2 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:138px;
+    height: 138px;
     flex: 8%;
     margin-right: 5px;
 }
 
-.dentro2{
+.dentro2 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px greenyellow;
-    height:50px;
+    height: 50px;
     flex: 8%;
     border-radius: 10px;
-        
+
 }
 
-.dentro2:hover{
+.dentro2:hover {
     background-color: red;
     border-radius: 15px;
     height: 48px;
 }
 
 
-.espaco3{
+.espaco3 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:138px;
+    height: 138px;
     flex: 8%;
     margin-right: 5px;
 }
 
-.dentro3{
+.dentro3 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px greenyellow;
-    height:50px;
+    height: 50px;
     flex: 8%;
     border-radius: 10px;
-        
+
 }
 
-.dentro3:hover{
+.dentro3:hover {
     background-color: red;
     border-radius: 15px;
     height: 48px;
 }
 
 
-.espaco4{
+.espaco4 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px red;
-    height:138px;
+    height: 138px;
     flex: 8%;
     margin-right: 5px;
 }
 
-.dentro4{
+.dentro4 {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
     border: solid 1px greenyellow;
-    height:50px;
+    height: 50px;
     flex: 8%;
     border-radius: 10px;
-        
+
 }
 
-.dentro4:hover{
+.dentro4:hover {
     background-color: red;
     border-radius: 15px;
     height: 48px;
@@ -367,7 +376,7 @@ body {
 
 
 /*FORMULARIO PARA TREINAR JS  */
-.alinhamento{
+.alinhamento {
     display: flex;
     /* height: auto; */
     align-items: center;
@@ -378,49 +387,49 @@ body {
 
 
 .container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 300px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 label {
-  display: block;
-  margin-top: 10px;
+    display: block;
+    margin-top: 10px;
 }
 
 input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
 }
 
 .botao {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .botao:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 #resultado {
-  margin-top: 20px;
-  text-align: center;
-  color: green;
+    margin-top: 20px;
+    text-align: center;
+    color: green;
 }
 
 
