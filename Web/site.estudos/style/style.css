@@ -173,8 +173,10 @@ body {
     width: 180px;
     overflow: hidden;
     overflow: auto;
-    white-space: normal; /*permite quebra de linha quando necessario*/
-    word-wrap: break-word; /*quebra palavras longas*/
+    white-space: normal;
+    /*permite quebra de linha quando necessario*/
+    word-wrap: break-word;
+    /*quebra palavras longas*/
 
 }
 
@@ -435,3 +437,120 @@ input {
 
 
 /* EVENTO TREINO */
+
+
+
+/* Eventos de tempo */
+.indicadorTempo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    /* background-color: yellow; */
+    width: 100%;
+    height: 100px;
+    text-align: center;
+
+}
+
+
+.espacoContagem {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    height: 50px;
+    width: 50px;
+    
+}
+
+.contagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 5%;
+    /* border: solid 1px blue; */
+    height: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+
+}
+
+.contagem p {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+
+
+.eventosTempo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-flow: row wrap;
+    /* background-color: yellow; */
+    width: 100%;
+    height: 300px;
+}
+
+.ParaContagem {
+    /* border: solid 1px blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    margin-left: 10px;
+    /* background-color: red; */
+    height: 200px;
+    width: 25%;
+
+}
+
+.ParaContagem button {
+    height: 200px;
+    width: 100%;
+    background-color: red;
+    color: black;
+}
+
+.ComecaContagem {
+    /* border: solid 1px blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    margin-left: 10px;
+    /* background-color: green; */
+    height: 200px;
+    width: 25%;
+
+}
+
+.ComecaContagem button {
+    height: 200px;
+    width: 100%;
+    background-color: green;
+    color: black;
+
+}
+
+
+.cobertura{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    border: solid 1px blue;
+    width: 100%;
+    height: 300px;
+
+}
+
+
+.cobertura input{
+    display: flex;
+    width: 70%;
+    padding: 30px;
+    color: black;
+}
