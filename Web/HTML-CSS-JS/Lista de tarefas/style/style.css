@@ -1,0 +1,268 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+    /* cor neutra */
+    font-family: Arial, sans-serif;
+}
+
+/* Corrigido nome da classe */
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    /* border: solid 1px blue; */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Containers principais */
+.conteiner1,
+.conteiner2 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    max-width: 1350px;
+    /* border: solid 1px blue; */
+    border-radius: 10px;
+    gap: 5px;
+    /* espaçamento moderno */
+    /* padding: 10px; */
+    /* margin: 20px auto; */
+    background-color: #eeeeee;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.item {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    gap: 5px;
+    padding: 10px;
+    margin: 0;
+    background-color: #fff;
+    margin-bottom: 2%;
+    box-shadow: 0 0 15px;
+    /* background-color: rgb(210, 255, 210); */
+    cursor: pointer;
+
+
+}
+
+/* Input de tarefa */
+.tarefaInpu {
+    display: flex;
+    flex: 1 1 60%;
+    /* border: solid 1px green; */
+    min-height: 60px;
+    padding: 30px;
+}
+
+.tarefaInpu input {
+    flex: 1;
+    min-height: 40px;
+    color: black;
+    font-weight: 300;
+    width: 100%;
+    font-size: 1.5rem;
+    /* relativo */
+    border: none;
+    outline: none;
+    padding: 20px;
+}
+
+/* Botão principal */
+.botaoStart {
+    display: flex;
+    flex: 1 1 20%;
+    /* border: solid 1px red; */
+    min-height: 60px;
+}
+
+.botaoStart button {
+    flex: 1;
+    min-height: 40px;
+    color: white;
+    background-color: green;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Ícones e tarefas */
+.icone {
+    display: flex;
+    flex: 1 1 10%;
+    /* border: solid 1px green; */
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.tarefa {
+    display: flex;
+    flex: 1 1 60%;
+    /* border: solid 1px yellow; */
+    gap: 10px;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.botao {
+    display: flex;
+    flex: 1 1 10%;
+    /* border: solid 1px red; */
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-radius: 10px;
+}
+
+.botao button {
+    width: 100%;
+    height: 6rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: red;
+    cursor: pointer;
+    border-radius: 10px;
+
+
+}
+
+.icone.marcado {
+    color: green;
+    display: flex;
+    flex: 1 1 10%;
+    /* border: solid 1px green; */
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.item.marcado {
+    background-color: rgb(210, 255, 210);
+    opacity: 0.5;
+
+    
+}
+.item.marcado p {
+    text-decoration: line-through;
+    
+    
+}
+
+
+
+
+
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+    /* Containers gerais */
+    .conteiner1,
+    .conteiner2,
+    .conteiner3 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Item da tarefa */
+    .item,
+    .itemMarcado {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    /* Linha superior: ícone + texto */
+    .icone,
+    .iconeMarcado {
+        flex: none;
+        font-size: 1.8rem;
+    }
+
+    .tarefa,
+    .tarefaMarcado {
+        flex: 1;
+        font-size: 1.4rem;
+    }
+
+    /* Agrupa ícone + tarefa na mesma linha */
+    .icone,
+    .tarefa,
+    .iconeMarcado,
+    .tarefaMarcado {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Wrapper visual (mesma linha) */
+    .icone+.tarefa,
+    .iconeMarcado+.tarefaMarcado {
+        flex: 1;
+    }
+
+    /* Botão delete embaixo e menor */
+    .botao,
+    .botaoMarcado {
+        width: 100%;
+        background-color: transparent;
+        justify-content: center;
+    }
+
+    .botao button,
+    .botaoMarcado button {
+        width: 40%;
+        height: 2.5rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+
+    /* Input e botão start */
+    .tarefaInpu {
+        width: 100%;
+    }
+
+    .tarefaInpu input {
+        font-size: 1.2rem;
+    }
+
+    .botaoStart {
+        width: 100%;
+    }
+
+    .botaoStart button {
+        height: 3rem;
+        font-size: 1rem;
+    }
+}
