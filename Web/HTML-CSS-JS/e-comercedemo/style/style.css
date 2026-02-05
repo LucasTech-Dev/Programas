@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeee;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.produto {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  background: #25D366;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-carrinho {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.formulario input,
+.formulario select {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
