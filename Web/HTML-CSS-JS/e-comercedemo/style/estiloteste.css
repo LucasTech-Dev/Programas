@@ -404,46 +404,90 @@ h3 {
 }
 
 
-/* ================= RESPONSIVO ================= */
+/* ================= RESPONSIVO UNIVERSAL ================= */
 
-/* Tablets */
-@media (max-width: 900px) {
-    .produto {
-        width: 45%;
+/* Base fluida */
+html {
+    font-size: 100%;
+}
+
+body {
+    font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* Header adaptável */
+.headerLoja {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.h1headerLoja h1 {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    text-align: center;
+}
+
+/* Produtos em grid automático */
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: clamp(10px, 3vw, 30px);
+}
+
+/* Card produto */
+.produto {
+    width: 100%;
+    min-height: auto;
+}
+
+/* Imagem adaptável */
+.espacoImg {
+    height: clamp(140px, 20vw, 220px);
+}
+
+/* Botões */
+.espacoBtnAdd button,
+.btn-remover,
+.finalizar button,
+.limparCarrinho button {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+}
+
+/* Carrinho */
+#listaCarrinho {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Form final */
+.cardFinal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Telas muito grandes (TV, 4K, ultrawide) */
+@media (min-width: 1600px) {
+    .produtos {
+        max-width: 1500px;
+        margin: auto;
     }
 
-    .h1headerLoja {
-        font-size: 1.2rem;
+    .headerLoja {
+        padding: 0 3rem;
     }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-
-    .headerLoja {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px;
+/* Mobile muito pequeno */
+@media (max-width: 360px) {
+    .h1headerLoja h1 {
+        font-size: 1.1rem;
     }
 
-    .botaoCarrinho {
-        justify-content: center;
-    }
-
-    .produtos {
-        padding: 10px;
-    }
-
-    .produto {
-        width: 100%;
-        min-height: auto;
-    }
-
-    .espacoImg {
-        height: 160px;
-    }
-
-    .espacoBtnAdd button {
-        font-size: 0.95rem;
+    .botaoCarrinho a,
+    .botaoCarrinho button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
     }
 }
