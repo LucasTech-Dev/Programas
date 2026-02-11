@@ -1,31 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <title>Carrinho</title>
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/estiloteste.css">
 </head>
+
 <body>
+  <div class="headerLoja">
+    <div class="logoHeaderLoja">
+      <img src="img/logoDemo.png">
+    </div>
 
-<h1>Seu Pedido</h1>
+    <div class="h1headerLoja">
+      <h1>Seu Pedido</h1>
+    </div>
 
-<div id="listaCarrinho"></div>
+    <div class="botaoCarrinho">
 
-<div class="formulario">
-  <input type="text" id="nome" placeholder="Nome">
-  <input type="text" id="endereco" placeholder="Endereço">
-  <select id="pagamento">
-    <option value="Pix">Pix</option>
-    <option value="Dinheiro">Dinheiro</option>
-    <option value="Cartão">Cartão</option>
-  </select>
+      <div class="espacoCarrinho">
+        <a href="loja.html" class="btn-carrinho"><i class="mdi mdi-cart-outline"></i>Voltar a Loja</a>
+      </div>
 
-  <button onclick="finalizarPedido()">Finalizar no WhatsApp</button>
-</div>
+    </div>
 
-<script src="js/carrinho.js"></script>
-<script src="js/whatsapp.js"></script>
+  </div>
+
+  <br><br><br>
+
+  <div class="espacoPedidos">
+    <div id="listaCarrinho"></div>
+    <div class="limparCarrinho">
+      <button id="lixo" onclick="limparCarrinho()">limpar carrinho
+        <span class="tooltip">Aperte e recarregue a página</span>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="cardFinal">
+    <div class="formulario">
+      <br>
+      <div class="formularioCardFinal">
+        <div class="espacoFrom">
+          <label style="font-size: 2rem; font-weight: 500;">Finalizar Pedido</label>
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="endereco" placeholder="Endereço">
+        <select id="pagamento">
+          <option value="Pix">Pix</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Cartão">Cartão</option>
+        </select>
+      </div>
+      <div class="espacoBtnZap">
+        <div class="botoesFinais">
+          <div class="finalizar">
+            <button onclick="finalizarPedido()">Finalizar no WhatsApp</button>
+          </div>
+
+        </div>
+
+
+      </div>
+      
+
+
+
+      </div>
+    </div>
+
+
+  
+
+
+  
+
+  <br><br><br>
+
+
+  <script src="js/carrinho.js"></script>
+  <script src="js/whatsapp.js"></script>
 </body>
+
 </html>
-
-

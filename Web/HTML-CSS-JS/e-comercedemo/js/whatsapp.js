@@ -16,5 +16,4 @@ function finalizarPedido() {
 
   const url = `https://wa.me/${numero}?text=${mensagem}`;
   window.open(url, "_blank");
-}
-
+} 
