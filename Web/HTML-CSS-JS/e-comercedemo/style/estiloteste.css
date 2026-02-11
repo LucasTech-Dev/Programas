@@ -10,6 +10,12 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+button:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
+
 h1,
 h2,
 h3 {
@@ -18,6 +24,11 @@ h3 {
 
 /* ================= HEADER ================= */
 .headerLoja {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* garante que fique acima do conteúdo */
+
     display: flex;
     min-height: 6rem;
     width: 100%;
@@ -27,6 +38,7 @@ h3 {
     gap: 1rem;
     padding: 0 1rem;
     background-color: yellow;
+
 }
 
 .logoHeaderLoja {
@@ -62,6 +74,23 @@ h3 {
 }
 
 .botaoCarrinho a:hover {
+    background-color: darkblue;
+    transform: scale(1.03);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+.botaoCarrinho button {
+    padding: 8px 14px;
+    background-color: blue;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.botaoCarrinho button:hover {
     background-color: darkblue;
     transform: scale(1.03);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -111,10 +140,13 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* border: solid 1px black; */
+
 }
 
 .espacoBtnAdd {
     width: 100%;
+
 }
 
 .espacoBtnAdd button {
@@ -127,6 +159,29 @@ h3 {
     border-radius: 8px;
     font-size: 1rem;
 }
+
+.botoesQuantidade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    height: 50px;
+    width: 100%;
+    gap: 20px;
+    /* border: solid 1px red; */
+}
+
+.botoesQuantidade button {
+    width: 50px;
+    border-radius: 10px;
+    color: white;
+    background-color: blue;
+    cursor: pointer;
+
+
+}
+
+
 
 /* ================= BOTÕES FINAIS ================= */
 .botoesFinais {
@@ -306,7 +361,7 @@ h3 {
     text-align: center;
     gap: 1rem;
     /* box-shadow: 0 0 6px rgba(0,0,0,0.15); */
-    
+
     justify-content: flex-end;
     align-items: center;
 }
