@@ -403,91 +403,93 @@ h3 {
     font-size: 1rem;
 }
 
+/* ================= RESPONSIVO MOBILE ONLY ================= */
+@media (max-width: 600px) {
 
-/* ================= RESPONSIVO UNIVERSAL ================= */
-
-/* Base fluida */
-html {
-    font-size: 100%;
-}
-
-body {
-    font-size: clamp(14px, 1.2vw, 18px);
-}
-
-/* Header adaptável */
-.headerLoja {
-    flex-wrap: wrap;
-    gap: 0.8rem;
-}
-
-.h1headerLoja h1 {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-    text-align: center;
-}
-
-/* Produtos em grid automático */
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: clamp(10px, 3vw, 30px);
-}
-
-/* Card produto */
-.produto {
-    width: 100%;
-    min-height: auto;
-}
-
-/* Imagem adaptável */
-.espacoImg {
-    height: clamp(140px, 20vw, 220px);
-}
-
-/* Botões */
-.espacoBtnAdd button,
-.btn-remover,
-.finalizar button,
-.limparCarrinho button {
-    font-size: clamp(0.9rem, 1vw, 1rem);
-}
-
-/* Carrinho */
-#listaCarrinho {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-/* Form final */
-.cardFinal {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-/* Telas muito grandes (TV, 4K, ultrawide) */
-@media (min-width: 1600px) {
-    .produtos {
-        max-width: 1500px;
-        margin: auto;
-    }
-
+    /* Header */
     .headerLoja {
-        padding: 0 3rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        text-align: center;
     }
-}
 
-/* Mobile muito pequeno */
-@media (max-width: 360px) {
+    .logoHeaderLoja {
+        height: 3.2rem;
+    }
+
     .h1headerLoja h1 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
-    .botaoCarrinho a,
-    .botaoCarrinho button {
-        padding: 6px 10px;
-        font-size: 0.8rem;
+    .botaoCarrinho {
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
     }
+
+    /* Produtos */
+    .produtos {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .produto {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .espacoImg {
+        height: 160px;
+    }
+
+    /* Botões */
+    .espacoBtnAdd button {
+        font-size: 0.95rem;
+        padding: 14px;
+    }
+
+    /* Carrinho */
+    #listaCarrinho {
+        justify-content: center;
+    }
+
+    /* Cards carrinho */
+    #listaCarrinho .produto {
+        width: 100%;
+    }
+
+    /* Total */
+    .totalCarrinho {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    /* Form final */
+    .cardFinal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formularioCardFinal,
+    .espacoFrom,
+    .espacoBtnZap {
+        width: 100%;
+        min-height: auto;
+    }
+
+    /* Inputs */
+    .formulario input,
+    .formulario select {
+        font-size: 0.95rem;
+    }
+
+    /* Botões finais */
+    .finalizar button,
+    .limparCarrinho button {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
 }
