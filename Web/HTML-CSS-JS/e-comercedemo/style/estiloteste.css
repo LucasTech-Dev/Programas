@@ -61,6 +61,7 @@ h3 {
 .botaoCarrinho {
     display: flex;
     gap: 0.5rem;
+    /* border: solid red 1px; */
 }
 
 .botaoCarrinho a {
@@ -79,8 +80,34 @@ h3 {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+.quantidadeNoCarrinho{
+    display: flex;
+    gap: 0.5rem;
+    /* border: solid red 1px; */
+    
 
-.botaoCarrinho button {
+}
+
+.quantidadeNoCarrinho p{
+    padding: 4px 10px;
+    background-color: blue;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+}
+
+
+/* .quantidadeNoCarrinho p :hover {
+    background-color: darkblue;
+    transform: scale(1.03);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+} */
+
+/* .botaoCarrinho button {
     padding: 8px 14px;
     background-color: blue;
     border-radius: 15px;
@@ -94,7 +121,7 @@ h3 {
     background-color: darkblue;
     transform: scale(1.03);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
+} */
 
 /* ================= PRODUTOS ================= */
 .produtos {
@@ -427,6 +454,7 @@ h3 {
         width: 100%;
         justify-content: center;
         gap: 8px;
+        
     }
 
     /* Produtos */
