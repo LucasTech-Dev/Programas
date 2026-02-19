@@ -2,30 +2,18 @@ const lista = document.getElementById("listaProdutos"); // pega a div mo html e 
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || []; //pega um elemento como carrinho no localStorege, se nao houver item salvo começa um array vazio
 let totalItens =JSON.parse(localStorage.getItem("totalItens")) ?? 0
 
-
-
 let quantidades = {};
 
-
-
-
-
-
-conteudo = `<a  href="carrinho.html" id="botaoCarrinho" class="btn-carrinho"><i class="mdi mdi-cart-outline"></i>${totalItens} Ver Carrinho </a>`
-botaoCarrinho.innerHTML = conteudo;
+atualizarBotaoCarrinho()
 
 produtos.forEach(produto => { //percorre todos os itens do arrey produto
-
     const div = document.createElement("div"); //cria uma div html dentro da variavel js
-
     div.classList.add("produto");// passa uma classe css para esta div
     div.id = produto.id
 
     if (!quantidades[produto.id]) {
     quantidades[produto.id] = 1;
 }
-
-
     div.innerHTML = ` 
             <div class="espacoImg">
                 <img src="${produto.imagem}">
@@ -70,14 +58,14 @@ function addCarrinho(id) {
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    atualizarBotaoCarrinho();
+    atualizarBotaoCarrinho()
+
+    
 }
 
 function atualizarBotaoCarrinho() {
 
      totalItens = carrinho.length;
-
-
     document.getElementById("botaoCarrinho").innerHTML =
       `<i class="mdi mdi-cart-outline"></i>${totalItens} Ver Carrinho`;
 
@@ -91,6 +79,8 @@ function AddQuantidade(id) {
 
     document.getElementById("quantidadeProduto_" + id).innerHTML =
         quantidades[id];
+
+        atualizarBotaoCarrinho()
 }
 
 
