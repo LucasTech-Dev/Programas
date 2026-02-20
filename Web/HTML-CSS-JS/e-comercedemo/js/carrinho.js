@@ -16,8 +16,11 @@ function renderCarrinho() {
 
   carrinho.forEach((prod, index) => {
 
-    const subtotal = prod.preco * prod.quantidade;
-    total += subtotal;
+  const preco = Number(prod.preco);
+  const quantidade = Number(prod.quantidade);
+
+  const subtotal = preco * quantidade;
+  total += subtotal;
 
     const div = document.createElement("div");
 
@@ -30,7 +33,7 @@ function renderCarrinho() {
 
         <div class="espacoNomeProduto">
           <h3>${prod.nome}</h3>
-          <p>R$ ${prod.preco.toFixed(2)}</p>
+         <p>R$ ${preco.toFixed(2)}</p>
         </div>
 
         <div class="botoesQuantidade">
@@ -39,7 +42,7 @@ function renderCarrinho() {
           <button onclick="aumentarQuantidade(${index})">+</button>
         </div>
 
-        <p><strong>Subtotal: R$ ${subtotal.toFixed(2)}</strong></p>
+       <p><strong>Subtotal: R$ ${subtotal.toFixed(2)}</strong></p>
 
         <div class="espacoBtnAdd">
           <button class="btn-remover" onclick="removerItem(${index})">
@@ -103,10 +106,13 @@ function atualizarHeader() {
 
    totalItens = carrinho.length;
 
-  quantidadeNoCarrinho.innerHTML =
-    `${totalItens} itens no carrinho`;
+  if (quantidadeNoCarrinho) {
+    quantidadeNoCarrinho.innerHTML =
+      `${totalItens} itens no carrinho`;
+  }
 
-    localStorage.getItem("totalItens", JSON.stringify(totalItens));
+  localStorage.setItem("totalItens", JSON.stringify(totalItens));
 }
+
 
 renderCarrinho();
