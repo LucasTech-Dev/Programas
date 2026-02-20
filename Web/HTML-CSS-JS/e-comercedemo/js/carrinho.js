@@ -5,7 +5,7 @@ let quantidadeNoCarrinho = document.getElementById("quantidadeNoCarrinho");
 
 let totalItens =JSON.parse(localStorage.getItem("totalItens")) ?? 0
 
-
+ 
 // =====================
 // RENDER
 // =====================
@@ -13,7 +13,7 @@ function renderCarrinho() {
 
   listaCarrinho.innerHTML = "";
   let total = 0;
-
+ 
   carrinho.forEach((prod, index) => {
 
   const preco = Number(prod.preco);
@@ -63,6 +63,8 @@ function renderCarrinho() {
   listaCarrinho.appendChild(totalDiv);
 
   atualizarHeader();
+
+  localStorage.setItem("total", JSON.stringify())
 }
 
 

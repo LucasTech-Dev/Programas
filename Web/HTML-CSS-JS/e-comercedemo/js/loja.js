@@ -10,10 +10,10 @@ produtos.forEach(produto => { //percorre todos os itens do arrey produto
     const div = document.createElement("div"); //cria uma div html dentro da variavel js
     div.classList.add("produto");// passa uma classe css para esta div
     div.id = produto.id
-
+ 
     if (!quantidades[produto.id]) {
     quantidades[produto.id] = 1;
-}
+} 
     div.innerHTML = ` 
             <div class="espacoImg">
                 <img src="${produto.imagem}">
