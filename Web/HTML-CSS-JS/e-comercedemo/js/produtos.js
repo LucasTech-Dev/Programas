@@ -5,7 +5,7 @@ const produtos = [
   { id: 4, nome: "Adesivo Personalizado", preco: 2.50, imagem: "img/adesivo.jpg" },
   { id: 5, nome: "Bloco de Receituário", preco: 35.00, imagem: "img/blocoReceituario.jpg" },
   { id: 6, nome: "Pasta Personalizada", preco: 18.00, imagem: "img/pastaPerso.jpeg" },
-  { id: 7, nome: "Convite de Aniversário", preco: 3.00, imagem: "img/convite.jpg" },
+  { id: 7, nome: "Convite de Aniversário", preco: 3.00, imagem: "img/CONVITE.jpg" },
   { id: 8, nome: "Crachá PVC", preco: 12.00, imagem: "img/CrachaPVC.jpg" },
   //{ id: 9, nome: "Impressão A4 Colorida", preco: 2.00, imagem: "img/impressao-a4.jpg" },
   //{ id: 10, nome: "Envelope Personalizado", preco: 1.80, imagem: "img/envelope.jpg" },
