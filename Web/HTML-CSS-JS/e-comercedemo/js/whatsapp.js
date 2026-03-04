@@ -5,15 +5,29 @@ function finalizarPedido() {
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
   let mensagem = `Pedido:%0A`;
+  let totalGeral = 0;
 
   carrinho.forEach(p => {
-    mensagem += `- ${p.nome} R$ ${p.quantidade} unidades:  ${p.preco.toFixed(2)}%0A`;
+
+    const preco = Number(p.preco);
+    const quantidade = Number(p.quantidade);
+    const subtotal = preco * quantidade;
+
+    totalGeral += subtotal;
+
+    mensagem += `- ${p.nome}%0A`;
+    mensagem += `  ${quantidade}x R$ ${preco.toFixed(2)}%0A`;
+    mensagem += `  Subtotal: R$ ${subtotal.toFixed(2)}%0A%0A`;
   });
 
-  mensagem += `%0ACliente: ${nome}%0AEndereço: ${endereco}%0APagamento: ${pagamento}`;
+  mensagem += `Total do Pedido: R$ ${totalGeral.toFixed(2)}%0A%0A`;
 
-  const numero = "5551995310123"; // troque pelo número real
+  mensagem += `Cliente: ${nome}%0A`;
+  mensagem += `Endereço: ${endereco}%0A`;
+  mensagem += `Pagamento: ${pagamento}`;
 
+  const numero = "5551995310123";
   const url = `https://wa.me/${numero}?text=${mensagem}`;
+
   window.open(url, "_blank");
-}   
+}

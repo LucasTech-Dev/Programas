@@ -21,7 +21,6 @@ function renderCarrinho() {
 
   const subtotal = preco * quantidade;
   total += subtotal;
-
     const div = document.createElement("div");
 
     div.innerHTML = `
