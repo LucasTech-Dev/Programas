@@ -17,7 +17,7 @@ function finalizarPedido() {
 
     mensagem += `- ${p.nome}%0A`;
     mensagem += `  ${quantidade}x R$ ${preco.toFixed(2)}%0A`;
-    mensagem += `  Valor dos itens: R$ ${subtotal.toFixed(2)}%0A%0A`;
+    mensagem += `  Valor do iten: R$ ${subtotal.toFixed(2)}%0A%0A`;
   });
 
   mensagem += `Total do Pedido: R$ ${totalGeral.toFixed(2)}%0A%0A`;
