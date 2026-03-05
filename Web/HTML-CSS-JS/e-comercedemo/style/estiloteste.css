@@ -255,6 +255,10 @@ h1, h2, h3 {
 
 /* ================= RESPONSIVO ================= */
 @media (max-width: 600px) {
+    *{
+        justify-content: center;
+        align-items: center;
+    }
 
     .headerLoja {
         flex-direction: column;
@@ -272,13 +276,24 @@ h1, h2, h3 {
         font-size: 1.2rem;
     }
 
+    .listaCarrinho{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
     .produto {
         width: 100%;
         min-height: auto;
+        justify-content: center;
+        align-items: center;
     }
 
     .espacoImg {
         height: 160px;
+        justify-content: center;
+        align-items: center;
     }
 
     .finalizar button,
