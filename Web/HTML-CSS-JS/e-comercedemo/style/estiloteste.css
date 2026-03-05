@@ -262,7 +262,7 @@ h1, h2, h3 {
     }
 
     .headerLoja {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 2px;
         padding: 5px;
@@ -270,7 +270,7 @@ h1, h2, h3 {
     }
 
     .logoHeaderLoja {
-        height: 1.5rem;
+        height: 2.5rem;
     }
 
     .h1headerLoja h1 {
