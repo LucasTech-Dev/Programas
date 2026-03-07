@@ -37,6 +37,12 @@ h1, h2, h3 {
     background-color: #FFFFFF;
     border-bottom: 1px solid #E5E7EB;
 }
+.headerLoja a{
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+
+    }
 
 .logoHeaderLoja {
     flex: 0 0 auto;
@@ -272,6 +278,16 @@ h1, h2, h3 {
         gap: 2px;
         padding: 5px;
         text-align: center;
+    }
+    .headerLoja a{
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+
+    }
+    .botaoCarrinho{
+        display: flex;
+        flex-direction: row;
     }
 
     .logoHeaderLoja {
