@@ -67,7 +67,7 @@ function atualizarBotaoCarrinho() {
 
      totalItens = carrinho.length;
     document.getElementById("botaoCarrinho").innerHTML =
-      `<i class="mdi mdi-cart-outline"></i>${totalItens} Ver Carrinho`;
+      `<i class="mdi mdi-cart-outline"></i>${totalItens}  `;
 
       localStorage.getItem("totalItens", JSON.stringify(totalItens));
 }

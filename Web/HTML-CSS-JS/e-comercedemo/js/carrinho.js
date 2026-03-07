@@ -109,7 +109,7 @@ function atualizarHeader() {
 
   if (quantidadeNoCarrinho) {
     quantidadeNoCarrinho.innerHTML =
-      `${totalItens} itens no carrinho`;
+      `${totalItens} itens `;
   }
 
   localStorage.setItem("totalItens", JSON.stringify(totalItens));
