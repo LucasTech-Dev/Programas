@@ -276,9 +276,11 @@ h1, h2, h3 {
     .headerLoja {
         flex-direction: row;
         align-items: center;
+        justify-content: center;
         gap: 2px;
         padding: 5px;
         text-align: center;
+        padding: 0%;
     }
     .headerLoja a{
         display: flex;
