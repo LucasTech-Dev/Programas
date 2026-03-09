@@ -62,13 +62,13 @@ h1, h2, h3 {
     align-items: center;
 }
 
-.botaoCarrinho {
+/* .botaoCarrinho {
     display: flex;
     gap: 0.5rem;
     padding: 5px;
-}
+} */
 
-.botaoCarrinho a {
+/* .botaoCarrinho a {
     padding: 10px 16px;
     background-color: #2563EB;
     border-radius: 12px;
@@ -78,13 +78,67 @@ h1, h2, h3 {
     font-weight: 600;
     transition: 0.2s ease;
     padding: 5px;
-}
+} */
 
-.botaoCarrinho a:hover {
+/* .botaoCarrinho a:hover {
+    opacity: 0.9;
+} */
+
+/* .botaoPagCarrinho{
+    display: flex;
+    gap: 0.5rem;
+    padding: 10px
+}
+.botaoPagCarrinho a{
+    padding: 10px 16px;
+    background-color: #2563EB;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+    font-size: 22px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.botaoPagCarrinho a:hover {
     opacity: 0.9;
 }
+
+
 .espacoCarrinho{
     padding: 10px;
+} */
+
+
+
+.botaoCarrinho,
+.botaoPagCarrinho{
+    display: flex;
+    gap: 0.5rem;
+    padding: 10px;
+}
+
+.botaoCarrinho a,
+.botaoPagCarrinho a{
+    background-color: #2563EB;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+    font-size: 22px;
+
+    padding: 10px 15px;
+}
+
+.botaoCarrinho a:hover,
+.botaoPagCarrinho a:hover{
+    opacity: 0.9;
 }
 
 .quantidadeNoCarrinho p {
@@ -284,15 +338,58 @@ h1, h2, h3 {
     }
     .headerLoja a{
         display: flex;
+        
         flex-direction: row;
-        padding: 10px;
+        
+       
 
+    }
+    /* .espacoCarrinho a{
+         font-size: 22px;
+         padding: 30px;
     }
     .botaoCarrinho{
         display: flex;
         flex-direction: row;
     }
 
+    .botaoPagCarrinho{
+    display: flex;
+    gap: 0.5rem;
+    padding: 10px
+}
+.botaoPagCarrinho a{
+    padding: 10px 16px;
+    background-color: #2563EB;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+    font-size: 22px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.botaoPagCarrinho a:hover {
+    opacity: 0.9;
+} */
+
+
+.botaoCarrinho,
+.botaoPagCarrinho{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.botaoCarrinho a,
+.botaoPagCarrinho a{
+    font-size: 22px;
+    padding: 10px 15px;
+}
     .logoHeaderLoja {
         height: 2.5rem;
     }
