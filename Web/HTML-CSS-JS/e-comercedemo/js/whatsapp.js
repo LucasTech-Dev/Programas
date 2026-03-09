@@ -1,8 +1,21 @@
 function finalizarPedido() {
-  const nome = document.getElementById("nome").value;
-  const endereco = document.getElementById("endereco").value;
+
+  const nome = document.getElementById("nome").value.trim();
+  const endereco = document.getElementById("endereco").value.trim();
   const pagamento = document.getElementById("pagamento").value;
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  // VERIFICAÇÃO DOS CAMPOS
+  if (!nome || !endereco || !pagamento) {
+    alert("Preencha todos os campos antes de finalizar o pedido.");
+    return;
+  }
+
+  // VERIFICA SE O CARRINHO ESTÁ VAZIO
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio.");
+    return;
+  }
 
   let mensagem = `Pedido:%0A`;
   let totalGeral = 0;
