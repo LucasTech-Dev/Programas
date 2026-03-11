@@ -22,19 +22,26 @@ h1, h2, h3 {
 }
 
 /* ================= HEADER ================= */
+.logoHeaderLoja,
+.h1headerLoja,
+.botaoCarrinho,
+.botaoPagCarrinho,
+.quantidadeNoCarrinho {
+    display: flex;
+    align-items: center;
+}
+
 .headerLoja {
     position: sticky;
     top: 0;
     z-index: 1000;
     display: flex;
-    min-height: 5rem;
-    width: 100%;
+    flex-direction: row;   /* garante horizontal */
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    min-height: 5rem;
+    width: 100%;
     padding: 0 1rem;
-
     background-color: #FFFFFF;
     border-bottom: 1px solid #E5E7EB;
 }
@@ -319,113 +326,74 @@ h1, h2, h3 {
 }
 
 /* ================= RESPONSIVO ================= */
+
+
 @media (max-width: 600px) {
-    *{
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-direction: column;
-    }
 
-    .headerLoja {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 10px 15px;
-        text-align: center;
-        padding: 0%;
-    }
-    .headerLoja a{
-        display: flex;
-        
-        flex-direction: row;
-        
-       
-
-    }
-    /* .espacoCarrinho a{
-         font-size: 22px;
-         padding: 30px;
-    }
-    .botaoCarrinho{
-        display: flex;
-        flex-direction: row;
-    }
-
-    .botaoPagCarrinho{
-    display: flex;
-    gap: 0.5rem;
-    padding: 10px
-}
-.botaoPagCarrinho a{
-    padding: 10px 16px;
-    background-color: #2563EB;
-    border-radius: 12px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-    font-size: 22px;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-.botaoPagCarrinho a:hover {
-    opacity: 0.9;
-} */
-
-
-.botaoCarrinho,
-.botaoPagCarrinho{
+.headerLoja {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    flex-wrap: nowrap; /* impede quebrar linha */
+}
+
+.logoHeaderLoja {
+    height: 2.5rem;
+    flex: 0 0 auto;
+}
+
+.h1headerLoja {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.h1headerLoja h1 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.botaoCarrinho,
+.botaoPagCarrinho,
+.quantidadeNoCarrinho{
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
 }
 
 .botaoCarrinho a,
 .botaoPagCarrinho a{
-    font-size: 22px;
-    padding: 10px 15px;
+    font-size: 18px;
+    padding: 8px 12px;
 }
-    .logoHeaderLoja {
-        height: 2.5rem;
-    }
 
-    .h1headerLoja h1 {
-        font-size: 1rem;
-    }
+.listaCarrinho{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
-    .listaCarrinho{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        
-    }
+.produto {
+    width: 100%;
+    min-height: auto;
+}
 
-    .produto {
-        width: 100%;
-        min-height: auto;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .botoesQuantidade{
-        display: flex;
-        flex-direction: row;
-    }
+.botoesQuantidade{
+    display: flex;
+    flex-direction: row;
+}
 
-    .espacoImg {
-        height: 160px;
-        justify-content: center;
-        align-items: center;
-    }
+.espacoImg {
+    height: 160px;
+}
 
-    .finalizar button,
-    .limparCarrinho button {
-        width: 100%;
-    }
+.finalizar button,
+.limparCarrinho button {
+    width: 100%;
+}
+
 }
