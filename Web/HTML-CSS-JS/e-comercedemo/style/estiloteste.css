@@ -69,6 +69,20 @@ h1, h2, h3 {
     align-items: center;
 }
 
+.btn-busca {
+    background: #2563EB;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn-busca:hover {
+    opacity: 0.9;
+}
+
 /* .botaoCarrinho {
     display: flex;
     gap: 0.5rem;
