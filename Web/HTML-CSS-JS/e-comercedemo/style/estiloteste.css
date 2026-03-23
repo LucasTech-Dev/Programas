@@ -1,59 +1,70 @@
-/* RESET */
+/* ================= RESET ================= */ deixe toda a pagina de busca responsiva 
 * {
-    margin: 2;
-    margin-top: 0;
-    padding: 2px;
-    box-sizing: border-box;
+    margin: 0;                 /* remove margens padrão */
+    padding: 0;                /* remove espaçamentos padrão */
+    box-sizing: border-box;   /* facilita controle de tamanho */
 }
 
+/* ================= BODY ================= */
 body {
     background-color: #F9FAFB;
     font-family: 'Lato', sans-serif;
     color: #111827;
 }
 
+/* ================= TIPOGRAFIA ================= */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ================= INTERAÇÕES ================= */
 button:active {
     transform: scale(0.97);
     opacity: 0.9;
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+/* ================= HEADER ================= */
+.headerLoja {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    width: 100%;
+    min-height: 5rem;
+    padding: 0 1rem;
+
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
 }
 
-/* ================= HEADER ================= */
+/* elementos internos do header */
 .logoHeaderLoja,
 .h1headerLoja,
 .botaoCarrinho,
-.botaoPagCarrinho,
 .quantidadeNoCarrinho {
     display: flex;
     align-items: center;
 }
 
-.headerLoja {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.botaoPagCarrinho{
     display: flex;
-    flex-direction: row;   /* garante horizontal */
-    justify-content: space-between;
     align-items: center;
-    min-height: 5rem;
-    width: 100%;
-    padding: 0 1rem;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #E5E7EB;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
-.headerLoja a{
-        display: flex;
-        flex-direction: row;
-        padding: 20px;
 
-    }
 
+
+/* logo */
 .logoHeaderLoja {
-    flex: 0 0 auto;
     height: 4rem;
 }
 
@@ -62,140 +73,138 @@ h1, h2, h3 {
     max-height: 100%;
 }
 
+/* título central */
 .h1headerLoja {
-    flex: 1 1 auto;
-    display: flex;
+    flex: 1;
     justify-content: center;
-    align-items: center;
 }
 
-.btn-busca {
-    background: #2563EB;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-}
-
-.btn-busca:hover {
-    opacity: 0.9;
-}
-
-/* .botaoCarrinho {
-    display: flex;
-    gap: 0.5rem;
-    padding: 5px;
-} */
-
-/* .botaoCarrinho a {
-    padding: 10px 16px;
-    background-color: #2563EB;
-    border-radius: 12px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-    padding: 5px;
-} */
-
-/* .botaoCarrinho a:hover {
-    opacity: 0.9;
-} */
-
-/* .botaoPagCarrinho{
-    display: flex;
-    gap: 0.5rem;
-    padding: 10px
-}
-.botaoPagCarrinho a{
-    padding: 10px 16px;
-    background-color: #2563EB;
-    border-radius: 12px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-    font-size: 22px;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-.botaoPagCarrinho a:hover {
-    opacity: 0.9;
-}
-
-
-.espacoCarrinho{
-    padding: 10px;
-} */
-
-
-
+/* ================= BOTÕES (CARRINHO / HOME) ================= */
 .botaoCarrinho,
-.botaoPagCarrinho{
-    display: flex;
+.botaoPagCarrinho {
     gap: 0.5rem;
     padding: 10px;
 }
 
 .botaoCarrinho a,
-.botaoPagCarrinho a{
+.botaoPagCarrinho a {
     background-color: #2563EB;
-    border-radius: 12px;
-    cursor: pointer;
     color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-    font-size: 22px;
 
     padding: 10px 15px;
+    border-radius: 12px;
+
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .botaoCarrinho a:hover,
-.botaoPagCarrinho a:hover{
+.botaoPagCarrinho a:hover {
     opacity: 0.9;
 }
 
+/* contador do carrinho */
 .quantidadeNoCarrinho p {
-    padding: 6px 12px;
     background-color: #2563EB;
-    border-radius: 12px;
     color: white;
+
+    padding: 6px 12px;
+    border-radius: 12px;
     font-weight: 600;
+}
+
+/* ================= BOTÃO DE BUSCA ================= */
+.btn-busca 
+{ 
+  display: block;
+  width: 50%; 
+  margin: 0 auto; 
+  background: #2563EB;
+  color: white;
+  padding: 14px 20px;     
+  border-radius: 12px;    
+  text-align: center;     
+  font-weight: 600;
+  text-decoration: none; 
+    } 
+    .btn-busca:hover 
+    { 
+        opacity: 0.9; 
+    } 
+
+/* ================= CAMPO DE BUSCA ================= */
+.containerBusca {
+    width: 50%;
+    margin: 20px auto;
+
+    background: #FFFFFF; /* mais clean */
+    padding: 8px;
+    border-radius: 999px; /* estilo barra moderna */
+
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+
+    display: flex;
+    align-items: center;
+}
+
+.containerBusca input {
+    width: 100%;
+    padding: 12px 16px;
+
+    border-radius: 999px;
+    border: none;
+
+    background: transparent; /* usa o fundo do container */
+    color: #111827;
+
+    font-size: 1rem;
+    outline: none;
+}
+
+.containerBusca:focus-within {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.containerBusca input::placeholder {
+    color: #9CA3AF;
 }
 
 /* ================= PRODUTOS ================= */
 .produtos {
     display: flex;
-    justify-content: center;
-    align-items: stretch;
     flex-wrap: wrap;
+    justify-content: center;
+
     gap: 20px;
     padding: 20px;
 }
 
+/* card do produto */
 .produto {
     display: flex;
     flex-direction: column;
+
     width: 300px;
     min-height: 480px;
-    background: #FFFFFF;
     padding: 16px;
+    gap: 1rem;
+
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
     border-radius: 16px;
     text-align: center;
-    gap: 1rem;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* imagem */
 .espacoImg {
-    width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
@@ -208,24 +217,29 @@ h1, h2, h3 {
     object-fit: contain;
 }
 
+/* nome e preço */
 .espacoNomeProduto {
     flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: center;
 }
 
+/* botão adicionar */
 .espacoBtnAdd button {
     width: 100%;
     padding: 14px;
-    cursor: pointer;
-    color: white;
+
     background: #2563EB;
+    color: white;
+
     border: none;
     border-radius: 12px;
+
     font-size: 1rem;
     font-weight: 600;
+
+    cursor: pointer;
     transition: 0.2s ease;
 }
 
@@ -233,56 +247,27 @@ h1, h2, h3 {
     opacity: 0.9;
 }
 
+/* ================= QUANTIDADE ================= */
 .botoesQuantidade {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;
 }
 
 .botoesQuantidade button {
     width: 50px;
-    border-radius: 12px;
-    color: white;
+
     background-color: #2563EB;
+    color: white;
+
     border: none;
+    border-radius: 12px;
+
     cursor: pointer;
-    transition: 0.2s ease;
 }
 
 .botoesQuantidade button:hover {
     opacity: 0.9;
-}
-
-/* ================= BOTÕES FINAIS ================= */
-.finalizar button {
-    padding: 12px;
-    border: none;
-    background: #16A34A;
-    color: white;
-    cursor: pointer;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-.finalizar button:hover {
-    opacity: 0.9;
-}
-
-.limparCarrinho button {
-    padding: 12px;
-    border: none;
-    background: #DC2626;
-    color: white;
-    cursor: pointer;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-.limparCarrinho button:hover {
-    background: #B91C1C;
 }
 
 /* ================= CARRINHO ================= */
@@ -291,46 +276,74 @@ h1, h2, h3 {
     flex-wrap: wrap;
     gap: 30px;
     padding: 20px;
-    justify-content: flex-start;
 }
 
+/* botão remover */
 .btn-remover {
     width: 100%;
     padding: 14px;
-    cursor: pointer;
-    color: white;
+
     background: #DC2626;
+    color: white;
+
     border: none;
     border-radius: 12px;
-    font-size: 1rem;
+
     font-weight: 600;
-    transition: 0.2s ease;
+    cursor: pointer;
 }
 
 .btn-remover:hover {
     background: #B91C1C;
 }
 
+/* total */
 .totalCarrinho {
     width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+
     background: #F3F4F6;
     border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
+
     font-size: 1.4rem;
     font-weight: 700;
 }
 
-/* ================= FORM ================= */
+/* ================= BOTÕES FINAIS ================= */
+.finalizar button {
+    background: #16A34A;
+    color: white;
+}
+
+.limparCarrinho button {
+    background: #DC2626;
+    color: white;
+}
+
+.finalizar button,
+.limparCarrinho button {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.limparCarrinho button:hover {
+    background: #B91C1C;
+}
+
+/* ================= FORMULÁRIO ================= */
 .formulario input,
 .formulario select {
-    display: block;
     width: 100%;
     margin: 10px 0;
     padding: 12px;
+
     border: 1px solid #D1D5DB;
     border-radius: 10px;
-    background: white;
 }
 
 .formulario input:focus,
@@ -340,74 +353,38 @@ h1, h2, h3 {
 }
 
 /* ================= RESPONSIVO ================= */
-
-
 @media (max-width: 600px) {
 
-.headerLoja {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-    flex-wrap: nowrap; /* impede quebrar linha */
-}
+    .headerLoja {
+        padding: 10px;
+        gap: 10px;
+    }
 
-.logoHeaderLoja {
-    height: 2.5rem;
-    flex: 0 0 auto;
-}
+    .logoHeaderLoja {
+        height: 2.5rem;
+    }
 
-.h1headerLoja {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
+    .h1headerLoja h1 {
+        font-size: 1rem;
+    }
 
-.h1headerLoja h1 {
-    font-size: 1rem;
-    text-align: center;
-}
+    .botaoCarrinho a,
+    .botaoPagCarrinho a {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
 
-.botaoCarrinho,
-.botaoPagCarrinho,
-.quantidadeNoCarrinho{
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-}
+    .produto {
+        width: 100%;
+        min-height: auto;
+    }
 
-.botaoCarrinho a,
-.botaoPagCarrinho a{
-    font-size: 18px;
-    padding: 8px 12px;
-}
+    .espacoImg {
+        height: 160px;
+    }
 
-.listaCarrinho{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.produto {
-    width: 100%;
-    min-height: auto;
-}
-
-.botoesQuantidade{
-    display: flex;
-    flex-direction: row;
-}
-
-.espacoImg {
-    height: 160px;
-}
-
-.finalizar button,
-.limparCarrinho button {
-    width: 100%;
-}
-
+    .finalizar button,
+    .limparCarrinho button {
+        width: 100%;
+    }
 }

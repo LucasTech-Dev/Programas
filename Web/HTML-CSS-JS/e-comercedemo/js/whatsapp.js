@@ -15,7 +15,7 @@ function finalizarPedido() {
   if (carrinho.length === 0) {
     alert("Seu carrinho está vazio.");
     return;
-  }
+  } 
 
   let mensagem = `Pedido:%0A`;
   let totalGeral = 0;

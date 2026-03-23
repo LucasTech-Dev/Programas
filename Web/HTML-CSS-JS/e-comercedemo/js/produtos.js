@@ -12,4 +12,4 @@ const produtos = [
   //{ id: 11, nome: "Faixa Promocional", preco: 90.00, imagem: "img/faixa.jpg" },
   //{ id: 12, nome: "Cardápio Plastificado", preco: 25.00, imagem: "img/cardapio.jpg" }
 ];
-  
+   

@@ -1,98 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head> 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Esse é meu primeiro site!">
-  <meta name="keywords" content="programaçao, css, html, Javascript">
-  <meta name="author" content="Lucas SantAna Dias">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <title></title>
-  <link rel="stylesheet" href="style/estiloteste.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Esse é meu primeiro site!">
+    <meta name="keywords" content="programaçao, css, html, Javascript">
+    <meta name="author" content="Lucas SantAna Dias">
+
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/estiloteste.css">
+
+    <title></title>
 </head>
- 
+
 <body>
-  <div class="headerLoja">
-    <div class="logoHeaderLoja">
-      <img src="img/logoDemo.png">
-    </div>
 
-    <div class="h1headerLoja">
-      <h1>Seu Pedido</h1>
-    </div>
-
-    <div class="quantidadeNoCarrinho">
-      <p id="quantidadeNoCarrinho">0 itens no carrinho</p>
-    </div>
-
-    <div class="botaoPagCarrinho">
-        <div class="espacoCarrinho">
-         <a class="botaoPagCarrinho" href="index.html"> <i class="mdi mdi-home-outline"></i></a>
-        <!-- <button  class="botaoCarrinho"  onclick="voltarPagina()"><i class="mdi mdi-cart-outline"></i>Voltar a Loja</button> -->
-      </div>
-    </div>
-
-
-  </div>
-
-  <br><br><br>
-
-  <div class="espacoPedidos">
-    <div id="listaCarrinho"></div>
-    <div class="limparCarrinho">
-      <button style="font-size: 1.2rem;" id="lixo" onclick="limparCarrinho()">Limpar Carrinho
-        <span class="tooltip"></span>
-      </button>
-    </div>
-  </div>
-
-
-  <div class="cardFinal">
-    <div class="formulario">
-      <br>
-      <div class="formularioCardFinal">
-        <div class="espacoFrom">
-          <label style="font-size: 1.5rem; font-weight: 500;">Finalizar Pedido</label>
-          <input style="font-size: 1rem;" type="text" id="nome" placeholder="Nome">
-          <input style="font-size: 1rem;" type="text" id="endereco" placeholder="Endereço">
-          <select style="font-size: 1rem;"id="pagamento">
-            <option value="Pix">Pix</option>
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão">Cartão</option>
-          </select>
+    <div class="headerLoja">
+        <div class="logoHeaderLoja">
+            <img src="img/logoDemo.png" alt="Logo">
         </div>
-        <div class="espacoBtnZap">
-          <div class="botoesFinais">
-            <div class="finalizar">
-              <button style="font-size: 1.2rem;" onclick="finalizarPedido()">Finalizar no WhatsApp</button>
+
+        <div class="h1headerLoja">
+            <h1>Seu Pedido</h1>
+        </div>
+
+        <div class="quantidadeNoCarrinho">
+            <p id="quantidadeNoCarrinho">0 itens</p>
+        </div>
+
+        <div class="botaoPagCarrinho">
+            <div class="espacoCarrinho">
+                <a class="botaoPagCarrinho" href="index.html">
+                    <i class="mdi mdi-home-outline"></i>
+                </a>
+                <!--
+                <button class="botaoCarrinho" onclick="voltarPagina()">
+                    <i class="mdi mdi-cart-outline"></i>Voltar a Loja
+                </button>
+                -->
             </div>
-
-          </div>
-
-
         </div>
-
-
-
-
-      </div>
     </div>
-
-
-
-
-
-
 
     <br><br><br>
 
+    <div class="espacoPedidos">
+        <div id="listaCarrinho"></div>
+
+        <div class="limparCarrinho">
+            <button id="lixo" style="font-size: 1.2rem;" onclick="limparCarrinho()">
+                Limpar Carrinho
+                <span class="tooltip"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="cardFinal">
+        <div class="formulario">
+            <br>
+
+            <div class="formularioCardFinal">
+                <div class="espacoFrom">
+                    <label style="font-size: 1.5rem; font-weight: 500;">
+                        Finalizar Pedido
+                    </label>
+
+                    <input type="text" id="nome" placeholder="Nome" style="font-size: 1rem;">
+                    <input type="text" id="endereco" placeholder="Endereço" style="font-size: 1rem;">
+
+                    <select id="pagamento" style="font-size: 1rem;">
+                        <option value="Pix">Pix</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão">Cartão</option>
+                    </select>
+                </div>
+
+                <div class="espacoBtnZap">
+                    <div class="botoesFinais">
+                        <div class="finalizar">
+                            <button style="font-size: 1.2rem;" onclick="finalizarPedido()">
+                                Finalizar no WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
 
     <script src="js/carrinho.js"></script>
     <script src="js/whatsapp.js"></script>
+
 </body>
 
 </html>

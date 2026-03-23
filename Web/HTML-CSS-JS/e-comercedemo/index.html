@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="Esse é meu primeiro site!">
     <meta name="keywords" content="programaçao, css, html, Javascript">
     <meta name="author" content="Lucas SantAna Dias">
+
     <link rel="stylesheet" href="https://materialdesignicons.com/cdn/1.6.50-dev/css/materialdesignicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <title></title>
     <link rel="stylesheet" href="style/estiloteste.css">
+
+    <title></title>
 </head>
- 
+
 <body>
 
     <div class="headerLoja">
@@ -24,25 +26,29 @@
 
         <div class="h1headerLoja">
             <h1>Catálogo de Produtos</h1>
-            </div> 
+        </div>
 
         <div class="botaoCarrinho">
             <div class="espacoCarrinho">
-                <a  onclick="primeirosRenderizar()" href="carrinho.html" id="botaoCarrinho" class="btn-carrinho"><i class="mdi mdi-cart-outline"></i>0</a>
+                <a onclick="primeirosRenderizar()" 
+                   href="carrinho.html" 
+                   id="botaoCarrinho" 
+                   class="btn-carrinho">
+                    <i class="mdi mdi-cart-outline"></i>0
+                </a>
             </div>
-
         </div>
-
     </div>
 
     <a href="busc.html" class="btn-busca">
-    🔍 Buscar produtos
-</a>
-
+        🔍 Buscar produtos
+    </a>
 
     <br><br><br>
+
     <div id="listaProdutos" class="produtos">
-        <!-- <div class="produto">
+        <!--
+        <div class="produto">
             <div class="espacoImg">
                 <img src="${produto.imagem}">
             </div>
@@ -51,24 +57,20 @@
                 <h3>${produto.nome}</h3>
                 <p>R$ ${produto.preco.toFixed(2)}</p>
             </div>
+
             <div class="espacoBtnAdd">
-                <button onclick="addCarrinho(${produto.id})">Adicionar</button>
+                <button onclick="addCarrinho(${produto.id})">
+                    Adicionar
+                </button>
             </div>
-
         </div>
-    -->
-
+        -->
     </div>
+
     <br>
-
-
-
-
-
-
 
     <script src="js/produtos.js"></script>
     <script src="js/loja.js"></script>
-</body>
 
+</body>
 </html>
