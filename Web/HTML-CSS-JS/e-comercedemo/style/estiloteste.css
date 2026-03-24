@@ -1,8 +1,11 @@
-/* ================= RESET ================= */ deixe toda a pagina de busca responsiva 
-* {
-    margin: 0;                 /* remove margens padrão */
-    padding: 0;                /* remove espaçamentos padrão */
-    box-sizing: border-box;   /* facilita controle de tamanho */
+/* ================= RESET ================= */
+deixe toda a pagina de busca responsiva * {
+    margin: 0;
+    /* remove margens padrão */
+    padding: 0;
+    /* remove espaçamentos padrão */
+    box-sizing: border-box;
+    /* facilita controle de tamanho */
 }
 
 /* ================= BODY ================= */
@@ -13,7 +16,9 @@ body {
 }
 
 /* ================= TIPOGRAFIA ================= */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: 'Playfair Display', serif;
 }
 
@@ -52,7 +57,7 @@ button:active {
     align-items: center;
 }
 
-.botaoPagCarrinho{
+.botaoPagCarrinho {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -118,35 +123,36 @@ button:active {
 }
 
 /* ================= BOTÃO DE BUSCA ================= */
-.btn-busca 
-{ 
-  display: block;
-  width: 50%; 
-  margin: 0 auto; 
-  background: #2563EB;
-  color: white;
-  padding: 14px 20px;     
-  border-radius: 12px;    
-  text-align: center;     
-  font-weight: 600;
-  text-decoration: none; 
-    } 
-    .btn-busca:hover 
-    { 
-        opacity: 0.9; 
-    } 
+.btn-busca {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    background: #2563EB;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-busca:hover {
+    opacity: 0.9;
+}
 
 /* ================= CAMPO DE BUSCA ================= */
 .containerBusca {
     width: 50%;
     margin: 20px auto;
 
-    background: #FFFFFF; /* mais clean */
+    background: #FFFFFF;
+    /* mais clean */
     padding: 8px;
-    border-radius: 999px; /* estilo barra moderna */
+    border-radius: 999px;
+    /* estilo barra moderna */
 
     border: 1px solid #E5E7EB;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 
     display: flex;
     align-items: center;
@@ -159,7 +165,8 @@ button:active {
     border-radius: 999px;
     border: none;
 
-    background: transparent; /* usa o fundo do container */
+    background: transparent;
+    /* usa o fundo do container */
     color: #111827;
 
     font-size: 1rem;
@@ -368,23 +375,25 @@ button:active {
         font-size: 1rem;
     }
 
-    .botaoCarrinho a,
-    .botaoPagCarrinho a {
-        font-size: 18px;
-        padding: 8px 12px;
+    .containerBusca {
+        width: 95%;
     }
 
-    
+    .btn-busca {
+        width: 95%;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+        /* 1 card por linha */
+    }
 
     .produto {
-        width: 100%;
         min-height: auto;
-        margin-left: 18px;
     }
 
     .espacoImg {
         height: 160px;
-        
     }
 
     .finalizar button,
