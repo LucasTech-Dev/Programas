@@ -374,13 +374,17 @@ button:active {
         padding: 8px 12px;
     }
 
+    
+
     .produto {
         width: 100%;
         min-height: auto;
+        margin-left: 18px;
     }
 
     .espacoImg {
         height: 160px;
+        
     }
 
     .finalizar button,
