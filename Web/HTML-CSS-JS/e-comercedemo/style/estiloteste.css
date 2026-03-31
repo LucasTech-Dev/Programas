@@ -1,5 +1,5 @@
 /* ================= RESET ================= */
-deixe toda a pagina de busca responsiva * {
+ * {
     margin: 0;
     /* remove margens padrão */
     padding: 0;
@@ -216,12 +216,24 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    
+    height: 200px;
+    overflow: hidden; /* 🔥 ESSENCIAL */
+    position: relative;
+
 }
 
 .espacoImg img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+
+    
+    height: 200px;
+    overflow: hidden; /* 🔥 ESSENCIAL */
+    position: relative;
+
 }
 
 /* nome e preço */
@@ -252,6 +264,79 @@ button:active {
 
 .espacoBtnAdd button:hover {
     opacity: 0.9;
+}
+
+
+.slider {
+    position: relative;
+    width: 600px;
+    margin: 50px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+
+    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+
+    
+    display: flex;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+
+.slide img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+
+    
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 🔥 mantém dentro sem cortar */
+
+
+    pointer-events: none;
+
+}
+
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+.prev, .next {
+    z-index: 10;
+    
+    padding: 8px 12px;
+    font-size: 15px;
 }
 
 /* ================= QUANTIDADE ================= */

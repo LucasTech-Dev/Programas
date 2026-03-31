@@ -20,47 +20,57 @@ atualizarBotaoCarrinho();
 // ================= RENDERIZAÇÃO DOS PRODUTOS =================
 produtos.forEach(produto => {
 
-    // cria card do produto
+    // 1. Cria o card do produto
     const div = document.createElement("div");
     div.classList.add("produto");
     div.id = produto.id;
 
-    // define quantidade inicial
+    // 2. Define a quantidade inicial no objeto 'quantidades' (Lógica do segundo código)
     if (!quantidades[produto.id]) {
         quantidades[produto.id] = 1;
     }
 
-    // estrutura HTML do produto
+    // 3. Estrutura HTML do produto (Unindo o Slider com a exibição da Quantidade)
     div.innerHTML = `
-        <div class="espacoImg">
-            <img src="${produto.imagem}">
+    <div class="espacoImg">
+        <div class="slider">
+            <div class="slides">
+                ${(produto.imagens || [produto.imagem]).map(img => `
+                    <div class="slide">
+                        <img src="${img}">
+                    </div>
+                `).join("")}
+            </div>
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
         </div>
+    </div>
 
-        <div class="espacoNomeProduto">
-            <h3>${produto.nome}</h3>
-            <p>R$ ${produto.preco.toFixed(2)}</p>
-        </div>
+    <div class="espacoNomeProduto">
+        <h3>${produto.nome}</h3>
+        <p>R$ ${produto.preco.toFixed(2)}</p>
+    </div>
 
-        <div class="botoesQuantidade">
-            <button onclick="SubQuantidade(${produto.id})">-</button>
+    <div class="botoesQuantidade">
+        <button onclick="SubQuantidade(${produto.id})">-</button>
 
-            <p id="quantidadeProduto_${produto.id}">
-                ${quantidades[produto.id]}
-            </p>
+        <p id="quantidadeProduto_${produto.id}">
+            ${quantidades[produto.id]} 
+        </p>
 
-            <button onclick="AddQuantidade(${produto.id})">+</button>
-        </div>
+        <button onclick="AddQuantidade(${produto.id})">+</button>
+    </div>
 
-        <div class="espacoBtnAdd">
-            <button onclick="addCarrinho(${produto.id})">
-                Adicionar
-            </button>
-        </div>
+    <div class="espacoBtnAdd">
+        <button onclick="addCarrinho(${produto.id})">
+            Adicionar
+        </button>
+    </div>
     `;
 
+    // 4. Adiciona o card à lista na tela
     lista.appendChild(div);
 });
-
 
 // ================= ADICIONAR AO CARRINHO =================
 function addCarrinho(id) {
@@ -90,7 +100,7 @@ function addCarrinho(id) {
 function atualizarBotaoCarrinho() {
 
     // soma total de itens corretamente (ANTES estava errado)
-   totalItens = carrinho.length;
+    totalItens = carrinho.length;
     document.getElementById("botaoCarrinho").innerHTML =
         `<i class="mdi mdi-cart-outline"></i>${totalItens}`;
 
@@ -118,3 +128,42 @@ function SubQuantidade(id) {
     document.getElementById("quantidadeProduto_" + id).innerHTML =
         quantidades[id];
 }
+
+// slider card
+document.querySelectorAll(".produto").forEach(card => {
+
+    const slides = card.querySelector(".slides");
+    const slide = card.querySelectorAll(".slide");
+    const next = card.querySelector(".next");
+    const prev = card.querySelector(".prev");
+
+    let index = 0;
+    let animando = false; // 🔥 AQUI
+
+    function updateSlide() {
+
+
+
+        if (animando) return; // 🔥 BLOQUEIA CLIQUE DUPLO
+
+        animando = true;
+
+        const largura = card.querySelector(".espacoImg").offsetWidth;
+        slides.style.transform = `translateX(${-largura * index}px)`;
+
+        setTimeout(() => {
+            animando = false;
+        }, 400); // mesmo tempo do CSS
+    }
+
+    next.addEventListener("click", () => {
+        index = (index + 1) % slide.length;
+        updateSlide();
+    });
+
+    prev.addEventListener("click", () => {
+        index = (index - 1 + slide.length) % slide.length;
+        updateSlide();
+    });
+
+});
