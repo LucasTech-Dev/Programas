@@ -14,8 +14,8 @@ let totalItens = JSON.parse(localStorage.getItem("totalItens")) ?? 0;
 // ================= RENDER DO CARRINHO =================
 function renderCarrinho() {
 
-    listaCarrinho.innerHTML = ""; // limpa tela
-    let total = 0; // total da compra
+    listaCarrinho.innerHTML = "";
+    let total = 0;
 
     carrinho.forEach((prod, index) => {
 
@@ -26,34 +26,41 @@ function renderCarrinho() {
         total += subtotal;
 
         const div = document.createElement("div");
+        div.classList.add("produto");
 
         div.innerHTML = `
-            <div class="produto">
-
-                <div class="espacoImg">
-                    <img src="${prod.imagem}">
+        <div class="espacoImg">
+            <div class="slider">
+                <div class="slides">
+                    ${(prod.imagens || [prod.imagem]).map(img => `
+                        <div class="slide">
+                            <img src="${img}">
+                        </div>
+                    `).join("")}
                 </div>
-
-                <div class="espacoNomeProduto">
-                    <h3>${prod.nome}</h3>
-                    <p>R$ ${preco.toFixed(2)}</p>
-                </div>
-
-                <div class="botoesQuantidade">
-                    <button onclick="diminuirQuantidade(${index})">-</button>
-                    <p>${quantidade}</p>
-                    <button onclick="aumentarQuantidade(${index})">+</button>
-                </div>
-
-                <p><strong>Subtotal: R$ ${subtotal.toFixed(2)}</strong></p>
-
-                <div class="espacoBtnAdd">
-                    <button class="btn-remover" onclick="removerItem(${index})">
-                        Remover
-                    </button>
-                </div>
-
+                <button class="prev">❮</button>
+                <button class="next">❯</button>
             </div>
+        </div>
+
+        <div class="espacoNomeProduto">
+            <h3>${prod.nome}</h3>
+            <p>R$ ${preco.toFixed(2)}</p>
+        </div>
+
+        <div class="botoesQuantidade">
+            <button onclick="diminuirQuantidade(${index})">-</button>
+
+            <p>${quantidade}</p>
+
+            <button onclick="aumentarQuantidade(${index})">+</button>
+        </div>
+
+        <div class="espacoBtnAdd">
+            <button onclick="removerItem(${index})">
+                Remover
+            </button>
+        </div>
         `;
 
         listaCarrinho.appendChild(div);
@@ -67,8 +74,10 @@ function renderCarrinho() {
 
     atualizarHeader();
 
-    // ✅ CORREÇÃO: salvando total corretamente
     localStorage.setItem("totalCompra", JSON.stringify(total));
+
+    // 🔥 IMPORTANTE: iniciar slider após render
+    initSlider();
 }
 
 
@@ -82,7 +91,6 @@ function diminuirQuantidade(index) {
 
     carrinho[index].quantidade--;
 
-    // remove se chegar a 0
     if (carrinho[index].quantidade <= 0) {
         carrinho.splice(index, 1);
     }
@@ -110,17 +118,57 @@ function salvar() {
 }
 
 
-// ================= HEADER (CONTADOR) =================
+// ================= HEADER (CONTADOR CORRETO) =================
 function atualizarHeader() {
 
-    // ✅ CORREÇÃO: soma real das quantidades
-    totalItens = carrinho.length;
+    // soma real das quantidades
+    totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
 
     if (quantidadeNoCarrinho) {
         quantidadeNoCarrinho.innerHTML = `${totalItens} itens`;
     }
 
     localStorage.setItem("totalItens", JSON.stringify(totalItens));
+}
+
+
+// ================= SLIDER =================
+function initSlider() {
+
+    document.querySelectorAll(".slider").forEach(card => {
+
+        const slides = card.querySelector(".slides");
+        const slide = card.querySelectorAll(".slide");
+        const next = card.querySelector(".next");
+        const prev = card.querySelector(".prev");
+
+        let index = 0;
+        let animando = false;
+
+        function updateSlide() {
+
+            if (animando) return;
+
+            animando = true;
+
+            const largura = card.offsetWidth;
+            slides.style.transform = `translateX(${-largura * index}px)`;
+
+            setTimeout(() => {
+                animando = false;
+            }, 400);
+        }
+
+        next.addEventListener("click", () => {
+            index = (index + 1) % slide.length;
+            updateSlide();
+        });
+
+        prev.addEventListener("click", () => {
+            index = (index - 1 + slide.length) % slide.length;
+            updateSlide();
+        });
+    });
 }
 
 

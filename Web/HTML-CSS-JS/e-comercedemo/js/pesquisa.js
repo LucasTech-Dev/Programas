@@ -22,7 +22,6 @@ function renderizarBusca(lista) {
 
     listaBusca.innerHTML = "";
 
-    // caso não encontre nada
     if (lista.length === 0) {
         listaBusca.innerHTML = "<p>Nenhum produto encontrado</p>";
         return;
@@ -30,7 +29,6 @@ function renderizarBusca(lista) {
 
     lista.forEach(produto => {
 
-        // define quantidade inicial
         if (!quantidades[produto.id]) {
             quantidades[produto.id] = 1;
         }
@@ -40,12 +38,22 @@ function renderizarBusca(lista) {
 
         div.innerHTML = `
             <div class="espacoImg">
-                <img src="${produto.imagem}">
+                <div class="slider">
+                    <div class="slides">
+                        ${(produto.imagens || [produto.imagem]).map(img => `
+                            <div class="slide">
+                                <img src="${img}">
+                            </div>
+                        `).join("")}
+                    </div>
+                    <button class="prev">❮</button>
+                    <button class="next">❯</button>
+                </div>
             </div>
 
             <div class="espacoNomeProduto">
                 <h3>${produto.nome}</h3>
-                <p>R$ ${produto.preco.toFixed(2)}</p>
+                <p>R$ ${Number(produto.preco).toFixed(2)}</p>
             </div>
 
             <div class="botoesQuantidade">
@@ -67,10 +75,13 @@ function renderizarBusca(lista) {
 
         listaBusca.appendChild(div);
     });
+
+    // 🔥 IMPORTANTE: iniciar slider após render
+    initSlider();
 }
 
 
-// ================= FILTRO EM TEMPO REAL =================
+// ================= FILTRO =================
 searchInput.addEventListener("input", () => {
 
     const valor = searchInput.value.toLowerCase();
@@ -89,35 +100,42 @@ function addCarrinho(id) {
     const produto = produtos.find(p => p.id === id);
     const itemExistente = carrinho.find(p => p.id === id);
 
+    const quantidadeSelecionada = quantidades[id] || 1;
+
     if (itemExistente) {
-        itemExistente.quantidade += quantidades[id];
+        itemExistente.quantidade += quantidadeSelecionada;
     } else {
         carrinho.push({
             ...produto,
-            quantidade: quantidades[id]
+            quantidade: quantidadeSelecionada
         });
     }
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    quantidades[id] = 1;
 
+    salvarCarrinho();
+}
+
+
+// ================= SALVAR =================
+function salvarCarrinho() {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
     atualizarBotaoCarrinho();
 }
 
 
-// ================= ATUALIZA BOTÃO DO CARRINHO =================
+// ================= BOTÃO CARRINHO =================
 function atualizarBotaoCarrinho() {
 
-    // ✅ CORREÇÃO: soma total real
     totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
 
     const botao = document.getElementById("botaoCarrinho");
 
     if (botao) {
         botao.innerHTML =
-            `<i class="mdi mdi-cart-outline"></i>${totalItens}`;
+            `<i class="mdi mdi-cart-outline"></i> ${totalItens}`;
     }
 
-    // ✅ CORREÇÃO: era getItem (errado)
     localStorage.setItem("totalItens", JSON.stringify(totalItens));
 
     atualizarHeader();
@@ -127,12 +145,11 @@ function atualizarBotaoCarrinho() {
 // ================= CONTROLE DE QUANTIDADE =================
 function AddQuantidade(id) {
 
-    quantidades[id]++;
+    quantidades[id] = (quantidades[id] || 1) + 1;
 
     document.getElementById("quantidadeProduto_" + id).innerHTML =
         quantidades[id];
 }
-
 
 function SubQuantidade(id) {
 
@@ -145,16 +162,54 @@ function SubQuantidade(id) {
 }
 
 
-// ================= ATUALIZA HEADER =================
+// ================= HEADER =================
 function atualizarHeader() {
 
-    // ✅ soma correta
-    totalItens = carrinho.length;
+    totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
 
     if (quantidadeNoCarrinho) {
-        quantidadeNoCarrinho.innerHTML =
-            `${totalItens} itens `;
+        quantidadeNoCarrinho.innerHTML = `${totalItens} itens`;
     }
 
     localStorage.setItem("totalItens", JSON.stringify(totalItens));
+}
+
+
+// ================= SLIDER =================
+function initSlider() {
+
+    document.querySelectorAll(".slider").forEach(card => {
+
+        const slides = card.querySelector(".slides");
+        const slide = card.querySelectorAll(".slide");
+        const next = card.querySelector(".next");
+        const prev = card.querySelector(".prev");
+
+        let index = 0;
+        let animando = false;
+
+        function updateSlide() {
+
+            if (animando) return;
+
+            animando = true;
+
+            const largura = card.offsetWidth;
+            slides.style.transform = `translateX(${-largura * index}px)`;
+
+            setTimeout(() => {
+                animando = false;
+            }, 400);
+        }
+
+        next.addEventListener("click", () => {
+            index = (index + 1) % slide.length;
+            updateSlide();
+        });
+
+        prev.addEventListener("click", () => {
+            index = (index - 1 + slide.length) % slide.length;
+            updateSlide();
+        });
+    });
 }
