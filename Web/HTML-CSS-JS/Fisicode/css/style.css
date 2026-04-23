@@ -1,0 +1,38 @@
+*{
+    box-sizing:border-box ;
+
+}
+
+body{
+    background-color: #1C1C1E;
+    display: flex;
+}
+
+.espacoCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    border: solid 1px red;
+    gap: 10px;
+
+}
+
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 370px;
+  height: 540px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background: #2C2C2E;
+  border-radius: 12px;
+  padding: 16px;
+  /* Opcional: melhora ainda mais a separação */
+  border: 1px solid #3A3A3C;
+
+}
