@@ -27,15 +27,15 @@ body{
 .card{
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   width: 370px;
-  height: 540px;
+   min-height: 540px; /* cresce se precisar */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   background: #2C2C2E;
   border-radius: 12px;
-  padding: 16px;
+  
   /* Opcional: melhora ainda mais a separação */
   border: 1px solid #3A3A3C;
   gap: 10px; 
@@ -93,7 +93,7 @@ body{
   align-items: center;
 
 }
-.espacoResposta {
+.espacoResposta  {
     margin-top: 10px;
     display: flex;
   flex-direction: column;
@@ -104,14 +104,13 @@ body{
 
 #campoResposta {
   
-    position: relative;
-
+    
     width: 100%;
     min-height: 100px;
 
-    display: flex;              /* ativa flex */
-    justify-content: center;    /* horizontal */
-    align-items: center;        /* vertical */
+    display: flex;
+    justify-content: center;   /* horizontal */
+    align-items: center;       /* vertical */
 
     text-align: center;
 
@@ -119,8 +118,8 @@ body{
     border: 1px solid #FF9500;
     font-size: 20px;
     background-color: #1C1C1E;
-
-  }
+    color: white;
+}
 
 .espacoBotao{
   width: 340px;
