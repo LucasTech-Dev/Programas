@@ -6,6 +6,10 @@
 body{
     background-color: #1C1C1E;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .espacoCard{
@@ -15,7 +19,7 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     gap: 10px;
 
 }
@@ -23,7 +27,7 @@ body{
 .card{
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
   width: 370px;
@@ -34,7 +38,7 @@ body{
   padding: 16px;
   /* Opcional: melhora ainda mais a separação */
   border: 1px solid #3A3A3C;
-  gap: 15px;
+  gap: 10px; 
 
 }
 
@@ -43,21 +47,142 @@ body{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 350px;
-  height: 520px;
-  border: solid 1px green;
+  width: 340px;
+  height: 250px;
+  /* border: solid 1px green;  */
   border-radius: 12px;
+  gap: 10px;
 
 
 }
 
-.espacoBotao{
-  width: 350px;
-  height: 520px;
-  border: solid 1px red;
+.espacoInput input{
+   width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #2c2c2e;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+
+.espacoInput input::placeholder {
+  color: #888;
+}
+
+
+.espacoInput input:focus {
+  border: 1px solid ;
+  color: #FF9500;;
+  box-shadow: 0 0 8px #FF9500(10, 132, 255, 0.5);
+}
+
+
+.espacoResposta{
+  width: 340px;
+  height: 100px;
+   /* border: solid 1px red; */
   border-radius: 12px;
    display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+
+}
+.espacoResposta {
+    margin-top: 10px;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#campoResposta {
+  
+    position: relative;
+
+    width: 100%;
+    min-height: 100px;
+
+    display: flex;              /* ativa flex */
+    justify-content: center;    /* horizontal */
+    align-items: center;        /* vertical */
+
+    text-align: center;
+
+    border-radius: 8px;
+    border: 1px solid #FF9500;
+    font-size: 20px;
+    background-color: #1C1C1E;
+
+  }
+
+.espacoBotao{
+  width: 340px;
+  height: 100px;
+  /* border: solid 1px red; */
+  border-radius: 12px;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.espacoBotao button {
+  width: 100%;
+  height: 70px;
+  border-radius: 12px;
+  border: none;
+
+  background: #FF9500;
+  color: #ffffff;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+/* efeito ao passar o mouse */
+.espacoBotao button:hover {
+  filter: brightness(1.1);
+}
+
+/* efeito ao clicar */
+.espacoBotao button:active {
+  transform: scale(0.95);
+  background: #cc7a00;
+}
+
+.espacoBotao {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnRecalcular {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #FF9500;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btnRecalcular:hover {
+    background-color: #e68600;
+    transform: scale(1.05);
+}
+
+.btnRecalcular:active {
+    transform: scale(0.98);
 }
