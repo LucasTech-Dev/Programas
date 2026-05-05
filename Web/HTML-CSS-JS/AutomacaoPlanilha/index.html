@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automação Uniforme</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 2rem; width: 100%; max-width: 420px; }
+  h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.4rem; }
+  p { font-size: 0.85rem; color: #94a3b8; margin-bottom: 1.5rem; }
+  label { font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 6px; }
+  input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; font-size: 0.9rem; margin-bottom: 1rem; outline: none; }
+  input:focus { border-color: #60a5fa; }
+  button { width: 100%; padding: 11px; border-radius: 8px; border: none; background: #3b82f6; color: white; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  button:hover { background: #2563eb; }
+  button:disabled { background: #475569; cursor: not-allowed; }
+  #status { margin-top: 1rem; font-size: 0.85rem; padding: 10px 12px; border-radius: 8px; display: none; }
+  .ok  { background: #14532d; color: #86efac; }
+  .err { background: #450a0a; color: #fca5a5; }
+  .loading { background: #1e3a5f; color: #93c5fd; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>Automação Uniforme</h2>
+  <p>Cole a URL da planilha origem para preencher automaticamente a planilha destino.</p>
+
+  <label>Aqui Cola a Planilha da Turma</label>
+  <input id="apiUrl" type="url" placeholder="https://script.google.com/macros/s/...">
+
+  <label>Aqui Cola a Tua Planilha</label>
+  <input id="origemUrl" type="url" placeholder="https://docs.google.com/spreadsheets/..."
+    value="https://docs.google.com/spreadsheets/d/1S2zo0pI_3S1EjtZQk5Sba64p7fbKv3tP_sqqcFcnaZs/edit">
+
+  <button id="btn" onclick="processar()">Processar planilha</button>
+  <div id="status"></div>
+</div>
+
+<script>
+async function processar() {
+  const apiUrl    = document.getElementById("apiUrl").value.trim();
+  const origemUrl = document.getElementById("origemUrl").value.trim();
+  const btn       = document.getElementById("btn");
+  const status    = document.getElementById("status");
+
+  if (!apiUrl || !origemUrl) {
+    mostrar("Preencha a URL do script e da planilha origem.", "err");
+    return;
+  }
+
+  btn.disabled = true;
+  mostrar("Processando... aguarde.", "loading");
+
+  try {
+    const res = await fetch(apiUrl, {
+      method: "POST",
+      body: JSON.stringify({ url: origemUrl }),
+      headers: { "Content-Type": "application/json" }
+    });
+    const texto = await res.text();
+    let msg = texto;
+    try {
+      const json = JSON.parse(texto);
+      if (json.ok) {
+        msg = `Concluído! ${json.totalPecas} peças contadas em ${json.grupos} combinações.`;
+      } else {
+        msg = "Erro: " + json.erro;
+      }
+    } catch(_) {}
+    mostrar(msg, msg.startsWith("Concluído") ? "ok" : "err");
+  } catch(err) {
+    mostrar("Erro de conexão: " + err.message, "err");
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function mostrar(msg, tipo) {
+  const el = document.getElementById("status");
+  el.className = tipo;
+  el.textContent = msg;
+  el.style.display = "block";
+}
+</script>
+</body>
+</html>
