@@ -1,0 +1,70 @@
+<h1>Meu Carrinho</h1>
+<div id="listaCarrinho"></div>
+
+<script>
+  // ⬇️ Cola aqui o código completo que te mandei:
+  const lista = document.getElementById("listaCarrinho");
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  console.log("Carrinho no localStorage:", carrinho); // 🧠 Verifica o conteúdo
+
+  if (carrinho.length === 0) {
+    lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
+  } else {
+    atualizarCarrinho();
+  }
+
+  function atualizarCarrinho() {
+    if (carrinho.length === 0) {
+      lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
+      return;
+    }
+
+    let total = 0;
+
+    lista.innerHTML = carrinho.map((item, index) => {
+      const preco = parseFloat(item.preco) || 0;
+      const qtd = parseInt(item.quantidade) || 1;
+      const subtotal = preco * qtd;
+      total += subtotal;
+
+      return `
+        <div style="border:1px solid #ccc; padding:10px; margin:5px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center;">
+            <img src="${item.imagem}" width="60" style="border-radius:5px; margin-right:10px;">
+            <div>
+              <strong>${item.nome}</strong> - R$ ${preco.toFixed(2)}<br>
+              Quantidade: ${qtd}<br>
+              Subtotal: R$ ${subtotal.toFixed(2)}
+            </div>
+          </div>
+          <button onclick="removerItem(${index})"
+            style="background:red; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">
+            Remover
+          </button>
+        </div>
+      `;
+    }).join("");
+
+    lista.innerHTML += `
+      <h3 style="text-align:right;">Total: R$ ${total.toFixed(2)}</h3>
+      <button onclick="finalizarCompra()" 
+        style="width:100%; padding:10px; background:green; color:white; border:none; border-radius:5px; cursor:pointer; font-size:16px;">
+        Finalizar Compra
+      </button>
+    `;
+  }
+
+  function removerItem(index) {
+    carrinho.splice(index, 1);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    atualizarCarrinho();
+  }
+
+  function finalizarCompra() {
+    alert("Compra finalizada com sucesso! 🎉");
+    localStorage.removeItem("carrinho");
+    carrinho = [];
+    atualizarCarrinho();
+  }
+</script>
