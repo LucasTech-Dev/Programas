@@ -2,7 +2,7 @@
 
 Sou estudante de TI (ensino médio + técnico), desenvolvedor em formação com foco em:
 - HTML, CSS e JavaScript
-- PHP e SQL
+- NodeJS e Firebase
 - Python
 - Lógica de programação e sistemas
 - Hardware e suporte técnico
