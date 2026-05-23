@@ -10,7 +10,7 @@ Sou estudante de TI (ensino médio + técnico), desenvolvedor em formação com 
 Estes são alguns dos meus melhores projetos 
 ## Projetos em destaque
 - **Sistema de Login (JS + Firebase)** – CRUD básico com autenticação
-- **Sistema de Cadastro de Clientes (PHP + MySQL)** – CRUD completo
+- **Sistema de Cadastro de Clientes (JS + Firebase)** – CRUD completo
 - Próximos: Sistema de tarefas com API, site responsivo, portfolio pessoal
 
 Contato
