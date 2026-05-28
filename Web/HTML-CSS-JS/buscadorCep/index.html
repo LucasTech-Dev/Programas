@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Background grid */
     body::before {
       content: '';
       position: fixed;
@@ -89,9 +88,7 @@
       color: var(--text);
     }
 
-    h1 span {
-      color: var(--accent);
-    }
+    h1 span { color: var(--accent); }
 
     .subtitle {
       margin-top: 12px;
@@ -118,7 +115,12 @@
       opacity: 0.4;
     }
 
-    .field {
+    .field { margin-bottom: 20px; }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       margin-bottom: 20px;
     }
 
@@ -129,6 +131,16 @@
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 8px;
+    }
+
+    .label-optional {
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      opacity: 0.6;
+      margin-left: 6px;
+      text-transform: none;
+      vertical-align: middle;
     }
 
     input, select {
@@ -147,17 +159,14 @@
     }
 
     select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a7068' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b07a8a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 14px center;
       padding-right: 36px;
       cursor: pointer;
     }
 
-    select option {
-      background: var(--surface);
-      color: var(--text);
-    }
+    select option { background: var(--surface); color: var(--text); }
 
     input:focus, select:focus {
       border-color: var(--accent);
@@ -165,6 +174,12 @@
     }
 
     input::placeholder { color: var(--muted); }
+
+    .divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 4px 0 20px;
+    }
 
     .btn {
       width: 100%;
@@ -186,7 +201,7 @@
     }
 
     .btn:hover {
-      background: #d44a74;
+      background: var(--accent2);
       box-shadow: 0 0 24px rgba(232,96,138,0.35);
     }
 
@@ -198,7 +213,6 @@
       transform: none;
     }
 
-    /* Loading spinner */
     .spinner {
       display: inline-block;
       width: 14px; height: 14px;
@@ -211,7 +225,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Results */
     .results {
       margin-top: 24px;
       display: none;
@@ -266,11 +279,33 @@
 
     .result-address {
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text);
       margin-top: 4px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .result-bairro {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .bairro-pill {
+      display: inline-block;
+      background: rgba(232,96,138,0.1);
+      border: 1px solid rgba(232,96,138,0.25);
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
     }
 
     .copy-btn {
@@ -299,7 +334,6 @@
       background: rgba(232,96,138,0.1);
     }
 
-    /* Error / empty */
     .msg {
       text-align: center;
       padding: 28px 16px;
@@ -332,6 +366,8 @@
     @media (max-width: 480px) {
       .card { padding: 22px 18px; }
       .result-cep { font-size: 17px; }
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      .field-row .field { margin-bottom: 20px; }
     }
   </style>
 </head>
@@ -341,52 +377,61 @@
     <header>
       <div class="tag">Brasil · CEP</div>
       <h1>Busca de <span>CEP</span></h1>
-      <p class="subtitle">Selecione o estado, cidade e informe a rua</p>
+      <p class="subtitle">Estado, cidade, rua e bairro</p>
     </header>
 
     <div class="card">
-      <div class="field">
-        <label for="estado">Estado (UF)</label>
-        <select id="estado">
-          <option value="">— Selecione o estado —</option>
-          <option value="AC">Acre (AC)</option>
-          <option value="AL">Alagoas (AL)</option>
-          <option value="AP">Amapá (AP)</option>
-          <option value="AM">Amazonas (AM)</option>
-          <option value="BA">Bahia (BA)</option>
-          <option value="CE">Ceará (CE)</option>
-          <option value="DF">Distrito Federal (DF)</option>
-          <option value="ES">Espírito Santo (ES)</option>
-          <option value="GO">Goiás (GO)</option>
-          <option value="MA">Maranhão (MA)</option>
-          <option value="MT">Mato Grosso (MT)</option>
-          <option value="MS">Mato Grosso do Sul (MS)</option>
-          <option value="MG">Minas Gerais (MG)</option>
-          <option value="PA">Pará (PA)</option>
-          <option value="PB">Paraíba (PB)</option>
-          <option value="PR">Paraná (PR)</option>
-          <option value="PE">Pernambuco (PE)</option>
-          <option value="PI">Piauí (PI)</option>
-          <option value="RJ">Rio de Janeiro (RJ)</option>
-          <option value="RN">Rio Grande do Norte (RN)</option>
-          <option value="RS">Rio Grande do Sul (RS)</option>
-          <option value="RO">Rondônia (RO)</option>
-          <option value="RR">Roraima (RR)</option>
-          <option value="SC">Santa Catarina (SC)</option>
-          <option value="SP">São Paulo (SP)</option>
-          <option value="SE">Sergipe (SE)</option>
-          <option value="TO">Tocantins (TO)</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="cidade">Cidade</label>
-        <input id="cidade" type="text" placeholder="Ex: Porto Alegre" autocomplete="off" spellcheck="false" />
+      <div class="field-row">
+        <div class="field">
+          <label for="estado">Estado (UF)</label>
+          <select id="estado">
+            <option value="">— Selecione —</option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cidade">Cidade</label>
+          <input id="cidade" type="text" placeholder="Ex: Porto Alegre" autocomplete="off" spellcheck="false" />
+        </div>
       </div>
 
       <div class="field">
         <label for="rua">Logradouro / Rua</label>
         <input id="rua" type="text" placeholder="Ex: Avenida Ipiranga" autocomplete="off" spellcheck="false" />
+      </div>
+
+      <div class="field">
+        <label for="bairro">
+          Bairro
+          <span class="label-optional">(opcional — filtra os resultados)</span>
+        </label>
+        <input id="bairro" type="text" placeholder="Ex: Moinhos de Vento" autocomplete="off" spellcheck="false" />
       </div>
 
       <button class="btn" id="buscarBtn" onclick="buscarCEP()">
@@ -405,22 +450,27 @@
     const estadoEl = document.getElementById('estado');
     const cidadeEl = document.getElementById('cidade');
     const ruaEl    = document.getElementById('rua');
+    const bairroEl = document.getElementById('bairro');
     const btn      = document.getElementById('buscarBtn');
     const results  = document.getElementById('results');
 
-    // Allow Enter key to trigger search
-    [estadoEl, cidadeEl, ruaEl].forEach(el => {
+    [estadoEl, cidadeEl, ruaEl, bairroEl].forEach(el => {
       el.addEventListener('keydown', e => { if (e.key === 'Enter') buscarCEP(); });
     });
+
+    function normalizar(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    }
 
     async function buscarCEP() {
       const uf     = estadoEl.value.trim();
       const cidade = cidadeEl.value.trim();
       const rua    = ruaEl.value.trim();
+      const bairro = bairroEl.value.trim();
 
-      if (!uf) { showMsg('Selecione um estado.', 'error'); return; }
-      if (cidade.length < 2) { showMsg('Informe a cidade.', 'error'); return; }
-      if (rua.length < 3)    { showMsg('Informe ao menos 3 caracteres da rua.', 'error'); return; }
+      if (!uf)              { showMsg('Selecione um estado.', 'error'); return; }
+      if (cidade.length < 2){ showMsg('Informe a cidade.', 'error'); return; }
+      if (rua.length < 3)   { showMsg('Informe ao menos 3 caracteres da rua.', 'error'); return; }
 
       setLoading(true);
       results.className = 'results show';
@@ -437,7 +487,21 @@
           return;
         }
 
-        renderResults(data);
+        // Filtrar por bairro se preenchido
+        let filtrado = data;
+        if (bairro.length >= 2) {
+          const bairroNorm = normalizar(bairro);
+          filtrado = data.filter(item =>
+            item.bairro && normalizar(item.bairro).includes(bairroNorm)
+          );
+        }
+
+        if (filtrado.length === 0) {
+          results.innerHTML = `<div class="msg empty">Nenhum resultado para o bairro "<strong>${bairro}</strong>".<br><small style="opacity:.6;margin-top:6px;display:block;">A busca por rua retornou ${data.length} resultado(s), mas nenhum bate com esse bairro. Tente outro nome.</small></div>`;
+          return;
+        }
+
+        renderResults(filtrado, data.length, bairro);
       } catch (err) {
         results.innerHTML = `<div class="msg error">Erro ao consultar a API.<br><small style="opacity:.7;margin-top:4px;display:block;">${err.message}</small></div>`;
       } finally {
@@ -445,24 +509,32 @@
       }
     }
 
-    function renderResults(items) {
+    function renderResults(items, totalAntesFiltro, bairroFiltro) {
       const limited = items.slice(0, 20);
       const count = items.length;
 
-      let html = `<div class="results-header">${count > 20 ? `Exibindo 20 de ${count}` : `${count} resultado${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`}</div>`;
+      let filtroInfo = '';
+      if (bairroFiltro && bairroFiltro.length >= 2) {
+        filtroInfo = ` <span style="opacity:.55;font-weight:normal;">· filtrado por bairro (${totalAntesFiltro} total)</span>`;
+      }
+
+      let html = `<div class="results-header">${count > 20 ? `Exibindo 20 de ${count}` : `${count} resultado${count !== 1 ? 's' : ''}`}${filtroInfo}</div>`;
 
       limited.forEach(item => {
-        const cepFmt = item.cep || '—';
-        const logr   = [item.logradouro, item.complemento].filter(Boolean).join(', ') || item.bairro || '—';
-        const local  = [item.localidade, item.uf].filter(Boolean).join(' — ');
+        const cepFmt  = item.cep || '—';
+        const logr    = [item.logradouro, item.complemento].filter(Boolean).join(', ') || '—';
+        const bairro  = item.bairro || '';
+        const local   = [item.localidade, item.uf].filter(Boolean).join(' — ');
+        const cepSafe = (item.cep || '').replace(/'/g, '');
 
         html += `
-          <div class="result-item" onclick="copiarCEP(this, '${item.cep}')">
+          <div class="result-item" onclick="copiarCEP(this, '${cepSafe}')">
             <div class="result-info">
               <div class="result-cep">${cepFmt}</div>
               <div class="result-address">${logr} · ${local}</div>
+              ${bairro ? `<div class="result-bairro"><span class="bairro-pill">bairro</span>${bairro}</div>` : ''}
             </div>
-            <button class="copy-btn" onclick="event.stopPropagation(); copiarCEP(this.closest('.result-item'), '${item.cep}')">
+            <button class="copy-btn" onclick="event.stopPropagation(); copiarCEP(this.closest('.result-item'), '${cepSafe}')">
               COPIAR
             </button>
           </div>`;
@@ -472,9 +544,7 @@
     }
 
     function copiarCEP(el, cep) {
-      const raw = cep.replace(/\D/g, '');
       navigator.clipboard.writeText(cep).catch(() => {
-        // Fallback
         const ta = document.createElement('textarea');
         ta.value = cep;
         document.body.appendChild(ta);
