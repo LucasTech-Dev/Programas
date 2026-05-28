@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Busca de CEP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fdf0f3;
+      --surface: #fce8ed;
+      --border: #f5c9d5;
+      --accent: #e8608a;
+      --accent2: #d44a74;
+      --text: #3a1a24;
+      --muted: #b07a8a;
+      --danger: #c0392b;
+      --card: #fef4f6;
+    }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 48px 16px 80px;
+      overflow-x: hidden;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232,96,138,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,96,138,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow {
+      position: fixed;
+      top: -200px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(232,96,138,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 560px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(232,96,138,0.35);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.4;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a7068' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(232,96,138,0.12);
+    }
+
+    input::placeholder { color: var(--muted); }
+
+    .btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      background: #d44a74;
+      box-shadow: 0 0 24px rgba(232,96,138,0.35);
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Results */
+    .results {
+      margin-top: 24px;
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp 0.3s ease both;
+    }
+
+    .results.show { display: flex; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .results-header {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .result-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .result-item:hover {
+      border-color: var(--accent);
+      background: rgba(232,96,138,0.05);
+    }
+
+    .result-info { flex: 1; min-width: 0; }
+
+    .result-cep {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .result-address {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .copy-btn.copied {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(232,96,138,0.1);
+    }
+
+    /* Error / empty */
+    .msg {
+      text-align: center;
+      padding: 28px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .msg.error {
+      background: rgba(255,77,109,0.07);
+      border: 1px solid rgba(255,77,109,0.2);
+      color: var(--danger);
+    }
+
+    .msg.empty {
+      background: rgba(232,96,138,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    footer a { color: var(--muted); text-decoration: underline dotted; }
+
+    @media (max-width: 480px) {
+      .card { padding: 22px 18px; }
+      .result-cep { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="wrapper">
+    <header>
+      <div class="tag">Brasil · CEP</div>
+      <h1>Busca de <span>CEP</span></h1>
+      <p class="subtitle">Selecione o estado, cidade e informe a rua</p>
+    </header>
+
+    <div class="card">
+      <div class="field">
+        <label for="estado">Estado (UF)</label>
+        <select id="estado">
+          <option value="">— Selecione o estado —</option>
+          <option value="AC">Acre (AC)</option>
+          <option value="AL">Alagoas (AL)</option>
+          <option value="AP">Amapá (AP)</option>
+          <option value="AM">Amazonas (AM)</option>
+          <option value="BA">Bahia (BA)</option>
+          <option value="CE">Ceará (CE)</option>
+          <option value="DF">Distrito Federal (DF)</option>
+          <option value="ES">Espírito Santo (ES)</option>
+          <option value="GO">Goiás (GO)</option>
+          <option value="MA">Maranhão (MA)</option>
+          <option value="MT">Mato Grosso (MT)</option>
+          <option value="MS">Mato Grosso do Sul (MS)</option>
+          <option value="MG">Minas Gerais (MG)</option>
+          <option value="PA">Pará (PA)</option>
+          <option value="PB">Paraíba (PB)</option>
+          <option value="PR">Paraná (PR)</option>
+          <option value="PE">Pernambuco (PE)</option>
+          <option value="PI">Piauí (PI)</option>
+          <option value="RJ">Rio de Janeiro (RJ)</option>
+          <option value="RN">Rio Grande do Norte (RN)</option>
+          <option value="RS">Rio Grande do Sul (RS)</option>
+          <option value="RO">Rondônia (RO)</option>
+          <option value="RR">Roraima (RR)</option>
+          <option value="SC">Santa Catarina (SC)</option>
+          <option value="SP">São Paulo (SP)</option>
+          <option value="SE">Sergipe (SE)</option>
+          <option value="TO">Tocantins (TO)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="cidade">Cidade</label>
+        <input id="cidade" type="text" placeholder="Ex: Porto Alegre" autocomplete="off" spellcheck="false" />
+      </div>
+
+      <div class="field">
+        <label for="rua">Logradouro / Rua</label>
+        <input id="rua" type="text" placeholder="Ex: Avenida Ipiranga" autocomplete="off" spellcheck="false" />
+      </div>
+
+      <button class="btn" id="buscarBtn" onclick="buscarCEP()">
+        Buscar CEP
+      </button>
+
+      <div class="results" id="results"></div>
+    </div>
+
+    <footer>
+      Dados via <a href="https://viacep.com.br" target="_blank" rel="noopener">ViaCEP</a> · API pública gratuita
+    </footer>
+  </div>
+
+  <script>
+    const estadoEl = document.getElementById('estado');
+    const cidadeEl = document.getElementById('cidade');
+    const ruaEl    = document.getElementById('rua');
+    const btn      = document.getElementById('buscarBtn');
+    const results  = document.getElementById('results');
+
+    // Allow Enter key to trigger search
+    [estadoEl, cidadeEl, ruaEl].forEach(el => {
+      el.addEventListener('keydown', e => { if (e.key === 'Enter') buscarCEP(); });
+    });
+
+    async function buscarCEP() {
+      const uf     = estadoEl.value.trim();
+      const cidade = cidadeEl.value.trim();
+      const rua    = ruaEl.value.trim();
+
+      if (!uf) { showMsg('Selecione um estado.', 'error'); return; }
+      if (cidade.length < 2) { showMsg('Informe a cidade.', 'error'); return; }
+      if (rua.length < 3)    { showMsg('Informe ao menos 3 caracteres da rua.', 'error'); return; }
+
+      setLoading(true);
+      results.className = 'results show';
+      results.innerHTML = `<div class="msg empty"><span class="spinner"></span> Consultando ViaCEP...</div>`;
+
+      try {
+        const url = `https://viacep.com.br/ws/${encodeURIComponent(uf)}/${encodeURIComponent(cidade)}/${encodeURIComponent(rua)}/json/`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        if (data.erro || !Array.isArray(data) || data.length === 0) {
+          results.innerHTML = `<div class="msg empty">Nenhum CEP encontrado para os dados informados.<br><small style="opacity:.6;margin-top:6px;display:block;">Tente variar o nome da rua ou cidade.</small></div>`;
+          return;
+        }
+
+        renderResults(data);
+      } catch (err) {
+        results.innerHTML = `<div class="msg error">Erro ao consultar a API.<br><small style="opacity:.7;margin-top:4px;display:block;">${err.message}</small></div>`;
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function renderResults(items) {
+      const limited = items.slice(0, 20);
+      const count = items.length;
+
+      let html = `<div class="results-header">${count > 20 ? `Exibindo 20 de ${count}` : `${count} resultado${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`}</div>`;
+
+      limited.forEach(item => {
+        const cepFmt = item.cep || '—';
+        const logr   = [item.logradouro, item.complemento].filter(Boolean).join(', ') || item.bairro || '—';
+        const local  = [item.localidade, item.uf].filter(Boolean).join(' — ');
+
+        html += `
+          <div class="result-item" onclick="copiarCEP(this, '${item.cep}')">
+            <div class="result-info">
+              <div class="result-cep">${cepFmt}</div>
+              <div class="result-address">${logr} · ${local}</div>
+            </div>
+            <button class="copy-btn" onclick="event.stopPropagation(); copiarCEP(this.closest('.result-item'), '${item.cep}')">
+              COPIAR
+            </button>
+          </div>`;
+      });
+
+      results.innerHTML = html;
+    }
+
+    function copiarCEP(el, cep) {
+      const raw = cep.replace(/\D/g, '');
+      navigator.clipboard.writeText(cep).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = cep;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      });
+
+      const copyBtn = el.querySelector('.copy-btn');
+      if (copyBtn) {
+        copyBtn.textContent = 'COPIADO!';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.textContent = 'COPIAR';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }
+    }
+
+    function showMsg(msg, type) {
+      results.className = 'results show';
+      results.innerHTML = `<div class="msg ${type}">${msg}</div>`;
+    }
+
+    function setLoading(state) {
+      btn.disabled = state;
+      btn.innerHTML = state
+        ? `<span class="spinner"></span> Buscando...`
+        : `Buscar CEP`;
+    }
+  </script>
+</body>
+</html>
