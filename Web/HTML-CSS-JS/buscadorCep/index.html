@@ -377,7 +377,7 @@
     <header>
       <div class="tag">Brasil · CEP</div>
       <h1>Busca de <span>CEP</span></h1>
-      <p class="subtitle">Estado, cidade, rua e bairro</p>
+      <p class="subtitle">Estado, cidade e rua</p>
     </header>
 
     <div class="card">
@@ -426,14 +426,6 @@
         <input id="rua" type="text" placeholder="Ex: Avenida Ipiranga" autocomplete="off" spellcheck="false" />
       </div>
 
-      <div class="field">
-        <label for="bairro">
-          Bairro
-          <span class="label-optional">(opcional — filtra os resultados)</span>
-        </label>
-        <input id="bairro" type="text" placeholder="Ex: Moinhos de Vento" autocomplete="off" spellcheck="false" />
-      </div>
-
       <button class="btn" id="buscarBtn" onclick="buscarCEP()">
         Buscar CEP
       </button>
@@ -450,11 +442,10 @@
     const estadoEl = document.getElementById('estado');
     const cidadeEl = document.getElementById('cidade');
     const ruaEl    = document.getElementById('rua');
-    const bairroEl = document.getElementById('bairro');
     const btn      = document.getElementById('buscarBtn');
     const results  = document.getElementById('results');
 
-    [estadoEl, cidadeEl, ruaEl, bairroEl].forEach(el => {
+    [estadoEl, cidadeEl, ruaEl].forEach(el => {
       el.addEventListener('keydown', e => { if (e.key === 'Enter') buscarCEP(); });
     });
 
@@ -466,7 +457,6 @@
       const uf     = estadoEl.value.trim();
       const cidade = cidadeEl.value.trim();
       const rua    = ruaEl.value.trim();
-      const bairro = bairroEl.value.trim();
 
       if (!uf)              { showMsg('Selecione um estado.', 'error'); return; }
       if (cidade.length < 2){ showMsg('Informe a cidade.', 'error'); return; }
@@ -487,21 +477,7 @@
           return;
         }
 
-        // Filtrar por bairro se preenchido
-        let filtrado = data;
-        if (bairro.length >= 2) {
-          const bairroNorm = normalizar(bairro);
-          filtrado = data.filter(item =>
-            item.bairro && normalizar(item.bairro).includes(bairroNorm)
-          );
-        }
-
-        if (filtrado.length === 0) {
-          results.innerHTML = `<div class="msg empty">Nenhum resultado para o bairro "<strong>${bairro}</strong>".<br><small style="opacity:.6;margin-top:6px;display:block;">A busca por rua retornou ${data.length} resultado(s), mas nenhum bate com esse bairro. Tente outro nome.</small></div>`;
-          return;
-        }
-
-        renderResults(filtrado, data.length, bairro);
+        renderResults(data);
       } catch (err) {
         results.innerHTML = `<div class="msg error">Erro ao consultar a API.<br><small style="opacity:.7;margin-top:4px;display:block;">${err.message}</small></div>`;
       } finally {
@@ -509,30 +485,24 @@
       }
     }
 
-    function renderResults(items, totalAntesFiltro, bairroFiltro) {
+    function renderResults(items) {
       const limited = items.slice(0, 20);
       const count = items.length;
 
-      let filtroInfo = '';
-      if (bairroFiltro && bairroFiltro.length >= 2) {
-        filtroInfo = ` <span style="opacity:.55;font-weight:normal;">· filtrado por bairro (${totalAntesFiltro} total)</span>`;
-      }
-
-      let html = `<div class="results-header">${count > 20 ? `Exibindo 20 de ${count}` : `${count} resultado${count !== 1 ? 's' : ''}`}${filtroInfo}</div>`;
+      let html = `<div class="results-header">${count > 20 ? `Exibindo 20 de ${count}` : `${count} resultado${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`}</div>`;
 
       limited.forEach(item => {
         const cepFmt  = item.cep || '—';
         const logr    = [item.logradouro, item.complemento].filter(Boolean).join(', ') || '—';
-        const bairro  = item.bairro || '';
-        const local   = [item.localidade, item.uf].filter(Boolean).join(' — ');
+        const bairro  = item.bairro || '—';
         const cepSafe = (item.cep || '').replace(/'/g, '');
 
         html += `
           <div class="result-item" onclick="copiarCEP(this, '${cepSafe}')">
             <div class="result-info">
               <div class="result-cep">${cepFmt}</div>
-              <div class="result-address">${logr} · ${local}</div>
-              ${bairro ? `<div class="result-bairro"><span class="bairro-pill">bairro</span>${bairro}</div>` : ''}
+              <div class="result-address">${logr}</div>
+              <div class="result-bairro"><span class="bairro-pill">bairro</span>${bairro}</div>
             </div>
             <button class="copy-btn" onclick="event.stopPropagation(); copiarCEP(this.closest('.result-item'), '${cepSafe}')">
               COPIAR
