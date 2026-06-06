@@ -17,12 +17,13 @@
       --gold:      #f4a217;
       --gold-lt:   #ffd166;
       --bg:        #0b0a10;
-      --surface:   rgba(13, 11, 20, 0.82);
-      --border:    rgba(155, 93, 229, 0.18);
+      --border:    rgba(155, 93, 229, 0.15);
       --text:      #ede8f5;
       --muted:     rgba(237, 232, 245, 0.42);
-      --radius:    0px;
       --transition: 0.35s cubic-bezier(.4,0,.2,1);
+
+      /* ponto de encontro das chamas = centro do painel esquerdo */
+      --card-w: clamp(340px, 36vw, 480px);
     }
 
     body {
@@ -35,47 +36,48 @@
       position: relative;
     }
 
-    /* ── BACKGROUND GIF ── */
-    .bg-layer {
-      position: fixed; inset: 0;
+    /* ════════════════════════════════
+       BACKGROUND GLOBAL — cor sólida
+    ════════════════════════════════ */
+    .bg-layer { display: none; } /* removido — gif agora é local */
+
+    /* ════════════════════════════════
+       GIF — apenas no painel esquerdo
+    ════════════════════════════════ */
+    .brand-gif {
+      position: absolute; inset: 0;
       z-index: 0;
-    }
-    .bg-gif {
       width: 100%; height: 100%;
       object-fit: cover;
-      opacity: 0.55;
-      filter: saturate(1.4) brightness(0.75);
+      opacity: 0.90;
+      filter: saturate(1.5) brightness(0.88);
     }
-    .bg-fallback {
-      position: absolute; inset: 0;
+    /* vinheta suave nas bordas do painel esquerdo */
+    .brand-gif-vignette {
+      position: absolute; inset: 0; z-index: 1;
       background:
-        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(155,93,229,0.40) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 70% at 60% 80%, rgba(244,162,23,0.20) 0%, transparent 60%);
-      animation: pulseGlow 8s ease-in-out infinite alternate;
-      z-index: 1;
-    }
-    @keyframes pulseGlow {
-      from { opacity: 0.6; }
-      to   { opacity: 1.0; }
-    }
-    /* vinheta suave das bordas */
-    .bg-vignette {
-      position: absolute; inset: 0; z-index: 2;
-      background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(11,10,16,0.70) 100%);
+        /* escurece borda direita — transição para o card */
+        linear-gradient(to right,
+          rgba(11,10,16,0.00) 50%,
+          rgba(11,10,16,0.55) 80%,
+          rgba(11,10,16,0.90) 100%
+        ),
+        /* vinheta circular nas bordas */
+        radial-gradient(ellipse 90% 90% at 40% 50%,
+          transparent 40%,
+          rgba(11,10,16,0.45) 100%
+        );
     }
 
     /* ── PARTICLES ── */
     canvas#particles {
-      position: fixed; inset: 0;
-      z-index: 3;
+      position: fixed; inset: 0; z-index: 3;
       pointer-events: none;
     }
 
-    /* ══════════════════════════════════════
-       LAYOUT: dois painéis side-by-side
-    ══════════════════════════════════════ */
-
-    /* Painel esquerdo: brand */
+    /* ════════════════════════════════
+       LAYOUT — dois painéis
+    ════════════════════════════════ */
     .side-brand {
       position: relative; z-index: 10;
       flex: 1;
@@ -83,32 +85,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 40px 60px 60px;
-      /* empurra brand um pouco para cima */
-      padding-bottom: 120px;
-      animation: fadeUp 1s 0.1s cubic-bezier(.4,0,.2,1) both;
+      padding: 60px 40px 140px 60px;
+      overflow: hidden; /* confina o gif */
+      animation: fadeUp 1s 0.15s cubic-bezier(.4,0,.2,1) both;
     }
 
     .brand-icon {
-      width: 240px; height: 240px;
-      margin-bottom: 20px;
-      position: relative;
+      width: 230px; height: 230px;
+      margin-bottom: 22px;
       display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
     }
     .brand-icon img {
       width: 100%; height: 100%;
       object-fit: contain;
       filter:
-        drop-shadow(0 0 22px rgba(155,93,229,0.75))
-        drop-shadow(0 0 48px rgba(155,93,229,0.30));
+        drop-shadow(0 0 20px rgba(155,93,229,0.80))
+        drop-shadow(0 0 50px rgba(155,93,229,0.35));
       animation: floatLogo 5s ease-in-out infinite alternate;
     }
     @keyframes floatLogo {
-      from { transform: translateY(0px);   }
-      to   { transform: translateY(-8px);  }
+      from { transform: translateY(0px);  }
+      to   { transform: translateY(-9px); }
     }
 
     .brand-name {
+      position: relative; z-index: 2;
       font-family: 'Cinzel', serif;
       font-size: 2.6rem;
       font-weight: 700;
@@ -120,50 +122,55 @@
       line-height: 1;
     }
     .brand-tagline {
+      position: relative; z-index: 2;
       margin-top: 10px;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 300;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    /* ══════════════════════════════════════
-       PAINEL DIREITO: card tela inteira
-    ══════════════════════════════════════ */
+    /* ════════════════════════════════
+       CARD — painel direito full-height
+       O card É a origem da chama vermelha:
+       seu ::before projeta um glow laranja/vermelho
+       para a esquerda, que se funde com o roxo do GIF
+       exatamente na posição do dado.
+    ════════════════════════════════ */
     .side-card {
       position: relative; z-index: 10;
-      width: clamp(340px, 36vw, 480px);
+      width: var(--card-w);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      /* faixa lateral escura com vidro */
-      background: var(--surface);
-      backdrop-filter: blur(32px) saturate(1.5);
-      -webkit-backdrop-filter: blur(32px) saturate(1.5);
+      /* fundo escuro semitransparente — o blur cria o glass */
+      background: rgba(10, 8, 18, 0.96);
+      backdrop-filter: blur(28px) saturate(1.3);
+      -webkit-backdrop-filter: blur(28px) saturate(1.3);
       border-left: 1px solid var(--border);
-      box-shadow:
-        -12px 0 60px rgba(0,0,0,0.45),
-        inset 1px 0 0 rgba(255,255,255,0.04);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.35);
       animation: slideIn 0.9s cubic-bezier(.4,0,.2,1) both;
     }
     @keyframes slideIn {
-      from { opacity: 0; transform: translateX(40px); }
+      from { opacity: 0; transform: translateX(36px); }
       to   { opacity: 1; transform: translateX(0);    }
     }
 
-    /* linha decorativa roxa no topo */
-    .side-card::before {
+    /* linha decorativa roxa no topo do card */
+    .side-card::after {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--violet), transparent);
-      opacity: 0.6;
+      background: linear-gradient(90deg, transparent 0%, var(--violet) 50%, transparent 100%);
+      opacity: 0.50;
+      z-index: 1;
     }
 
     .card-inner {
+      position: relative; z-index: 2;
       width: 100%;
       padding: 52px 44px;
     }
@@ -173,16 +180,11 @@
     .form-panel.active { display: block; }
 
     .field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 28px;
+      display: flex; flex-direction: column;
+      gap: 18px; margin-bottom: 28px;
     }
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+
     label {
       font-size: 0.70rem;
       letter-spacing: 0.20em;
@@ -220,68 +222,48 @@
     }
     .input-wrap:focus-within svg { color: var(--violet-lt); }
 
-    /* ── DIVIDER ── */
     .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 18px;
+      display: flex; align-items: center;
+      gap: 12px; margin: 0 0 18px;
       color: var(--muted);
       font-size: 0.70rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
     .divider::before, .divider::after {
-      content: '';
-      flex: 1; height: 1px;
+      content: ''; flex: 1; height: 1px;
       background: rgba(255,255,255,0.07);
     }
 
-    /* ── BOTÕES ── */
     .btn-primary {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
+      width: 100%; padding: 14px;
+      border: none; border-radius: 8px;
       background: linear-gradient(135deg, var(--violet) 0%, #7b2fbe 100%);
       color: #fff;
       font-family: 'Raleway', sans-serif;
-      font-size: 0.86rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
+      font-size: 0.86rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; transition: var(--transition);
+      position: relative; overflow: hidden;
       box-shadow: 0 4px 24px rgba(155,93,229,0.32);
       margin-bottom: 12px;
     }
     .btn-primary::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 55%);
     }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 32px rgba(155,93,229,0.50);
-    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 32px rgba(155,93,229,0.50); }
     .btn-primary:active { transform: translateY(0); }
 
     .btn-ghost {
-      width: 100%;
-      padding: 13px;
+      width: 100%; padding: 13px;
       border-radius: 8px;
       border: 1px solid rgba(155,93,229,0.25);
-      background: transparent;
-      color: var(--muted);
+      background: transparent; color: var(--muted);
       font-family: 'Raleway', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; transition: var(--transition);
       margin-bottom: 24px;
     }
     .btn-ghost:hover {
@@ -291,82 +273,56 @@
     }
 
     .btn-google {
-      width: 100%;
-      padding: 13px;
+      width: 100%; padding: 13px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
       color: var(--text);
       font-family: 'Raleway', sans-serif;
-      font-size: 0.83rem;
-      font-weight: 500;
+      font-size: 0.83rem; font-weight: 500;
       letter-spacing: 0.04em;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      cursor: pointer; transition: var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .btn-google:hover {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.18);
-    }
+    .btn-google:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); }
     .btn-google svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-    /* ── TOAST ── */
     #toast {
       position: fixed; bottom: 28px; left: 50%;
       transform: translateX(-50%) translateY(16px);
       background: rgba(13,11,20,0.94);
       border: 1px solid var(--border);
       backdrop-filter: blur(16px);
-      padding: 11px 22px;
-      border-radius: 40px;
-      font-size: 0.81rem;
-      color: var(--text);
-      opacity: 0;
-      pointer-events: none;
+      padding: 11px 22px; border-radius: 40px;
+      font-size: 0.81rem; color: var(--text);
+      opacity: 0; pointer-events: none;
       transition: all 0.4s cubic-bezier(.4,0,.2,1);
-      z-index: 200;
-      white-space: nowrap;
+      z-index: 200; white-space: nowrap;
     }
-    #toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0);    }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
       body { flex-direction: column; overflow-y: auto; }
       .side-brand { display: none; }
-      .side-card {
-        width: 100%; min-height: 100vh;
-        border-left: none;
-        border-top: 1px solid var(--border);
-      }
+      .side-card { width: 100%; min-height: 100vh; border-left: none; }
+      .side-card::before { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background -->
-  <div class="bg-layer" aria-hidden="true">
-    <img class="bg-gif" src="tavern/tavern.gif" alt="" loading="lazy" />
-    <div class="bg-fallback"></div>
-    <div class="bg-vignette"></div>
-  </div>
-
-  <!-- Partículas -->
   <canvas id="particles"></canvas>
 
-  <!-- ══ PAINEL ESQUERDO — Brand ══ -->
+  <!-- ══ Painel esquerdo — Brand (gif local aqui) ══ -->
   <div class="side-brand">
+    <!-- GIF ocupa apenas este painel -->
+    <img class="brand-gif" src="tavern/tavern.gif" alt="" aria-hidden="true" />
+    <div class="brand-gif-vignette" aria-hidden="true"></div>
     <div class="brand-icon">
       <img src="tavern/logoD20web.png" alt="D20Web logo" />
     </div>
@@ -374,7 +330,7 @@
     <p class="brand-tagline">A aventura começa aqui</p>
   </div>
 
-  <!-- ══ PAINEL DIREITO — Card full-height ══ -->
+  <!-- ══ Painel direito — Card ══ -->
   <div class="side-card">
     <div class="card-inner">
 
@@ -402,10 +358,8 @@
             </div>
           </div>
         </div>
-
         <button class="btn-primary" id="btn-login">Login</button>
         <button class="btn-ghost"   id="btn-goto-register">Cadastrar</button>
-
         <div class="divider">ou</div>
         <button class="btn-google" id="btn-google-login">
           <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.1 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.3 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.3 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5.1l-6.2-5.2C29.4 35.3 26.8 36 24 36c-5.4 0-9.9-3-11.5-7.3l-6.6 5.1C9.6 39.5 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.2-2.3 4-4.2 5.2l6.2 5.2c3.6-3.3 5.7-8.2 5.7-14.4 0-1.3-.1-2.7-.4-4z"/></svg>
@@ -447,10 +401,8 @@
             </div>
           </div>
         </div>
-
         <button class="btn-primary" id="btn-register">Criar conta</button>
         <button class="btn-ghost"   id="btn-back-login">← Voltar ao Login</button>
-
         <div class="divider">ou</div>
         <button class="btn-google" id="btn-google-reg">
           <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.1 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.3 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.3 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5.1l-6.2-5.2C29.4 35.3 26.8 36 24 36c-5.4 0-9.9-3-11.5-7.3l-6.6 5.1C9.6 39.5 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.2-2.3 4-4.2 5.2l6.2 5.2c3.6-3.3 5.7-8.2 5.7-14.4 0-1.3-.1-2.7-.4-4z"/></svg>
@@ -458,8 +410,8 @@
         </button>
       </div>
 
-    </div><!-- /card-inner -->
-  </div><!-- /side-card -->
+    </div>
+  </div>
 
   <div id="toast" role="status" aria-live="polite"></div>
 
@@ -518,7 +470,6 @@
     /* ── TROCA DE PAINEL ── */
     const panels   = document.querySelectorAll('.form-panel');
     const switchTo = id => panels.forEach(p => p.classList.toggle('active', p.id === id));
-
     document.getElementById('btn-goto-register').addEventListener('click', () => switchTo('panel-register'));
     document.getElementById('btn-back-login').addEventListener('click',    () => switchTo('panel-login'));
 
@@ -558,14 +509,13 @@
       });
     });
 
-    /* ── AÇÕES DOS FORMULÁRIOS ── */
+    /* ── FORMS ── */
     document.getElementById('btn-login').addEventListener('click', () => {
       const email = document.getElementById('login-email').value.trim();
       const pass  = document.getElementById('login-pass').value;
       if (!email || !pass) { showToast('⚠️ Preencha todos os campos.'); return; }
       showToast('⚔️ Bem-vindo de volta, aventureiro!');
     });
-
     document.getElementById('btn-register').addEventListener('click', () => {
       const name  = document.getElementById('reg-name').value.trim();
       const email = document.getElementById('reg-email').value.trim();
@@ -574,7 +524,6 @@
       if (pass.length < 6) { showToast('🔒 Senha precisa ter ao menos 6 caracteres.'); return; }
       showToast('✨ Conta criada! Sua jornada começa agora.');
     });
-
     document.querySelectorAll('.btn-google').forEach(btn =>
       btn.addEventListener('click', () => showToast('🎲 Redirecionando para o Google...'))
     );
