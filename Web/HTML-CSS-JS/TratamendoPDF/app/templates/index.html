@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tratamento de PDFs</title>
+</head>
+<body>
+
+    <h1>Tratamento de PDFs</h1>
+    <p>Servidor funcionando.</p>
+
+    <!-- Agora aceita múltiplos PDFs -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="pdf_files" accept="application/pdf" webkitdirectory multiple>
+       <button type="submit">Enviar PDFs</button>
+    </form>
+
+</body>
+</html>

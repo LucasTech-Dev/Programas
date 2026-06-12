@@ -1,0 +1,164 @@
+nohup: ignoring input
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Darleni/Especialização Gestão - Orientação - Supervisão Darleni.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Darleni/corrigido_Especialização Gestão - Orientação - Supervisão Darleni.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Darleni/Especialização Mídias em Educação Darleni.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Darleni/corrigido_Especialização Mídias em Educação Darleni.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Darleni/Certificado Graduação Darleni.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Darleni/corrigido_Certificado Graduação Darleni.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Darleni/Darleni.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Darleni/corrigido_Darleni.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Darleni/Mestrado Darleni.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Darleni/corrigido_Mestrado Darleni.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Frederico - NÃO/Frederico.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Frederico - NÃO/corrigido_Frederico.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Frederico - NÃO/Certificado Curso - Auxiliar Pedagógico IFRS - (200h).pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Frederico - NÃO/corrigido_Certificado Curso - Auxiliar Pedagógico IFRS - (200h).pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Frederico - NÃO/Licenciatura Plena História.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Frederico - NÃO/corrigido_Licenciatura Plena História.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Frederico - NÃO/Certificado curso - Pós-Graduação Lato Sensu em Neuropsicopedagogia.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Frederico - NÃO/corrigido_Certificado curso - Pós-Graduação Lato Sensu em Neuropsicopedagogia.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Guilherme/GUILHERME MORAES DRESCHER_TECNÓLOGO EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS - VIDEOCONFERÊNCIA AO VIVO.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Guilherme/corrigido_GUILHERME MORAES DRESCHER_TECNÓLOGO EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS - VIDEOCONFERÊNCIA AO VIVO.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Guilherme/educação de jovens e adultos.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Guilherme/corrigido_educação de jovens e adultos.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Guilherme/Guilherme.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Guilherme/corrigido_Guilherme.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Aline/Aline.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Aline/corrigido_Aline.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Patrícia/Patricia.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Patrícia/corrigido_Patricia.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Patrícia/Certificado Alfabetização.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Patrícia/corrigido_Certificado Alfabetização.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Patrícia/GRADUACAO.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Patrícia/corrigido_GRADUACAO.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Patrícia/mpdf_cópia.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Patrícia/corrigido_mpdf_cópia.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Andre/Andre.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Andre/corrigido_Andre.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Andre/#Andre_Haggstron _bacharelado.PDF
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Andre/corrigido_#Andre_Haggstron _bacharelado.PDF
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Andre/#Andre_Haggstron_licenciatura.PDF
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Andre/corrigido_#Andre_Haggstron_licenciatura.PDF
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Susi/Susi.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Susi/corrigido_Susi.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Susi/POS ORIENTAÇÃO - SUSI.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Susi/corrigido_POS ORIENTAÇÃO - SUSI.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Susi/PÓS SUPERVISÃO - SUSI.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Susi/corrigido_PÓS SUPERVISÃO - SUSI.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Susi/CERTIFICADO GRADUAÇÃO LICENCIATURA PLENA - SUSI.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Susi/corrigido_CERTIFICADO GRADUAÇÃO LICENCIATURA PLENA - SUSI.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Susi/Pós Gestão Escolar - SUSI.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Susi/corrigido_Pós Gestão Escolar - SUSI.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Charlote/Charlote.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Charlote/corrigido_Charlote.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Charlote/CERTIFICADO MÉDIO FRENTE.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Charlote/corrigido_CERTIFICADO MÉDIO FRENTE.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Elizabeth/Diploma. graduacao pdf.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Elizabeth/corrigido_Diploma. graduacao pdf.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Elizabeth/pós em EAD.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Elizabeth/corrigido_pós em EAD.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Elizabeth/pós supervisão.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Elizabeth/corrigido_pós supervisão.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Elizabeth/Elizabeth.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Elizabeth/corrigido_Elizabeth.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Elizabeth/pós graduação.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Elizabeth/corrigido_pós graduação.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Karla/Doc Karla.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Karla/corrigido_Doc Karla.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Karla/Karla.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Karla/corrigido_Karla.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Alexandre/DiplomasJuntos.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Alexandre/corrigido_DiplomasJuntos.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Alexandre/Alexandre.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Alexandre/corrigido_Alexandre.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Jabes/Jarbes.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Jabes/corrigido_Jarbes.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Jabes/TapScanner 04-02-2026-20꞉54.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Jabes/corrigido_TapScanner 04-02-2026-20꞉54.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Jabes/20221025-2245.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Jabes/corrigido_20221025-2245.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Jabes/Declaração de Cursando - (Pós-Graduação) - JABEZ SKALKI SIEBRA - AEE - ATENDIMENTO EDUCACIONAL ESPECIALIZADO - 1000 HORAS.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Jabes/corrigido_Declaração de Cursando - (Pós-Graduação) - JABEZ SKALKI SIEBRA - AEE - ATENDIMENTO EDUCACIONAL ESPECIALIZADO - 1000 HORAS.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Bruno Marques/Bruno Marques.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Bruno Marques/corrigido_Bruno Marques.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Bruno Marques/Diploma frente e verso Stads.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Bruno Marques/corrigido_Diploma frente e verso Stads.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Bruno Marques/Diploma frente e verso Formação Pedagógica em Informática.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Bruno Marques/corrigido_Diploma frente e verso Formação Pedagógica em Informática.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Bruno Marques/Diploma frente e verso Ciencias contabeis.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Bruno Marques/corrigido_Diploma frente e verso Ciencias contabeis.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Bruno Marques/Diploma frente e verso Docencia do Ensino Superior .pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Bruno Marques/corrigido_Diploma frente e verso Docencia do Ensino Superior .pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Thanise/verso pós graduação.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Thanise/corrigido_verso pós graduação.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Thanise/Pós Graduação frente e verso metodologia do ensino língua portuguesa e literatura.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Thanise/corrigido_Pós Graduação frente e verso metodologia do ensino língua portuguesa e literatura.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Thanise/Thanise.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Thanise/corrigido_Thanise.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Thanise/graduação em Letras.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Thanise/corrigido_graduação em Letras.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Thanise/Pós graduação.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Thanise/corrigido_Pós graduação.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Beatriz/Educação Ambiental.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Beatriz/corrigido_Educação Ambiental.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Beatriz/Metodologia do Ensino de Geografia.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Beatriz/corrigido_Metodologia do Ensino de Geografia.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Beatriz/Biatriz.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Beatriz/corrigido_Biatriz.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Beatriz/Certificado de Geografia.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Beatriz/corrigido_Certificado de Geografia.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Arnaldo/Arnaldo Jonas - Diploma.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Arnaldo/corrigido_Arnaldo Jonas - Diploma.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Arnaldo/Arnaldo Jonas - Certificado Conclusao.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Arnaldo/corrigido_Arnaldo Jonas - Certificado Conclusao.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Arnaldo/Arnaldo Jonas - Certificado Pós.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Arnaldo/corrigido_Arnaldo Jonas - Certificado Pós.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Arnaldo/Arnaldo.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Arnaldo/corrigido_Arnaldo.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Sirlei/Sirlei.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Sirlei/corrigido_Sirlei.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Daniela Mattivi/Daniela Mattivi - Diploma.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Daniela Mattivi/corrigido_Daniela Mattivi - Diploma.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Daniela Mattivi/Daniela Mattive.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Daniela Mattivi/corrigido_Daniela Mattive.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Daniela Mattivi/Daniela Mattivi - Certificado Conclusao.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Daniela Mattivi/corrigido_Daniela Mattivi - Certificado Conclusao.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marco/Diploma Direito.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marco/corrigido_Diploma Direito.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marco/Marco.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marco/corrigido_Marco.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marco/Pós Filo e Socio.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marco/corrigido_Pós Filo e Socio.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marco/Pós Gestão e Tutoria.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marco/corrigido_Pós Gestão e Tutoria.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marco/Diploma História.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marco/corrigido_Diploma História.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marco/Pós Docência Ensino Superior.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marco/corrigido_Pós Docência Ensino Superior.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Geancarla/Histórico História.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Geancarla/corrigido_Histórico História.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Geancarla/Diploma História.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Geancarla/corrigido_Diploma História.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Geancarla/Histórico Magistério.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Geancarla/corrigido_Histórico Magistério.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Geancarla/Geancarla.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Geancarla/corrigido_Geancarla.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Marisa/Marisa.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Marisa/corrigido_Marisa.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Eduardo/Diploma Mestrado Eduardo.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Eduardo/corrigido_Diploma Mestrado Eduardo.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Eduardo/especialização docência no ensino de História - eduardo lemos leal.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Eduardo/corrigido_especialização docência no ensino de História - eduardo lemos leal.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Eduardo/diploma - história - Unicruz.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Eduardo/corrigido_diploma - história - Unicruz.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Eduardo/DIPLOMA DIGITAL ASSINADO - V1.05.1 - EDUARDO LEMOS LEAL - LICENCIATURA EM EDUCAÇÃO FÍSICA.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Eduardo/corrigido_DIPLOMA DIGITAL ASSINADO - V1.05.1 - EDUARDO LEMOS LEAL - LICENCIATURA EM EDUCAÇÃO FÍSICA.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Eduardo/especialização em educação, política e sociedade - eduardo lemos leal.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Eduardo/corrigido_especialização em educação, política e sociedade - eduardo lemos leal.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Eduardo/Eduardo.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Eduardo/corrigido_Eduardo.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Edson/Edson.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Edson/corrigido_Edson.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Luiz Henrique/Diploma Bacharelado em História.pdf
+✔ PDF corrigido salvo em: /home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos/Luiz Henrique/corrigido_Diploma Bacharelado em História.pdf
+➡ Processando: /home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores/Luiz Henrique/Diploma AEE.pdf
