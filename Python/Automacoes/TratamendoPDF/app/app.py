@@ -5,7 +5,7 @@ from PIL import Image
 from fpdf import FPDF
 
 PASTA_ORIGEM = "/home/lucassantanadias2008/Downloads/Professores-20260611T200122Z-3-001/Professores"
-PASTA_SAIDA = "/home/lucassantanadias2008/Github/Programas/Web/HTML-CSS-JS/TratamendoPDF/corrigidos"
+PASTA_SAIDA = "/home/lucassantanadias2008/Github/Programas/Python/Automacoes/TratamendoPDF/corrigidos"
 
 os.makedirs(PASTA_SAIDA, exist_ok=True)
 
