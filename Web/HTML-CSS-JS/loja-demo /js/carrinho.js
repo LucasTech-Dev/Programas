@@ -1,5 +1,6 @@
 // ============================================================
 // carrinho.js — página carrinho.html
+// Exibe e permite editar a observação de cada item.
 // ============================================================
 
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -58,16 +59,27 @@ function renderCarrinho() {
         <h3>${prod.nome}</h3>
         <p class="preco">R$ ${preco.toFixed(2)}</p>
         <p class="subtotal-item">Subtotal: <strong>R$ ${subtotal.toFixed(2)}</strong></p>
+        ${prod.observacao ? `
+          <div class="obs-indicator" onclick="event.stopPropagation(); editarObservacao(${i})">
+            <i class="mdi mdi-note-text-outline"></i>
+            <span>${escapeHtml(prod.observacao)}</span>
+          </div>
+        ` : `
+          <div class="obs-indicator" style="color:var(--muted);background:var(--bg);cursor:pointer" onclick="event.stopPropagation(); editarObservacao(${i})">
+            <i class="mdi mdi-note-plus-outline"></i>
+            <span>Adicionar observação</span>
+          </div>
+        `}
       </div>
 
       <div class="botoesQuantidade">
-        <button onclick="subQtd(${i})">−</button>
+        <button onclick="event.stopPropagation(); subQtd(${i})">−</button>
         <span>${qtd}</span>
-        <button onclick="addQtd(${i})">+</button>
+        <button onclick="event.stopPropagation(); addQtd(${i})">+</button>
       </div>
 
       <div class="espacoBtnAdd">
-        <button class="btn-remover" onclick="removerItem(${i})">
+        <button class="btn-remover" onclick="event.stopPropagation(); removerItem(${i})">
           <i class="mdi mdi-close"></i> Remover
         </button>
       </div>
@@ -80,6 +92,23 @@ function renderCarrinho() {
   atualizarTotalResumo(total);
   localStorage.setItem("totalCompra", JSON.stringify(total));
   initSliders(listaEl);
+}
+
+// ── Editar observação de um item já no carrinho ───────────
+function editarObservacao(i) {
+  const item = carrinho[i];
+
+  abrirModalObservacao(item, item.quantidade, (qtdFinal, observacao) => {
+    carrinho[i].quantidade  = qtdFinal;
+    carrinho[i].observacao  = observacao || "";
+    salvar();
+  });
+
+  // Pré-preenche o textarea com a observação atual
+  setTimeout(() => {
+    const txt = document.getElementById("modalObsTexto");
+    if (txt) txt.value = item.observacao || "";
+  }, 0);
 }
 
 // ── Quantidade ────────────────────────────────────────────
@@ -124,6 +153,13 @@ function atualizarTotalResumo(total) {
   }
 }
 
+// ── Escapa HTML para exibir observação com segurança ──────
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 // ── Slider ────────────────────────────────────────────────
 function initSliders(container) {
   container.querySelectorAll(".slider").forEach(slider => {
@@ -143,7 +179,13 @@ function initSliders(container) {
       setTimeout(() => (animando = false), 400);
     }
 
-    btnNext.addEventListener("click", () => goTo(idx + 1));
-    btnPrev.addEventListener("click", () => goTo(idx - 1));
+    btnNext.addEventListener("click", e => {
+      e.stopPropagation();
+      goTo(idx + 1);
+    });
+    btnPrev.addEventListener("click", e => {
+      e.stopPropagation();
+      goTo(idx - 1);
+    });
   });
 }

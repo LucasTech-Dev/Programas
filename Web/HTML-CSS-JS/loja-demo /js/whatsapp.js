@@ -28,7 +28,11 @@ function finalizarPedido() {
     total += subtotal;
 
     msg += `▸ *${p.nome}*%0A`;
-    msg += `  ${qtd}x R$ ${preco.toFixed(2)} = R$ ${subtotal.toFixed(2)}%0A%0A`;
+    msg += `  ${qtd}x R$ ${preco.toFixed(2)} = R$ ${subtotal.toFixed(2)}%0A`;
+    if (p.observacao) {
+      msg += `  📝 Obs: ${p.observacao}%0A`;
+    }
+    msg += `%0A`;
   });
 
   msg += `💰 *Total: R$ ${total.toFixed(2)}*%0A%0A`;

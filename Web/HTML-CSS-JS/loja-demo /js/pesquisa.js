@@ -1,5 +1,6 @@
 // ============================================================
 // pesquisa.js — página busc.html
+// Clique no card abre modal de observação.
 // ============================================================
 
 const listaBusca  = document.getElementById("listaBusca");
@@ -25,7 +26,6 @@ async function carregarProdutos() {
     loadingEl.style.display  = "none";
     listaBusca.style.display = "flex";
 
-    // renderiza todos ao abrir
     renderBusca(produtos);
   } catch (err) {
     loadingEl.innerHTML = `<p style="color:#DC2626">Erro ao carregar produtos.</p>`;
@@ -86,17 +86,19 @@ function renderBusca(lista) {
       </div>
 
       <div class="botoesQuantidade">
-        <button onclick="subQtd(${produto.id})">−</button>
+        <button onclick="event.stopPropagation(); subQtd(${produto.id})">−</button>
         <span id="qtd_${produto.id}">${quantidades[produto.id]}</span>
-        <button onclick="addQtd(${produto.id})">+</button>
+        <button onclick="event.stopPropagation(); addQtd(${produto.id})">+</button>
       </div>
 
       <div class="espacoBtnAdd">
-        <button onclick="addCarrinho(${produto.id})">
+        <button onclick="event.stopPropagation(); abrirObsRapida(${produto.id})">
           <i class="mdi mdi-cart-plus"></i> Adicionar
         </button>
       </div>
     `;
+
+    card.addEventListener("click", () => abrirObsRapida(produto.id));
 
     listaBusca.appendChild(card);
   });
@@ -115,25 +117,46 @@ function subQtd(id) {
   document.getElementById(`qtd_${id}`).textContent = quantidades[id];
 }
 
-// ── Adicionar ─────────────────────────────────────────────
-function addCarrinho(id) {
-  const produto   = produtos.find(p => p.id === id);
-  const existente = carrinho.find(p => p.id === id);
-  const qtd       = quantidades[id] || 1;
+// ── Abre o modal de observação ────────────────────────────
+function abrirObsRapida(id) {
+  const produto = produtos.find(p => p.id === id);
+  if (!produto) return;
+
+  const qtdAtual = quantidades[id] || 1;
+
+  abrirModalObservacao(produto, qtdAtual, (qtdFinal, observacao) => {
+    addCarrinho(id, qtdFinal, observacao);
+    quantidades[id] = 1;
+    const el = document.getElementById(`qtd_${id}`);
+    if (el) el.textContent = 1;
+  });
+}
+
+// ── Adicionar (com observação) ────────────────────────────
+function addCarrinho(id, qtd, observacao) {
+  const produto = produtos.find(p => p.id === id);
+
+  const existente = carrinho.find(p =>
+    p.id === id && (p.observacao || "") === (observacao || "")
+  );
 
   if (existente) {
     existente.quantidade += qtd;
   } else {
-    carrinho.push({ ...produto, quantidade: qtd });
+    carrinho.push({
+      ...produto,
+      quantidade: qtd,
+      observacao: observacao || ""
+    });
   }
-
-  quantidades[id] = 1;
-  const el = document.getElementById(`qtd_${id}`);
-  if (el) el.textContent = 1;
 
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
   atualizarHeaderBadge();
-  mostrarToast(`"${produto.nome}" adicionado!`);
+
+  const msg = observacao
+    ? `"${produto.nome}" adicionado com observação!`
+    : `"${produto.nome}" adicionado!`;
+  mostrarToast(msg);
 }
 
 // ── Header badge ──────────────────────────────────────────
@@ -175,7 +198,13 @@ function initSliders(container) {
       setTimeout(() => (animando = false), 400);
     }
 
-    btnNext.addEventListener("click", () => goTo(idx + 1));
-    btnPrev.addEventListener("click", () => goTo(idx - 1));
+    btnNext.addEventListener("click", e => {
+      e.stopPropagation();
+      goTo(idx + 1);
+    });
+    btnPrev.addEventListener("click", e => {
+      e.stopPropagation();
+      goTo(idx - 1);
+    });
   });
 }
