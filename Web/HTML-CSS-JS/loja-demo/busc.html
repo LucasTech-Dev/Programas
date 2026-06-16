@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Produtos — Gráfica Demo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style/loja.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="header__logo">
+      <img src="img/logoDemo.png" alt="Logo">
+    </a>
+    <h1 class="header__title">Buscar</h1>
+    <nav class="header__actions">
+      <a href="index.html" class="btn-icon" title="Início">
+        <i class="mdi mdi-home-outline"></i>
+      </a>
+      <a href="carrinho.html" id="btnCarrinho" class="btn-carrinho">
+        <i class="mdi mdi-cart-outline"></i>
+        <span id="totalCarrinhoHeader">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="search-bar">
+      <i class="mdi mdi-magnify search-bar__icon"></i>
+      <input
+        type="text"
+        id="searchInput"
+        class="search-bar__input"
+        placeholder="Digite o nome do produto…"
+        autofocus
+      >
+    </div>
+
+    <div id="loadingState" class="loading-state">
+      <div class="spinner"></div>
+      <p>Carregando…</p>
+    </div>
+
+    <div id="listaBusca" class="produtos" style="display:none;"></div>
+  </main>
+
+  <script src="js/pesquisa.js"></script>
+</body>
+</html>

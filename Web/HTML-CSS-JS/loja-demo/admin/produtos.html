@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Produtos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style/loja.css">
+  <style>
+    /* ── Admin header ── */
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-header h1 { font-size: 1.2rem; }
+    .admin-header__right { display: flex; gap: .75rem; align-items: center; }
+
+    /* ── Main ── */
+    .admin-main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 8rem;
+    }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .toolbar h2 { font-size: 1.5rem; }
+
+    /* ── Cards da lista ── */
+    .admin-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .admin-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .2s;
+    }
+    .admin-card:hover { box-shadow: var(--shadow-md); }
+
+    .admin-card__img {
+      width: 64px; height: 64px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+
+    .admin-card__info { flex: 1; min-width: 0; }
+
+    .admin-card__nome {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .admin-card__meta {
+      display: flex; gap: .75rem;
+      align-items: center; margin-top: .2rem;
+    }
+
+    .admin-card__preco { font-weight: 600; color: var(--blue); font-size: .95rem; }
+
+    .admin-card__cat {
+      font-size: .75rem; color: var(--muted);
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2px 8px;
+    }
+
+    .admin-card__actions { display: flex; gap: .5rem; flex-shrink: 0; }
+
+    .btn-edit, .btn-del {
+      padding: 8px 14px; border-radius: 9px; border: none;
+      font-size: .85rem; font-weight: 600;
+      display: flex; align-items: center; gap: 5px;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-edit {
+      background: var(--bg); border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-edit:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .btn-del { background: transparent; border: 1px solid var(--red); color: var(--red); }
+    .btn-del:hover { background: var(--red); color: #fff; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.45); backdrop-filter: blur(3px);
+      z-index: 200; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--surface); border-radius: 20px; padding: 2rem;
+      width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+    .modal h3 { font-size: 1.4rem; margin-bottom: 1.25rem; }
+    .modal .form-group { margin-bottom: 1rem; }
+
+    .modal-footer {
+      display: flex; gap: .75rem;
+      justify-content: flex-end; margin-top: 1.5rem; flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      padding: 10px 20px; background: transparent;
+      border: 1px solid var(--border); border-radius: 10px;
+      font-size: .95rem; font-weight: 500; color: var(--muted); cursor: pointer;
+    }
+    .btn-ghost:hover { background: var(--bg); }
+
+    /* ── Barra de solicitação ── */
+    .request-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #0F172A; color: #fff;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem; z-index: 150;
+      transform: translateY(100%);
+      transition: transform .3s ease;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .request-bar.visible { transform: translateY(0); }
+
+    .request-bar__text p {
+      font-size: .85rem; color: rgba(255,255,255,.65); margin-top: .15rem;
+    }
+    .request-bar__text strong { font-size: 1rem; }
+
+    .request-bar__btns { display: flex; gap: .75rem; flex-shrink: 0; }
+
+    .btn-discard {
+      padding: 10px 18px; background: transparent;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 10px;
+      color: rgba(255,255,255,.7); font-size: .9rem; font-weight: 500;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-discard:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+
+    .btn-send-email {
+      padding: 11px 22px; background: var(--green); color: #fff;
+      border: none; border-radius: 10px;
+      font-size: .95rem; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+      cursor: pointer; transition: background .2s;
+    }
+    .btn-send-email:hover { background: #15803d; }
+
+    /* ── Info banner ── */
+    .info-banner {
+      background: #EFF6FF; border: 1px solid #BFDBFE;
+      border-radius: 12px; padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .info-banner i { color: var(--blue); font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .info-banner p { font-size: .85rem; color: #1e40af; line-height: 1.6; }
+    .info-banner strong { display: block; margin-bottom: .2rem; font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="admin-header">
+    <h1>⚙️ Gerenciar Produtos</h1>
+    <div class="admin-header__right">
+      <a href="../index.html" class="btn-icon" title="Ver loja" target="_blank">
+        <i class="mdi mdi-open-in-new"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+
+    <!-- Banner explicativo -->
+    <div class="info-banner">
+      <i class="mdi mdi-information-outline"></i>
+      <p>
+        <strong>Como funciona?</strong>
+        Adicione, edite ou remova produtos à vontade. Quando terminar,
+        clique em <strong>"Solicitar atualização"</strong> — seu e-mail abrirá
+        com as alterações prontas para enviar. A loja será atualizada em breve.
+      </p>
+    </div>
+
+    <div class="toolbar">
+      <h2>Produtos <span id="countBadge" style="color:var(--muted);font-size:.9rem;"></span></h2>
+      <button class="btn-primary" onclick="abrirModal()">
+        <i class="mdi mdi-plus"></i> Novo produto
+      </button>
+    </div>
+
+    <div id="adminList" class="admin-list"></div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal">
+      <h3 id="modalTitle">Novo Produto</h3>
+
+      <div class="form-group">
+        <label>Nome do produto</label>
+        <input type="text" id="mNome" placeholder="Ex: Cartão de Visita">
+      </div>
+
+      <div class="form-group">
+        <label>Preço (R$)</label>
+        <input type="number" id="mPreco" step="0.01" min="0" placeholder="60.00">
+      </div>
+
+      <div class="form-group">
+        <label>Categoria</label>
+        <input type="text" id="mCategoria" placeholder="Ex: Impressos">
+      </div>
+
+      <div class="form-group">
+        <label>Imagens <small style="color:var(--muted);font-weight:400">(caminhos separados por vírgula)</small></label>
+        <input type="text" id="mImagens" placeholder="img/foto1.webp, img/foto2.jpg">
+        <small style="color:var(--muted);font-size:.78rem;margin-top:.4rem;display:block">
+          Envie as imagens separadamente para o responsável pelo site.
+        </small>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-ghost" onclick="fecharModal()">Cancelar</button>
+        <button class="btn-primary" onclick="salvarProduto()">
+          <i class="mdi mdi-check"></i> Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA DE SOLICITAÇÃO -->
+  <div id="requestBar" class="request-bar">
+    <div class="request-bar__text">
+      <strong>Você tem alterações pendentes</strong>
+      <p>Clique em "Solicitar atualização" para enviar as mudanças por e-mail.</p>
+    </div>
+    <div class="request-bar__btns">
+      <button class="btn-discard" onclick="descartar()">
+        <i class="mdi mdi-close"></i> Descartar
+      </button>
+      <button class="btn-send-email" onclick="solicitarAtualizacao()">
+        <i class="mdi mdi-email-outline"></i> Solicitar atualização
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ── Configuração ──────────────────────────────────────
+    // Troque pelo seu e-mail antes de publicar para o cliente
+    const SEU_EMAIL = "seuemail@gmail.com";
+
+    // ── Estado ────────────────────────────────────────────
+    let produtos      = JSON.parse(localStorage.getItem("admin_produtos")) || [];
+    let editandoIndex = null;
+    let alterado      = false;
+
+    // ── Init ──────────────────────────────────────────────
+    // Se não tiver nada salvo localmente, tenta buscar do JSON publicado
+    if (produtos.length === 0) {
+      carregarDaSite();
+    } else {
+      renderLista();
+    }
+
+    async function carregarDaSite() {
+      try {
+        const res = await fetch("../data/produtos.json?t=" + Date.now());
+        if (!res.ok) throw new Error();
+        produtos = await res.json();
+        salvarLocal();
+        renderLista();
+      } catch {
+        renderLista(); // renderiza vazio se falhar
+      }
+    }
+
+    // ── Salvar no localStorage (rascunho local) ───────────
+    function salvarLocal() {
+      localStorage.setItem("admin_produtos", JSON.stringify(produtos));
+    }
+
+    // ── Render lista ──────────────────────────────────────
+    function renderLista() {
+      const el = document.getElementById("adminList");
+      document.getElementById("countBadge").textContent =
+        `(${produtos.length} produto${produtos.length !== 1 ? "s" : ""})`;
+
+      if (produtos.length === 0) {
+        el.innerHTML = `
+          <div class="empty-state">
+            <i class="mdi mdi-package-variant"></i>
+            <p>Nenhum produto cadastrado ainda.<br>Clique em "Novo produto" para começar.</p>
+          </div>`;
+        return;
+      }
+
+      el.innerHTML = "";
+      produtos.forEach((p, i) => {
+        const img = (p.imagens && p.imagens[0]) || p.imagem || "";
+        const card = document.createElement("div");
+        card.className = "admin-card";
+        card.innerHTML = `
+          ${img ? `<img class="admin-card__img" src="../${img}" alt="${p.nome}" onerror="this.style.display='none'">` : ""}
+          <div class="admin-card__info">
+            <div class="admin-card__nome">${p.nome}</div>
+            <div class="admin-card__meta">
+              <span class="admin-card__preco">R$ ${Number(p.preco).toFixed(2)}</span>
+              ${p.categoria ? `<span class="admin-card__cat">${p.categoria}</span>` : ""}
+            </div>
+          </div>
+          <div class="admin-card__actions">
+            <button class="btn-edit" onclick="abrirModal(${i})">
+              <i class="mdi mdi-pencil-outline"></i> Editar
+            </button>
+            <button class="btn-del" onclick="excluirProduto(${i})">
+              <i class="mdi mdi-trash-can-outline"></i>
+            </button>
+          </div>
+        `;
+        el.appendChild(card);
+      });
+    }
+
+    // ── Modal ─────────────────────────────────────────────
+    function abrirModal(index = null) {
+      editandoIndex = index;
+      document.getElementById("modalTitle").textContent =
+        index === null ? "Novo Produto" : "Editar Produto";
+
+      if (index !== null) {
+        const p = produtos[index];
+        document.getElementById("mNome").value      = p.nome;
+        document.getElementById("mPreco").value     = p.preco;
+        document.getElementById("mCategoria").value = p.categoria || "";
+        document.getElementById("mImagens").value   =
+          (p.imagens || (p.imagem ? [p.imagem] : [])).join(", ");
+      } else {
+        document.getElementById("mNome").value      = "";
+        document.getElementById("mPreco").value     = "";
+        document.getElementById("mCategoria").value = "";
+        document.getElementById("mImagens").value   = "";
+      }
+
+      document.getElementById("modalOverlay").classList.add("open");
+      setTimeout(() => document.getElementById("mNome").focus(), 50);
+    }
+
+    function fecharModal() {
+      document.getElementById("modalOverlay").classList.remove("open");
+      editandoIndex = null;
+    }
+
+    document.getElementById("modalOverlay").addEventListener("click", e => {
+      if (e.target === document.getElementById("modalOverlay")) fecharModal();
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") fecharModal();
+    });
+
+    // ── Salvar produto ────────────────────────────────────
+    function salvarProduto() {
+      const nome      = document.getElementById("mNome").value.trim();
+      const preco     = parseFloat(document.getElementById("mPreco").value);
+      const categoria = document.getElementById("mCategoria").value.trim();
+      const imgs      = document.getElementById("mImagens").value
+                          .split(",").map(s => s.trim()).filter(Boolean);
+
+      if (!nome || isNaN(preco) || preco < 0) {
+        alert("Preencha pelo menos nome e preço válido.");
+        return;
+      }
+
+      if (editandoIndex !== null) {
+        produtos[editandoIndex] = {
+          ...produtos[editandoIndex],
+          nome, preco,
+          ...(categoria ? { categoria } : {}),
+          ...(imgs.length ? { imagens: imgs } : {}),
+        };
+      } else {
+        const maxId = produtos.reduce((m, p) => Math.max(m, p.id || 0), 0);
+        produtos.push({
+          id: maxId + 1,
+          nome, preco,
+          ...(categoria ? { categoria } : {}),
+          imagens: imgs.length ? imgs : ["img/placeholder.jpg"],
+        });
+      }
+
+      fecharModal();
+      salvarLocal();
+      renderLista();
+      marcarAlterado();
+    }
+
+    // ── Excluir produto ───────────────────────────────────
+    function excluirProduto(i) {
+      if (!confirm(`Excluir "${produtos[i].nome}"?`)) return;
+      produtos.splice(i, 1);
+      salvarLocal();
+      renderLista();
+      marcarAlterado();
+    }
+
+    // ── Controle de alterações ────────────────────────────
+    function marcarAlterado() {
+      alterado = true;
+      document.getElementById("requestBar").classList.add("visible");
+    }
+
+    function descartar() {
+      if (!confirm("Descartar todas as alterações e recarregar os produtos do site?")) return;
+      localStorage.removeItem("admin_produtos");
+      alterado = false;
+      document.getElementById("requestBar").classList.remove("visible");
+      carregarDaSite();
+      mostrarToast("Alterações descartadas.");
+    }
+
+    // ── Gerar e-mail para o responsável ───────────────────
+    function solicitarAtualizacao() {
+      const produtosLimpos = produtos.map(p => {
+        const obj = { id: p.id, nome: p.nome, preco: p.preco };
+        if (p.categoria) obj.categoria = p.categoria;
+        if (p.imagens)   obj.imagens   = p.imagens;
+        return obj;
+      });
+
+      const json    = JSON.stringify(produtosLimpos, null, 2);
+      const agora   = new Date().toLocaleString("pt-BR");
+
+      const assunto = encodeURIComponent("Atualização de produtos — " + agora);
+
+      const corpo = encodeURIComponent(
+`Olá!
+
+Fiz alterações no catálogo de produtos. Por favor, atualize o site.
+
+Data da solicitação: ${agora}
+
+=== COLE ESTE CONTEÚDO EM data/produtos.json ===
+
+${json}
+
+=================================================
+
+Obrigado!`
+      );
+
+      window.location.href = `mailto:${SEU_EMAIL}?subject=${assunto}&body=${corpo}`;
+
+      // Marca como enviado
+      mostrarToast("✅ E-mail aberto! Aguarde a confirmação de atualização.");
+      alterado = false;
+      document.getElementById("requestBar").classList.remove("visible");
+    }
+
+    // ── Toast ─────────────────────────────────────────────
+    function mostrarToast(msg) {
+      const t = document.createElement("div");
+      t.className = "toast";
+      t.textContent = msg;
+      document.body.appendChild(t);
+      requestAnimationFrame(() => t.classList.add("toast--show"));
+      setTimeout(() => {
+        t.classList.remove("toast--show");
+        setTimeout(() => t.remove(), 300);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
