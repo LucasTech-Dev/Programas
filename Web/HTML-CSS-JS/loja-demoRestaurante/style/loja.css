@@ -1,10 +1,6 @@
 /* ============================================================
-   loja.css — Gráfica Demo
-   Paleta: papel / tinta / azul #1D4ED8 / verde #16A34A
-   Acento de assinatura: marcas de registro CMYK (cyan/magenta/
-   amarelo/preto) — a linguagem de cor de qualquer gráfica.
-   Tipografia: DM Serif Display + Inter + IBM Plex Mono (códigos,
-   preços e quantidades, lembrando uma nota de pedido impressa)
+   loja.css — Restaurante Demo
+   Base compartilhada com loja-demo, com tema de cardápio.
    ============================================================ */
 
 /* ── Reset ────────────────────────────────────────────────── */
@@ -16,27 +12,24 @@
 
 /* ── Tokens ───────────────────────────────────────────────── */
 :root {
-  --paper:      #FAF8F4;
+  --paper:      #FFF8F0;
   --surface:    #FFFFFF;
-  --border:     #E7E2D8;
-  --border-strong: #D8D1C3;
-  --ink:        #1C1917;
-  --muted:      #79716A;
-  --bg:         var(--paper);
-  --text:       var(--ink);
+  --border:     #EADFD1;
+  --border-strong: #D8C7B2;
+  --ink:        #201A17;
+  --muted:      #756A61;
 
-  --blue:       #1D4ED8;
-  --blue-hover: #1E40AF;
-  --blue-50:    #EFF4FE;
-  --green:      #16A34A;
-  --green-hover:#15803D;
+  --blue:       #B91C1C;
+  --blue-hover: #991B1B;
+  --blue-50:    #FEF2F2;
+  --green:      #15803D;
+  --green-hover:#166534;
   --red:        #DC2626;
 
-  /* assinatura: marcas de registro de impressão (CMYK) */
-  --cyan:       #00AEEF;
-  --magenta:    #EC008C;
-  --yellow:     #FFD400;
-  --key:        #1C1917;
+  --cyan:       #F97316;
+  --magenta:    #B91C1C;
+  --yellow:     #FACC15;
+  --key:        #15803D;
 
   --radius-sm:  10px;
   --radius:     14px;
@@ -443,10 +436,6 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 20px;
 }
 
-.produtos .empty-state {
-  grid-column: 1 / -1;
-}
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -479,7 +468,6 @@ a { text-decoration: none; color: inherit; }
   gap: 18px;
   box-shadow: 0 0 4px rgba(28,25,23,.35);
   border: none;
-  cursor: pointer;
   overflow: hidden;
   transition: var(--transition);
   animation: fadeUp .35s ease both;
@@ -770,18 +758,6 @@ a { text-decoration: none; color: inherit; }
   align-items: start;
 }
 
-#listaCarrinho {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  justify-content: center;
-  align-items: start;
-  gap: 20px;
-}
-
-#listaCarrinho .empty-state {
-  grid-column: 1 / -1;
-}
-
 .carrinho-itens {
   display: flex;
   flex-direction: column;
@@ -1026,29 +1002,15 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 5px;
-  max-width: 100%;
   font-size: .76rem;
   color: var(--blue);
   background: var(--blue-50);
   border-radius: 7px;
   padding: 5px 9px;
   margin-top: .3rem;
-  cursor: pointer;
 }
 
 .obs-indicator i { font-size: .9rem; }
-
-.obs-indicator span {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.obs-indicator--empty {
-  color: var(--muted);
-  background: var(--paper);
-}
 
 /* ── Responsivo ──────────────────────────────────────────── */
 @media (max-width: 860px) {
@@ -1090,13 +1052,7 @@ a { text-decoration: none; color: inherit; }
     gap: .85rem;
   }
 
-  #listaCarrinho {
-    grid-template-columns: minmax(0, 300px);
-    gap: .85rem;
-  }
-
-  .produto { height: 460px; }
-  .espacoImg { width: calc(100% - 20px); height: 150px; }
+  .espacoImg { height: 130px; }
 
   .espacoNomeProduto { padding: .8rem .8rem .4rem; gap: .25rem; }
   .espacoNomeProduto h3 { font-size: .88rem; }

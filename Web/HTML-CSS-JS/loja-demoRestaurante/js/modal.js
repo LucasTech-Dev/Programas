@@ -32,12 +32,12 @@ function initModalObservacao() {
           </div>
 
           <label class="modal-obs__label" for="modalObsTexto">
-            Alguma especificação? <span>(opcional)</span>
+            Alguma observação? <span>(opcional)</span>
           </label>
           <textarea
             id="modalObsTexto"
             class="modal-obs__textarea"
-            placeholder="Ex: papel couchê 300g, acabamento fosco, retirar sangria..."
+            placeholder="Ex: sem cebola, ponto da carne ao meio, tirar tomate…"
             maxlength="200"
             rows="3"
           ></textarea>

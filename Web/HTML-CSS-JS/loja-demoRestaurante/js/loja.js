@@ -1,62 +1,46 @@
 // ============================================================
-// pesquisa.js — página busc.html
-// Clique no card abre modal de observação.
+// loja.js — página inicial (index.html)
+// Lê pratos do JSON. Clique no card abre modal de observação.
 // ============================================================
 
-const listaBusca  = document.getElementById("listaBusca");
-const searchInput = document.getElementById("searchInput");
+const lista       = document.getElementById("listaProdutos");
 const loadingEl   = document.getElementById("loadingState");
 const headerBadge = document.getElementById("totalCarrinhoHeader");
+const STORAGE_CART = "carrinhoRestaurante";
+const STORAGE_TOTAL = "totalItensRestaurante";
 
 let produtos    = [];
-let carrinho    = JSON.parse(localStorage.getItem("carrinho")) || [];
+let carrinho    = JSON.parse(localStorage.getItem(STORAGE_CART)) || [];
 let quantidades = {};
 
-// ── Init ──────────────────────────────────────────────────
-atualizarHeaderBadge();
+// ── Inicialização ─────────────────────────────────────────
+atualizarHeaderBadge(); 
 carregarProdutos();
 
-// ── Fetch ─────────────────────────────────────────────────
+// ── Busca o JSON de pratos ────────────────────────────────
 async function carregarProdutos() {
   try {
     const res = await fetch("data/produtos.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     produtos = await res.json();
-
-    loadingEl.style.display  = "none";
-    listaBusca.style.display = "grid";
-
-    renderBusca(produtos);
+    renderProdutos();
   } catch (err) {
-    loadingEl.innerHTML = `<p style="color:#DC2626">Erro ao carregar produtos.</p>`;
+    loadingEl.innerHTML = `
+      <p style="color:#DC2626">
+        Erro ao carregar pratos. Verifique sua conexão.
+      </p>`;
     console.error(err);
   }
 }
 
-// ── Filtro em tempo real ──────────────────────────────────
-searchInput.addEventListener("input", () => {
-  const val = searchInput.value.toLowerCase().trim();
-  const filtrados = val
-    ? produtos.filter(p => p.nome.toLowerCase().includes(val))
-    : produtos;
-  renderBusca(filtrados);
-});
+// ── Renderiza os cards ────────────────────────────────────
+function renderProdutos() {
+  loadingEl.style.display = "none";
+  lista.style.display     = "grid";
+  lista.innerHTML         = "";
 
-// ── Render ────────────────────────────────────────────────
-function renderBusca(lista) {
-  listaBusca.innerHTML = "";
-
-  if (lista.length === 0) {
-    listaBusca.innerHTML = `
-      <div class="empty-state">
-        <i class="mdi mdi-package-variant-closed"></i>
-        <p>Nenhum produto encontrado.</p>
-      </div>`;
-    return;
-  }
-
-  lista.forEach((produto, i) => {
-    if (!quantidades[produto.id]) quantidades[produto.id] = 1;
+  produtos.forEach((produto, i) => {
+    quantidades[produto.id] = 1;
 
     const card = document.createElement("div");
     card.classList.add("produto");
@@ -87,7 +71,7 @@ function renderBusca(lista) {
 
       <div class="botoesQuantidade">
         <button onclick="event.stopPropagation(); subQtd(${produto.id})">−</button>
-        <span id="qtd_${produto.id}">${quantidades[produto.id]}</span>
+        <span id="qtd_${produto.id}">1</span>
         <button onclick="event.stopPropagation(); addQtd(${produto.id})">+</button>
       </div>
 
@@ -98,15 +82,16 @@ function renderBusca(lista) {
       </div>
     `;
 
+    // Clique em qualquer parte do card (fora dos botões) abre o modal
     card.addEventListener("click", () => abrirObsRapida(produto.id));
 
-    listaBusca.appendChild(card);
+    lista.appendChild(card);
   });
 
-  initSliders(listaBusca);
+  initSliders(lista);
 }
 
-// ── Quantidade ────────────────────────────────────────────
+// ── Controle de quantidade (fora do modal, no próprio card) ─
 function addQtd(id) {
   quantidades[id] = (quantidades[id] || 1) + 1;
   document.getElementById(`qtd_${id}`).textContent = quantidades[id];
@@ -117,7 +102,7 @@ function subQtd(id) {
   document.getElementById(`qtd_${id}`).textContent = quantidades[id];
 }
 
-// ── Abre o modal de observação ────────────────────────────
+// ── Abre o modal de observação para o produto ─────────────
 function abrirObsRapida(id) {
   const produto = produtos.find(p => p.id === id);
   if (!produto) return;
@@ -126,16 +111,19 @@ function abrirObsRapida(id) {
 
   abrirModalObservacao(produto, qtdAtual, (qtdFinal, observacao) => {
     addCarrinho(id, qtdFinal, observacao);
+    // reseta o seletor de quantidade do card
     quantidades[id] = 1;
     const el = document.getElementById(`qtd_${id}`);
     if (el) el.textContent = 1;
   });
 }
 
-// ── Adicionar (com observação) ────────────────────────────
+// ── Adicionar ao carrinho (agora com observação) ──────────
 function addCarrinho(id, qtd, observacao) {
   const produto = produtos.find(p => p.id === id);
 
+  // Itens com observação diferente são tratados como linhas separadas,
+  // para não misturar "sem cebola" com "sem observação" no mesmo item.
   const existente = carrinho.find(p =>
     p.id === id && (p.observacao || "") === (observacao || "")
   );
@@ -150,7 +138,7 @@ function addCarrinho(id, qtd, observacao) {
     });
   }
 
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  localStorage.setItem(STORAGE_CART, JSON.stringify(carrinho));
   atualizarHeaderBadge();
 
   const msg = observacao
@@ -159,14 +147,14 @@ function addCarrinho(id, qtd, observacao) {
   mostrarToast(msg);
 }
 
-// ── Header badge ──────────────────────────────────────────
+// ── Badge do header ───────────────────────────────────────
 function atualizarHeaderBadge() {
   const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
   if (headerBadge) headerBadge.textContent = total;
-  localStorage.setItem("totalItens", JSON.stringify(total));
+  localStorage.setItem(STORAGE_TOTAL, JSON.stringify(total));
 }
 
-// ── Toast ─────────────────────────────────────────────────
+// ── Toast de feedback ─────────────────────────────────────
 function mostrarToast(msg) {
   const t = document.createElement("div");
   t.className = "toast";

@@ -3,7 +3,11 @@
 // Exibe e permite editar a observação de cada item.
 // ============================================================
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+const STORAGE_CART = "carrinhoRestaurante";
+const STORAGE_TOTAL = "totalItensRestaurante";
+const STORAGE_PURCHASE_TOTAL = "totalCompraRestaurante";
+
+let carrinho = JSON.parse(localStorage.getItem(STORAGE_CART)) || [];
 
 const listaEl     = document.getElementById("listaCarrinho");
 const qtdEl       = document.getElementById("quantidadeNoCarrinho");
@@ -22,7 +26,7 @@ function renderCarrinho() {
       <div class="empty-state">
         <i class="mdi mdi-cart-off"></i>
         <p>Seu carrinho está vazio.</p>
-        <a href="index.html" class="btn-primary" style="margin-top:1rem">Ver produtos</a>
+        <a href="index.html" class="btn-primary" style="margin-top:1rem">Ver pratos</a>
       </div>`;
     atualizarHeader(0);
     atualizarTotalResumo(0);
@@ -65,7 +69,7 @@ function renderCarrinho() {
             <span>${escapeHtml(prod.observacao)}</span>
           </div>
         ` : `
-          <div class="obs-indicator obs-indicator--empty" onclick="event.stopPropagation(); editarObservacao(${i})">
+          <div class="obs-indicator" style="color:var(--muted);background:var(--bg);cursor:pointer" onclick="event.stopPropagation(); editarObservacao(${i})">
             <i class="mdi mdi-note-plus-outline"></i>
             <span>Adicionar observação</span>
           </div>
@@ -90,7 +94,7 @@ function renderCarrinho() {
 
   atualizarHeader(carrinho.reduce((a, it) => a + it.quantidade, 0));
   atualizarTotalResumo(total);
-  localStorage.setItem("totalCompra", JSON.stringify(total));
+  localStorage.setItem(STORAGE_PURCHASE_TOTAL, JSON.stringify(total));
   initSliders(listaEl);
 }
 
@@ -137,14 +141,14 @@ function limparCarrinho() {
 
 // ── Salvar ────────────────────────────────────────────────
 function salvar() {
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  localStorage.setItem(STORAGE_CART, JSON.stringify(carrinho));
   renderCarrinho();
 }
 
 // ── Header ────────────────────────────────────────────────
 function atualizarHeader(total) {
   if (qtdEl) qtdEl.textContent = total;
-  localStorage.setItem("totalItens", JSON.stringify(total));
+  localStorage.setItem(STORAGE_TOTAL, JSON.stringify(total));
 }
 
 function atualizarTotalResumo(total) {

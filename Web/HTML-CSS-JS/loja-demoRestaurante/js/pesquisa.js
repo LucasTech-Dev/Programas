@@ -7,9 +7,11 @@ const listaBusca  = document.getElementById("listaBusca");
 const searchInput = document.getElementById("searchInput");
 const loadingEl   = document.getElementById("loadingState");
 const headerBadge = document.getElementById("totalCarrinhoHeader");
+const STORAGE_CART = "carrinhoRestaurante";
+const STORAGE_TOTAL = "totalItensRestaurante";
 
 let produtos    = [];
-let carrinho    = JSON.parse(localStorage.getItem("carrinho")) || [];
+let carrinho    = JSON.parse(localStorage.getItem(STORAGE_CART)) || [];
 let quantidades = {};
 
 // ── Init ──────────────────────────────────────────────────
@@ -28,7 +30,7 @@ async function carregarProdutos() {
 
     renderBusca(produtos);
   } catch (err) {
-    loadingEl.innerHTML = `<p style="color:#DC2626">Erro ao carregar produtos.</p>`;
+    loadingEl.innerHTML = `<p style="color:#DC2626">Erro ao carregar pratos.</p>`;
     console.error(err);
   }
 }
@@ -50,7 +52,7 @@ function renderBusca(lista) {
     listaBusca.innerHTML = `
       <div class="empty-state">
         <i class="mdi mdi-package-variant-closed"></i>
-        <p>Nenhum produto encontrado.</p>
+        <p>Nenhum prato encontrado.</p>
       </div>`;
     return;
   }
@@ -150,7 +152,7 @@ function addCarrinho(id, qtd, observacao) {
     });
   }
 
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  localStorage.setItem(STORAGE_CART, JSON.stringify(carrinho));
   atualizarHeaderBadge();
 
   const msg = observacao
@@ -163,7 +165,7 @@ function addCarrinho(id, qtd, observacao) {
 function atualizarHeaderBadge() {
   const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
   if (headerBadge) headerBadge.textContent = total;
-  localStorage.setItem("totalItens", JSON.stringify(total));
+  localStorage.setItem(STORAGE_TOTAL, JSON.stringify(total));
 }
 
 // ── Toast ─────────────────────────────────────────────────

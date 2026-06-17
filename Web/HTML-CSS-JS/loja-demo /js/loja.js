@@ -12,7 +12,7 @@ let carrinho    = JSON.parse(localStorage.getItem("carrinho")) || [];
 let quantidades = {};
 
 // ── Inicialização ─────────────────────────────────────────
-atualizarHeaderBadge();
+atualizarHeaderBadge(); 
 carregarProdutos();
 
 // ── Busca o JSON de produtos ──────────────────────────────
@@ -34,7 +34,7 @@ async function carregarProdutos() {
 // ── Renderiza os cards ────────────────────────────────────
 function renderProdutos() {
   loadingEl.style.display = "none";
-  lista.style.display     = "flex";
+  lista.style.display     = "grid";
   lista.innerHTML         = "";
 
   produtos.forEach((produto, i) => {
@@ -120,8 +120,8 @@ function abrirObsRapida(id) {
 function addCarrinho(id, qtd, observacao) {
   const produto = produtos.find(p => p.id === id);
 
-  // Itens com observação diferente são tratados como linhas separadas,
-  // para não misturar "sem cebola" com "sem observação" no mesmo item.
+  // Itens com especificações diferentes são tratados como linhas separadas,
+  // para não misturar acabamentos distintos no mesmo item.
   const existente = carrinho.find(p =>
     p.id === id && (p.observacao || "") === (observacao || "")
   );
