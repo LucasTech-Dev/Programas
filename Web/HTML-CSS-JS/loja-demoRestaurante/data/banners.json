@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "titulo": "Pratos prontos para pedir agora.",
+    "subtitulo": "Escolha, personalize e finalize pelo WhatsApp.",
+    "imagem": "img/Banner.jpg",
+    "botao": "Buscar pratos",
+    "link": "busc.html",
+    "ativo": true,
+    "ordem": 1
+  }
+]

@@ -1,3 +1,6 @@
+<<<<<<< ours
+<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0; url=index.html"><title>Painel Administrativo</title></head><body><p>Redirecionando para o novo painel administrativo... <a href="index.html">Abrir painel</a></p></body></html>
+=======
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -202,9 +205,7 @@
       <i class="mdi mdi-information-outline"></i>
       <p>
         <strong>Como funciona?</strong>
-        Adicione, edite ou remova produtos à vontade. Quando terminar,
-        clique em <strong>"Solicitar atualização"</strong> — seu e-mail abrirá
-        com as alterações prontas para enviar. A loja será atualizada em breve.
+        O lojista gerencia somente produtos. Na arquitetura Firebase, os dados são salvos em <strong>lojas/{lojaId}/produtos</strong>; identidade visual e layout continuam exclusivos do administrador no código.
       </p>
     </div>
 
@@ -239,10 +240,10 @@
       </div>
 
       <div class="form-group">
-        <label>Imagens <small style="color:var(--muted);font-weight:400">(caminhos separados por vírgula)</small></label>
+        <label>Imagem do produto</label>
         <input type="text" id="mImagens" placeholder="img/foto1.webp, img/foto2.jpg">
         <small style="color:var(--muted);font-size:.78rem;margin-top:.4rem;display:block">
-          Envie as imagens separadamente para o responsável pelo site.
+          No Firebase, o upload deve gravar em produtos/{lojaId}/ para não misturar imagens entre lojas.
         </small>
       </div>
 
@@ -498,3 +499,4 @@ Obrigado!`
   </script>
 </body>
 </html>
+>>>>>>> theirs

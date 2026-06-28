@@ -352,6 +352,84 @@ a { text-decoration: none; color: inherit; }
 
 .btn-primary:hover { background: var(--blue); }
 
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: .98rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+
+.hero__proof {
+  max-width: 54ch;
+  margin: -.7rem 0 1.4rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
+
+.sales-strip {
+  max-width: 1180px;
+  margin: 0 auto 1.8rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.sales-card {
+  background: rgba(255,255,255,.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sales-card i {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .65rem;
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue);
+  font-size: 1.25rem;
+}
+
+.sales-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: .98rem;
+  font-weight: 800;
+  margin-bottom: .25rem;
+}
+
+.sales-card p,
+.produto-descricao {
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.45;
+}
+
 .btn-danger {
   display: inline-flex;
   align-items: center;
@@ -556,7 +634,8 @@ a { text-decoration: none; color: inherit; }
 /* Textos do card */
 .espacoNomeProduto {
   width: 100%;
-  height: 118px;
+  min-height: 134px;
+  height: auto;
   padding: .5rem 1rem;
   display: flex;
   justify-content: center;
@@ -1034,6 +1113,8 @@ a { text-decoration: none; color: inherit; }
   .hero__headline { margin-left: auto; margin-right: auto; }
 
   .hero__visual { width: 168px; }
+  .sales-strip { grid-template-columns: 1fr; }
+  .hero__actions { justify-content: center; }
   .hero__badge { height: 142px; }
   .hero__badge .swatch { width: 112px; height: 126px; }
   .hero__badge .swatch--3 strong { font-size: 1.4rem; }

@@ -105,3 +105,47 @@ const numero = "5551999999999"; // DDD + número (sem + ou espaços)
 1. Faça upload das imagens na pasta `img/` do repositório
 2. No painel admin, ao criar/editar um produto, informe o caminho:  
    `img/nome-da-imagem.webp`
+
+---
+
+## Posicionamento comercial para restaurantes e delivery
+
+Este projeto deve ser apresentado como **cardápio digital com pedido organizado no WhatsApp**. A promessa principal é:
+
+> O cliente escolhe os pratos, informa quantidades, observações, endereço e pagamento, e o restaurante recebe o pedido pronto para confirmar.
+
+### Negócios ideais
+
+- Restaurantes
+- Lancherias
+- Pizzarias
+- Hamburguerias
+- Pastelarias
+- Cafeterias
+- Açaíterias
+- Marmitarias
+- Delivery local
+
+### Valores recomendados
+
+- **Plano Essencial:** R$ 200 de criação (R$ 100 entrada + R$ 100 na entrega) + R$ 75/mês.
+- **Plano Crescimento:** R$ 350 de criação + R$ 150/mês, com combos, destaques e ajustes prioritários.
+- **Plano Premium:** R$ 600+ de criação + R$ 250/mês, para cardápios maiores, campanhas e manutenção mais frequente.
+
+Restaurantes normalmente valorizam rapidez e redução de erros. Use exemplos de ticket médio: se o cardápio ajudar a gerar poucos pedidos extras por mês, ele tende a se pagar.
+
+### Funil de abordagem
+
+1. Abertura: “Vocês recebem mais pedidos pelo WhatsApp, iFood ou Instagram?”
+2. Diagnóstico: “Vocês perdem tempo perguntando endereço, itens, sabores, adicionais e forma de pagamento?”
+3. Demonstração: mostrar o fluxo de adicionar ao carrinho e finalizar pelo WhatsApp.
+4. Oferta: “Posso montar uma prévia com alguns pratos para você ver como ficaria.”
+5. Fechamento: R$ 100 para iniciar, R$ 100 na entrega aprovada e mensalidade a partir de R$ 75.
+
+### Estratégia para escalar
+
+- Use categorias fixas: mais pedidos, combos, bebidas e sobremesas.
+- Incentive descrições curtas e fotos fortes para aumentar desejo.
+- Crie combos e adicionais para elevar ticket médio.
+- Limite alterações inclusas por mês conforme o plano.
+- Reaproveite o mesmo template para reduzir tempo de implantação.

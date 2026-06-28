@@ -1,0 +1,13 @@
+{
+  "plano": {
+    "tipo": "START",
+    "limiteProdutos": 80,
+    "limiteCategorias": 10,
+    "limiteBanners": 2,
+    "limiteAlteracoes": 5,
+    "permitePromocao": true,
+    "permiteSEO": true,
+    "permiteTema": true
+  },
+  "ultimaPublicacao": null
+}

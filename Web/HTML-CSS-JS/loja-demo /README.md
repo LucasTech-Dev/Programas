@@ -105,3 +105,64 @@ const numero = "5551999999999"; // DDD + número (sem + ou espaços)
 1. Faça upload das imagens na pasta `img/` do repositório
 2. No painel admin, ao criar/editar um produto, informe o caminho:  
    `img/nome-da-imagem.webp`
+
+---
+
+## Posicionamento comercial para vender o catálogo
+
+Este projeto deve ser apresentado como **catálogo digital de pedidos via WhatsApp**, não apenas como site. A promessa principal é:
+
+> O cliente escolhe produtos, monta o carrinho e envia o pedido completo para o WhatsApp da loja, reduzindo mensagens repetitivas e aumentando a chance de compra.
+
+### Segmentos prioritários sem comida
+
+Use esta demo para prospectar varejos com muitos produtos e venda consultiva:
+
+1. Lojas de roupas
+2. Lojas de calçados
+3. Cosméticos, maquiagem, perfumes e skincare
+4. Lojas de celular e assistência técnica
+5. Pet shops
+6. Móveis
+7. Decoração
+8. Floriculturas
+9. Presentes
+10. Papelarias
+11. Óticas
+12. Bijuterias e acessórios
+13. Materiais de construção pequenos
+14. Autopeças
+15. Bicicletas
+16. Eletrônicos
+17. Colchões
+18. Utilidades domésticas
+19. Esportes
+20. Brinquedos
+
+### Valores recomendados
+
+Para manter percepção de valor e permitir escala:
+
+- **Plano Essencial:** R$ 200 de criação (R$ 100 entrada + R$ 100 na entrega) + R$ 75/mês.
+- **Plano Crescimento:** R$ 350 de criação + R$ 150/mês, incluindo prioridade de ajustes, mais produtos e melhorias de conversão.
+- **Plano Premium:** R$ 600+ de criação + R$ 250/mês, para lojas com catálogo maior, campanhas sazonais e acompanhamento mais próximo.
+
+A abordagem comercial pode começar pelo plano de R$ 75/mês para reduzir barreira de entrada, mas sempre apresente o plano de R$ 150/mês como opção recomendada para aumentar margem.
+
+### Funil de abordagem
+
+1. Abertura: “Vocês recebem mais pedidos pelo WhatsApp ou Instagram?”
+2. Diagnóstico: “Os pedidos chegam organizados ou às vezes fica difícil acompanhar produto, quantidade e observações?”
+3. Demonstração: mostrar esta loja funcionando.
+4. Oferta: “Posso montar uma prévia com alguns produtos seus para você visualizar antes de decidir.”
+5. Fechamento: R$ 100 para iniciar, R$ 100 na entrega aprovada e mensalidade a partir de R$ 75.
+
+### Meta de escala para 500 clientes
+
+Para buscar 500 clientes sem virar gargalo operacional:
+
+- Padronize a mesma base visual e troque apenas cores, logo, produtos, WhatsApp e textos.
+- Crie checklists de onboarding: logo, telefone, endereço, horários, produtos, preços e fotos.
+- Limite alterações inclusas por plano para proteger o tempo de suporte.
+- Use GitHub + Cloudflare Pages para publicar rápido e manter custo técnico baixo.
+- Priorize nichos com alto ticket ou muitos produtos, pois percebem valor mais rápido.

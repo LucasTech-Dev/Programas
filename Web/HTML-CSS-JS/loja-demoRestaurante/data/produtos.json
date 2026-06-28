@@ -2,81 +2,249 @@
   {
     "id": 1,
     "nome": "Pizza Margherita",
-    "preco": 49.90,
+<<<<<<< ours
+    "preco": 54.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Pizzas",
+    "preco": 49.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Molho artesanal, muçarela, tomate e manjericão fresco."
+=======
+    "codigo": "PRATO-001",
+    "ativo": true,
+    "destaque": true,
+    "novo": false,
+    "promocao": false,
+    "ordem": 1
+>>>>>>> theirs
   },
   {
     "id": 2,
     "nome": "Hambúrguer Artesanal",
-    "preco": 34.90,
+<<<<<<< ours
+    "preco": 39.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Lanches",
+    "preco": 34.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Blend suculento, queijo, salada e molho especial da casa."
+=======
+    "codigo": "PRATO-002",
+    "ativo": true,
+    "destaque": true,
+    "novo": false,
+    "promocao": false,
+    "ordem": 2
+>>>>>>> theirs
   },
   {
     "id": 3,
     "nome": "Risoto de Cogumelos",
-    "preco": 46.50,
+<<<<<<< ours
+    "preco": 52.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Pratos",
+    "preco": 46.5,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1633964913295-ceb43826e7c1?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1633964913295-ceb43826e7c1?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Risoto cremoso com cogumelos selecionados e parmesão."
+=======
+    "codigo": "PRATO-003",
+    "ativo": true,
+    "destaque": true,
+    "novo": false,
+    "promocao": false,
+    "ordem": 3
+>>>>>>> theirs
   },
   {
     "id": 4,
     "nome": "Parmegiana de Frango",
-    "preco": 39.90,
+<<<<<<< ours
+    "preco": 44.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Pratos",
+    "preco": 39.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Filé empanado, molho da casa, queijo gratinado e acompanhamento."
+=======
+    "codigo": "PRATO-004",
+    "ativo": true,
+    "destaque": false,
+    "novo": false,
+    "promocao": false,
+    "ordem": 4
+>>>>>>> theirs
   },
   {
     "id": 5,
     "nome": "Salada Caesar",
-    "preco": 28.90,
+<<<<<<< ours
+    "preco": 32.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Saladas",
+    "preco": 28.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Opção leve com frango, croûtons, parmesão e molho Caesar."
+=======
+    "codigo": "PRATO-005",
+    "ativo": true,
+    "destaque": false,
+    "novo": false,
+    "promocao": false,
+    "ordem": 5
+>>>>>>> theirs
   },
   {
     "id": 6,
     "nome": "Sushi Combo",
-    "preco": 59.90,
+<<<<<<< ours
+    "preco": 69.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Japonês",
+    "preco": 59.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Seleção variada para compartilhar ou pedir como refeição completa."
+=======
+    "codigo": "PRATO-006",
+    "ativo": true,
+    "destaque": false,
+    "novo": false,
+    "promocao": false,
+    "ordem": 6
+>>>>>>> theirs
   },
   {
     "id": 7,
     "nome": "Brownie com Sorvete",
-    "preco": 24.90,
+<<<<<<< ours
+    "preco": 27.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Sobremesas",
+    "preco": 24.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Sobremesa de alto desejo para aumentar o ticket do pedido."
+=======
+    "codigo": "PRATO-007",
+    "ativo": true,
+    "destaque": false,
+    "novo": false,
+    "promocao": false,
+    "ordem": 7
+>>>>>>> theirs
   },
   {
     "id": 8,
     "nome": "Suco Natural da Casa",
-    "preco": 12.90,
+<<<<<<< ours
+    "preco": 14.9,
+=======
+    "descricao": "",
+>>>>>>> theirs
     "categoria": "Bebidas",
+    "preco": 12.9,
+    "precoPromocional": null,
+    "imagem": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=80",
+    "galeria": [
+      "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=900&q=80"
+    ],
     "imagens": [
       "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=900&q=80"
-    ]
+    ],
+<<<<<<< ours
+    "descricao": "Bebida natural para completar o combo e elevar o ticket médio."
+=======
+    "codigo": "PRATO-008",
+    "ativo": true,
+    "destaque": false,
+    "novo": false,
+    "promocao": false,
+    "ordem": 8
+>>>>>>> theirs
   }
 ]

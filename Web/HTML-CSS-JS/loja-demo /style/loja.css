@@ -91,6 +91,8 @@ button {
 
 button:active { transform: scale(0.97); }
 
+button, a { touch-action: manipulation; }
+
 a { text-decoration: none; color: inherit; }
 
 :focus-visible {
@@ -359,6 +361,84 @@ a { text-decoration: none; color: inherit; }
 
 .btn-primary:hover { background: var(--blue); }
 
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: .98rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+
+.hero__proof {
+  max-width: 54ch;
+  margin: -.7rem 0 1.4rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
+
+.sales-strip {
+  max-width: 1180px;
+  margin: 0 auto 1.8rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.sales-card {
+  background: rgba(255,255,255,.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sales-card i {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .65rem;
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue);
+  font-size: 1.25rem;
+}
+
+.sales-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: .98rem;
+  font-weight: 800;
+  margin-bottom: .25rem;
+}
+
+.sales-card p,
+.produto-descricao {
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.45;
+}
+
 .btn-danger {
   display: inline-flex;
   align-items: center;
@@ -438,7 +518,7 @@ a { text-decoration: none; color: inherit; }
   grid-template-columns: repeat(auto-fit, 300px);
   justify-content: center;
   align-items: start;
-  gap: 20px;
+  gap: clamp(.9rem, 2.5vw, 1.25rem);
   width: 100%;
   margin-bottom: 20px;
 }
@@ -474,11 +554,11 @@ a { text-decoration: none; color: inherit; }
   flex-flow: column nowrap;
   background: var(--surface);
   padding: 2px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   text-align: center;
   gap: 18px;
-  box-shadow: 0 0 4px rgba(28,25,23,.35);
-  border: none;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
   cursor: pointer;
   overflow: hidden;
   transition: var(--transition);
@@ -496,7 +576,7 @@ a { text-decoration: none; color: inherit; }
   margin-top: 10px;
   overflow: hidden;
   background: #F1EEE7;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 }
 
 .slider {
@@ -535,18 +615,18 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
   border: none;
   border-radius: 8px;
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .8rem;
+  font-size: 1rem;
   line-height: 1;
   transition: background .2s;
 }
 
-.prev { left: 8px; }
-.next { right: 8px; }
+.prev { left: 10px; }
+.next { right: 10px; }
 .prev:hover, .next:hover { background: rgba(28,25,23,.85); }
 
 /* Badge categoria */
@@ -568,7 +648,8 @@ a { text-decoration: none; color: inherit; }
 /* Textos do card */
 .espacoNomeProduto {
   width: 100%;
-  height: 118px;
+  min-height: 134px;
+  height: auto;
   padding: .5rem 1rem;
   display: flex;
   justify-content: center;
@@ -1072,6 +1153,8 @@ a { text-decoration: none; color: inherit; }
   .hero__headline { margin-left: auto; margin-right: auto; }
 
   .hero__visual { width: 168px; }
+  .sales-strip { grid-template-columns: 1fr; }
+  .hero__actions { justify-content: center; }
   .hero__badge { height: 142px; }
   .hero__badge .swatch { width: 112px; height: 126px; }
   .hero__badge .swatch--3 strong { font-size: 1.4rem; }
@@ -1080,34 +1163,60 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .header { padding: 0 1rem; gap: .5rem; }
-  .header__logo { height: 32px; }
+  body { font-size: 16px; }
 
-  .container { padding: 1.5rem 1rem var(--space-section); }
+  .header {
+    height: 58px;
+    padding: 0 max(.75rem, env(safe-area-inset-left));
+    gap: .45rem;
+  }
+  .header__logo { height: 30px; }
+  .header__title { font-size: .95rem; }
+  .btn-icon, .btn-carrinho { min-width: 42px; height: 42px; }
+  .btn-carrinho { padding: 0 11px; }
+
+  .hero {
+    padding: 1.25rem 1rem 1.5rem;
+    gap: 1rem;
+  }
+  .hero__eyebrow { justify-content: center; margin-bottom: .6rem; }
+  .hero__headline { font-size: clamp(2rem, 12vw, 2.7rem); margin-bottom: 1rem; }
+  .hero__visual { width: 136px; }
+  .hero__badge { height: 116px; }
+  .hero__badge .swatch { width: 92px; height: 104px; }
+  .btn-primary { width: 100%; justify-content: center; min-height: 48px; }
+
+  .container { padding: 1rem .85rem var(--space-section); }
 
   .produtos {
-    grid-template-columns: minmax(0, 300px);
-    gap: .85rem;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    gap: 1rem;
   }
 
   #listaCarrinho {
-    grid-template-columns: minmax(0, 300px);
-    gap: .85rem;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    gap: 1rem;
   }
 
-  .produto { height: 460px; }
-  .espacoImg { width: calc(100% - 20px); height: 150px; }
+  .produto { width: 100%; height: auto; min-height: 500px; gap: 14px; }
+  .espacoImg { width: calc(100% - 18px); height: clamp(190px, 62vw, 260px); margin-top: 9px; }
 
   .espacoNomeProduto { padding: .8rem .8rem .4rem; gap: .25rem; }
   .espacoNomeProduto h3 { font-size: .88rem; }
   .preco { font-size: .82rem; }
   .subtotal-item { font-size: .72rem; }
 
-  .botoesQuantidade { padding: .35rem .6rem; gap: .6rem; }
-  .botoesQuantidade button { width: 32px; height: 32px; font-size: 1rem; }
+  .prev, .next { width: 52px; height: 52px; font-size: 1.1rem; }
+  .prev { left: 8px; }
+  .next { right: 8px; }
 
-  .espacoBtnAdd { padding: .5rem .8rem .85rem; }
-  .espacoBtnAdd button, .btn-remover { height: 40px; font-size: .82rem; }
+  .botoesQuantidade { padding: .35rem .6rem; gap: .8rem; }
+  .botoesQuantidade button { width: 44px; height: 44px; font-size: 1.15rem; }
+
+  .espacoBtnAdd { padding: .5rem .8rem .9rem; }
+  .espacoBtnAdd button, .btn-remover { height: 48px; font-size: .92rem; }
 
   .carrinho-resumo { padding: 1.25rem; }
 }

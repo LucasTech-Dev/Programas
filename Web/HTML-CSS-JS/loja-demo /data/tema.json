@@ -1,0 +1,8 @@
+{
+  "corPrimaria": "#1D4ED8",
+  "corSecundaria": "#0EA5E9",
+  "fonte": "Inter",
+  "botoes": "arredondado",
+  "layout": "grid",
+  "modoEscuro": false
+}

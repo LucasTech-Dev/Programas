@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nome": "Impressos",
+    "icone": "mdi-tag-outline",
+    "ordem": 1,
+    "ativa": true
+  },
+  {
+    "id": 2,
+    "nome": "Banners",
+    "icone": "mdi-tag-outline",
+    "ordem": 2,
+    "ativa": true
+  },
+  {
+    "id": 3,
+    "nome": "Adesivos",
+    "icone": "mdi-tag-outline",
+    "ordem": 3,
+    "ativa": true
+  },
+  {
+    "id": 4,
+    "nome": "Blocos",
+    "icone": "mdi-tag-outline",
+    "ordem": 4,
+    "ativa": true
+  },
+  {
+    "id": 5,
+    "nome": "Convites",
+    "icone": "mdi-tag-outline",
+    "ordem": 5,
+    "ativa": true
+  },
+  {
+    "id": 6,
+    "nome": "Identificação",
+    "icone": "mdi-tag-outline",
+    "ordem": 6,
+    "ativa": true
+  }
+]

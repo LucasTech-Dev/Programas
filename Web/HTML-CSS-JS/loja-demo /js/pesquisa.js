@@ -19,9 +19,9 @@ carregarProdutos();
 // ── Fetch ─────────────────────────────────────────────────
 async function carregarProdutos() {
   try {
-    const res = await fetch("data/produtos.json");
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    produtos = await res.json();
+    produtos = window.ProdutoService
+      ? await ProdutoService.listar()
+      : await (await fetch("data/produtos.json")).json();
 
     loadingEl.style.display  = "none";
     listaBusca.style.display = "grid";

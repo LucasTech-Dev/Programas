@@ -1,0 +1,16 @@
+{
+  "nome": "Gráfica Demo",
+  "logo": "img/logoDemo.png",
+  "telefone": "(51) 99531-0123",
+  "whatsapp": "5551995310123",
+  "instagram": "",
+  "facebook": "",
+  "email": "contato@demo.com",
+  "endereco": "Rua Exemplo, 123",
+  "cidade": "Porto Alegre",
+  "estado": "RS",
+  "cep": "90000-000",
+  "googleMaps": "",
+  "horario": "Seg a sex, 9h às 18h",
+  "descricao": "Catálogo online de produtos gráficos personalizados."
+}

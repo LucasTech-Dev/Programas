@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Cardápio digital para restaurante">
+  <meta name="description" content="Cardápio digital para restaurante com carrinho, pedido organizado no WhatsApp e experiência mobile para aumentar pedidos.">
   <meta name="theme-color" content="#B91C1C">
-  <title>Restaurante Demo — Cardápio</title>
+  <title>Restaurante Demo — Cardápio que converte</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
       <img src="img/logoDemo.png" alt="Logo Restaurante">
     </a>
 
-    <h1 class="header__title">Cardápio</h1>
+    <h1 class="header__title">Cardápio vendedor</h1>
 
     <nav class="header__actions">
       <a href="busc.html" class="btn-icon" title="Buscar">
@@ -34,13 +34,19 @@
   </header>
 
   <!-- HERO BANNER -->
-  <section class="hero">
+  <section class="hero hero--sales">
     <div class="hero__content">
-      <p class="hero__eyebrow"><span class="reg-mark" aria-hidden="true"></span> Restaurante Demo</p>
-      <h2 class="hero__headline">Pratos prontos<br>para pedir<br>agora.</h2>
-      <a href="busc.html" class="btn-primary">
-        <i class="mdi mdi-magnify"></i> Buscar pratos
-      </a>
+      <p class="hero__eyebrow"><span class="reg-mark" aria-hidden="true"></span> Cardápio Digital para Delivery</p>
+      <h2 class="hero__headline">Menos demora.<br>Mais pedidos.<br>Tudo pelo WhatsApp.</h2>
+      <p class="hero__proof">Feito para restaurantes, lancherias, pizzarias e delivery que querem reduzir erros e acelerar atendimento.</p>
+      <div class="hero__actions">
+        <a href="#listaProdutos" class="btn-primary">
+          <i class="mdi mdi-cart-arrow-down"></i> Ver cardápio agora
+        </a>
+        <a href="carrinho.html" class="btn-secondary">
+          <i class="mdi mdi-whatsapp"></i> Finalizar pelo WhatsApp
+        </a>
+      </div>
     </div>
     <div class="hero__visual">
       <div class="hero__badge">
@@ -48,10 +54,28 @@
         <div class="swatch swatch--2"></div>
         <div class="swatch swatch--3">
           <strong>8</strong>
-          <small>pratos no cardápio</small>
+          <small>categorias prontas para pedir</small>
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="sales-strip" aria-label="Benefícios comerciais">
+      <article class="sales-card">
+        <i class="mdi mdi-whatsapp"></i>
+        <h3>Pedido completo</h3>
+        <p>Itens, quantidades, observações, endereço e pagamento já chegam prontos.</p>
+      </article>
+      <article class="sales-card">
+        <i class="mdi mdi-clock-fast"></i>
+        <h3>Atendimento mais rápido</h3>
+        <p>Reduz perguntas repetitivas e libera a equipe para fechar mais pedidos.</p>
+      </article>
+      <article class="sales-card">
+        <i class="mdi mdi-food-fork-drink"></i>
+        <h3>Mais apetite visual</h3>
+        <p>Fotos, categorias e carrinho ajudam o cliente a decidir com menos atrito.</p>
+      </article>
   </section>
 
   <!-- PRODUTOS -->
@@ -64,7 +88,19 @@
     <div id="listaProdutos" class="produtos" style="display:none;"></div>
   </main>
 
+<<<<<<< ours
+  <script>window.APP_STORAGE_PREFIX="restauranteDemo";</script>
+  <script src="services/DataStore.js"></script>
+=======
+  <script type="module">
+    import { garantirRestauranteDemo } from "./js/firebase-restaurante.service.js";
+
+    garantirRestauranteDemo().catch((erro) => {
+      console.warn("Não foi possível criar/atualizar a coleção de restaurante demo no Firebase.", erro);
+    });
+  </script>
+>>>>>>> theirs
   <script src="js/modal.js"></script>
-  <script src="js/loja.js"></script>
+  <script type="module" src="js/loja.js"></script>
 </body>
 </html>

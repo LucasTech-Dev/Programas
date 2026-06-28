@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Catálogo de produtos gráficos personalizados">
+  <meta name="description" content="Catálogo digital para varejo com pedido organizado no WhatsApp, busca rápida e carrinho para aumentar conversões.">
   <meta name="theme-color" content="#1D4ED8">
-  <title>Gráfica Demo — Catálogo</title>
+  <title>Loja Demo — Catálogo que vende pelo WhatsApp</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
       <img src="img/logoDemo.png" alt="Logo Gráfica">
     </a>
 
-    <h1 class="header__title">Catálogo</h1>
+    <h1 class="header__title">Loja pronta para vender</h1>
 
     <nav class="header__actions">
       <a href="busc.html" class="btn-icon" title="Buscar">
@@ -34,24 +34,48 @@
   </header>
 
   <!-- HERO BANNER -->
-  <section class="hero">
+  <section class="hero hero--sales">
     <div class="hero__content">
-      <p class="hero__eyebrow"><span class="reg-mark" aria-hidden="true"></span> Gráfica Personalizada</p>
-      <h2 class="hero__headline">Sua marca<br>impressa com<br>qualidade.</h2>
-      <a href="busc.html" class="btn-primary">
-        <i class="mdi mdi-magnify"></i> Buscar produtos
-      </a>
+      <p class="hero__eyebrow"><span class="reg-mark" aria-hidden="true"></span> Catálogo Digital para Varejo</p>
+      <h2 class="hero__headline">Produtos fáceis<br>de escolher.<br>Pedido pronto no WhatsApp.</h2>
+      <p class="hero__proof">Ideal para roupas, calçados, cosméticos, celulares, pet shops, óticas e outros varejos de Capão da Canoa.</p>
+      <div class="hero__actions">
+        <a href="#listaProdutos" class="btn-primary">
+          <i class="mdi mdi-cart-arrow-down"></i> Ver produtos agora
+        </a>
+        <a href="carrinho.html" class="btn-secondary">
+          <i class="mdi mdi-whatsapp"></i> Finalizar pelo WhatsApp
+        </a>
+      </div>
     </div>
     <div class="hero__visual">
       <div class="hero__badge">
         <div class="swatch swatch--1"></div>
         <div class="swatch swatch--2"></div>
         <div class="swatch swatch--3">
-          <strong>8</strong>
-          <small>produtos no catálogo</small>
+          <strong>20+</strong>
+          <small>segmentos de varejo atendidos</small>
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="sales-strip" aria-label="Benefícios comerciais">
+      <article class="sales-card">
+        <i class="mdi mdi-whatsapp"></i>
+        <h3>Pedido sem bagunça</h3>
+        <p>O cliente monta o carrinho e envia tudo organizado no WhatsApp.</p>
+      </article>
+      <article class="sales-card">
+        <i class="mdi mdi-cellphone-check"></i>
+        <h3>Vende no celular</h3>
+        <p>Layout rápido, direto e pensado para quem compra pelo Instagram.</p>
+      </article>
+      <article class="sales-card">
+        <i class="mdi mdi-store-search"></i>
+        <h3>Catálogo consultivo</h3>
+        <p>Produtos com fotos, categorias e observações para reduzir perguntas repetitivas.</p>
+      </article>
   </section>
 
   <!-- PRODUTOS -->
@@ -64,7 +88,19 @@
     <div id="listaProdutos" class="produtos" style="display:none;"></div>
   </main>
 
+<<<<<<< ours
+  <script>window.APP_STORAGE_PREFIX="lojaDemo";</script>
+  <script src="services/DataStore.js"></script>
+=======
+  <script type="module">
+    import { garantirLojaDemo } from "./js/firebase-lojas.service.js";
+
+    garantirLojaDemo().catch((erro) => {
+      console.warn("Não foi possível criar/atualizar a coleção de loja demo no Firebase.", erro);
+    });
+  </script>
+>>>>>>> theirs
   <script src="js/modal.js"></script>
-  <script src="js/loja.js"></script>
+  <script type="module" src="js/loja.js"></script>
 </body>
 </html>
