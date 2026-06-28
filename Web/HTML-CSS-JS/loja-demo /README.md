@@ -4,6 +4,15 @@ Catálogo de produtos com painel admin integrado ao GitHub + deploy automático 
 
 ---
 
+## Abrir com Live Server e criar tabelas
+
+1. No VS Code, clique com o botão direito em `index.html` e escolha **Open with Live Server** para abrir o site.
+2. Para criar/atualizar as coleções do Firebase, abra `criar-tabelas.html` também pelo Live Server.
+3. Clique em **Criar/atualizar tabelas** e aguarde a mensagem de sucesso.
+4. Consulte `VARREDURA.md` para ver o que está em uso e os candidatos a remoção futura.
+
+---
+
 ## Estrutura
 
 ```

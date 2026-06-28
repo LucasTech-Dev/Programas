@@ -1,10 +1,18 @@
 // ============================================================
 // loja.js — página inicial (index.html)
+<<<<<<< ours
+// Lê produtos do Firestore via Firebase. O JSON local fica apenas
+// como fallback de desenvolvimento enquanto o Firebase é configurado.
+// ============================================================
+
+import { listarProdutosLojaDemo } from "./firebase-lojas.service.js";
+=======
 // Lê produtos do Firestore via ProdutoService. O JSON local fica apenas
 // como fallback de desenvolvimento enquanto o Firebase é configurado.
 // ============================================================
 
 import { ProdutoService } from "../services/ProdutoService.js";
+>>>>>>> theirs
 
 const lista       = document.getElementById("listaProdutos");
 const loadingEl   = document.getElementById("loadingState");
@@ -23,14 +31,14 @@ carregarProdutos();
 async function carregarProdutos() {
   try {
 <<<<<<< ours
-    produtos = window.ProdutoService
-      ? await ProdutoService.listar()
-      : await (await fetch("data/produtos.json")).json();
+    produtos = await listarProdutosLojaDemo();
+    renderProdutos();
 =======
     pararObservacao = ProdutoService.observar(novosProdutos => {
       produtos = novosProdutos;
       renderProdutos();
     });
+>>>>>>> theirs
   } catch (err) {
     console.warn("Firestore indisponível. Usando data/produtos.json temporariamente.", err);
     await carregarProdutosFallback();
@@ -42,7 +50,6 @@ async function carregarProdutosFallback() {
     const res = await fetch("data/produtos.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     produtos = (await res.json()).map(p => ({ ...p, ativo: p.ativo !== false }));
->>>>>>> theirs
     renderProdutos();
   } catch (err) {
     loadingEl.innerHTML = `<p style="color:#DC2626">Erro ao carregar produtos. Verifique sua conexão.</p>`;
@@ -84,20 +91,6 @@ function renderProdutos() {
 
       <div class="espacoNomeProduto">
         <h3>${produto.nome}</h3>
-<<<<<<< ours
-        ${produto.descricao ? `<p class="produto-descricao">${produto.descricao}</p>` : ""}
-        <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
-      </div>
-
-      <div class="botoesQuantidade">
-        <button type="button" onclick="event.stopPropagation(); subQtd(${produto.id})" aria-label="Diminuir quantidade">−</button>
-        <span id="qtd_${produto.id}">1</span>
-        <button type="button" onclick="event.stopPropagation(); addQtd(${produto.id})" aria-label="Aumentar quantidade">+</button>
-      </div>
-
-      <div class="espacoBtnAdd">
-        <button type="button" onclick="event.stopPropagation(); abrirObsRapida(${produto.id})">
-=======
         ${produto.descricao ? `<p>${produto.descricao}</p>` : ""}
         <p class="preco">R$ ${Number(precoAtual).toFixed(2)}</p>
       </div>
@@ -110,20 +103,11 @@ function renderProdutos() {
 
       <div class="espacoBtnAdd">
         <button data-action="obs" data-id="${id}">
->>>>>>> theirs
           <i class="mdi mdi-cart-plus"></i> Adicionar
         </button>
       </div>
     `;
 
-<<<<<<< ours
-    // Clique em qualquer parte do card (fora dos controles) abre o modal
-    card.addEventListener("click", e => {
-      if (e.target.closest("button, a")) return;
-      abrirObsRapida(produto.id);
-    });
-
-=======
     card.addEventListener("click", () => abrirObsRapida(id));
     card.querySelectorAll("button[data-action]").forEach(btn => {
       btn.addEventListener("click", event => {
@@ -134,7 +118,6 @@ function renderProdutos() {
         if (action === "obs") abrirObsRapida(id);
       });
     });
->>>>>>> theirs
     lista.appendChild(card);
   });
 
@@ -211,27 +194,8 @@ function initSliders(container) {
       setTimeout(() => (animando = false), 400);
     }
 
-<<<<<<< ours
-    [btnNext, btnPrev].forEach(btn => {
-      ["pointerdown", "touchstart"].forEach(evt => {
-        btn.addEventListener(evt, e => e.stopPropagation(), { passive: true });
-      });
-    });
-
-    btnNext.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopPropagation();
-      goTo(idx + 1);
-    });
-    btnPrev.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopPropagation();
-      goTo(idx - 1);
-    });
-=======
     btnNext.addEventListener("click", e => { e.stopPropagation(); goTo(idx + 1); });
     btnPrev.addEventListener("click", e => { e.stopPropagation(); goTo(idx - 1); });
->>>>>>> theirs
   });
 }
 

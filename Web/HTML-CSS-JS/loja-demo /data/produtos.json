@@ -2,10 +2,6 @@
   {
     "id": 1,
     "nome": "Cartão de Visita",
-<<<<<<< ours
-    "preco": 79.9,
-    "categoria": "Impressos",
-=======
     "descricao": "",
     "categoria": "Impressos",
     "preco": 60.0,
@@ -16,30 +12,21 @@
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/cartaoVisita.webp",
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Pacote inicial para networking com acabamento profissional."
-=======
     "codigo": "PROD-001",
     "ativo": true,
     "destaque": true,
     "novo": false,
     "promocao": false,
     "ordem": 1
->>>>>>> theirs
   },
   {
     "id": 2,
     "nome": "Panfleto A5",
-<<<<<<< ours
-    "preco": 149.9,
-    "categoria": "Impressos",
-=======
     "descricao": "",
     "categoria": "Impressos",
     "preco": 120.0,
@@ -50,30 +37,21 @@
       "img/cartaoVisita.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/Panfleto.webp",
       "img/cartaoVisita.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Material de divulgação para promoções e campanhas locais."
-=======
     "codigo": "PROD-002",
     "ativo": true,
     "destaque": true,
     "novo": false,
     "promocao": false,
     "ordem": 2
->>>>>>> theirs
   },
   {
     "id": 3,
     "nome": "Banner 80x120cm",
-<<<<<<< ours
-    "preco": 189.9,
-    "categoria": "Banners",
-=======
     "descricao": "",
     "categoria": "Banners",
     "preco": 150.0,
@@ -84,30 +62,21 @@
       "img/Panfleto.webp",
       "img/cartaoVisita.webp"
     ],
->>>>>>> theirs
     "imagens": [
       "img/Banner.jpg",
       "img/Panfleto.webp",
       "img/cartaoVisita.webp"
     ],
-<<<<<<< ours
-    "descricao": "Alta visibilidade para vitrine, eventos e ponto de venda."
-=======
     "codigo": "PROD-003",
     "ativo": true,
     "destaque": true,
     "novo": false,
     "promocao": false,
     "ordem": 3
->>>>>>> theirs
   },
   {
     "id": 4,
     "nome": "Adesivo Personalizado",
-<<<<<<< ours
-    "preco": 3.9,
-    "categoria": "Adesivos",
-=======
     "descricao": "",
     "categoria": "Adesivos",
     "preco": 2.5,
@@ -118,30 +87,21 @@
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/adesivo.jpg",
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Ideal para embalagens, brindes e identidade visual."
-=======
     "codigo": "PROD-004",
     "ativo": true,
     "destaque": false,
     "novo": false,
     "promocao": false,
     "ordem": 4
->>>>>>> theirs
   },
   {
     "id": 5,
     "nome": "Bloco de Receituário",
-<<<<<<< ours
-    "preco": 49.9,
-    "categoria": "Blocos",
-=======
     "descricao": "",
     "categoria": "Blocos",
     "preco": 35.0,
@@ -152,30 +112,21 @@
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/blocoReceituario.jpg",
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Blocos personalizados para clínicas, lojas e atendimento."
-=======
     "codigo": "PROD-005",
     "ativo": true,
     "destaque": false,
     "novo": false,
     "promocao": false,
     "ordem": 5
->>>>>>> theirs
   },
   {
     "id": 6,
     "nome": "Pasta Personalizada",
-<<<<<<< ours
-    "preco": 24.9,
-    "categoria": "Impressos",
-=======
     "descricao": "",
     "categoria": "Impressos",
     "preco": 18.0,
@@ -186,30 +137,21 @@
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/pastaPerso.jpeg",
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Apresentação premium para propostas, contratos e eventos."
-=======
     "codigo": "PROD-006",
     "ativo": true,
     "destaque": false,
     "novo": false,
     "promocao": false,
     "ordem": 6
->>>>>>> theirs
   },
   {
     "id": 7,
     "nome": "Convite de Aniversário",
-<<<<<<< ours
-    "preco": 4.9,
-    "categoria": "Convites",
-=======
     "descricao": "",
     "categoria": "Convites",
     "preco": 3.0,
@@ -220,30 +162,21 @@
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/CONVITE.jpg",
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Convites personalizados com visual marcante para festas."
-=======
     "codigo": "PROD-007",
     "ativo": true,
     "destaque": false,
     "novo": false,
     "promocao": false,
     "ordem": 7
->>>>>>> theirs
   },
   {
     "id": 8,
     "nome": "Crachá PVC",
-<<<<<<< ours
-    "preco": 19.9,
-    "categoria": "Identificação",
-=======
     "descricao": "",
     "categoria": "Identificação",
     "preco": 12.0,
@@ -254,21 +187,16 @@
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
->>>>>>> theirs
     "imagens": [
       "img/CrachaPVC.jpg",
       "img/Panfleto.webp",
       "img/Banner.jpg"
     ],
-<<<<<<< ours
-    "descricao": "Identificação resistente para equipes, eventos e empresas."
-=======
     "codigo": "PROD-008",
     "ativo": true,
     "destaque": false,
     "novo": false,
     "promocao": false,
     "ordem": 8
->>>>>>> theirs
   }
 ]

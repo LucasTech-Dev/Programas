@@ -1,6 +1,3 @@
-<<<<<<< ours
-// Serviço exposto por services/DataStore.js para manter uma camada única entre telas e JSON.
-=======
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, limit, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc, where } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import { db } from "../firebase/firestore.js";
 import { lojaPadraoId } from "../firebase/config.js";
@@ -47,4 +44,3 @@ export class ProdutoService {
     return Promise.all(produtos.map((produto, ordem) => setDoc(produtoRef(produto.id || crypto.randomUUID(), lojaId), { ...produto, ordem, atualizadoEm: serverTimestamp() }, { merge: true })));
   }
 }
->>>>>>> theirs

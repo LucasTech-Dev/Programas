@@ -1,10 +1,18 @@
 // ============================================================
 // loja.js — página inicial (index.html)
+<<<<<<< ours
+// Lê pratos do Firestore via Firebase. O JSON local fica apenas
+// como fallback de desenvolvimento enquanto o Firebase é configurado.
+// ============================================================
+
+import { listarCardapioRestauranteDemo } from "./firebase-restaurante.service.js";
+=======
 // Lê pratos do Firestore via ProdutoService. O JSON local fica apenas
 // como fallback de desenvolvimento enquanto o Firebase é configurado.
 // ============================================================
 
 import { ProdutoService } from "../services/ProdutoService.js";
+>>>>>>> theirs
 
 const lista       = document.getElementById("listaProdutos");
 const loadingEl   = document.getElementById("loadingState");
@@ -23,14 +31,14 @@ carregarProdutos();
 async function carregarProdutos() {
   try {
 <<<<<<< ours
-    produtos = window.ProdutoService
-      ? await ProdutoService.listar()
-      : await (await fetch("data/produtos.json")).json();
+    produtos = await listarCardapioRestauranteDemo();
+    renderProdutos();
 =======
     pararObservacao = ProdutoService.observar(novosProdutos => {
       produtos = novosProdutos;
       renderProdutos();
     });
+>>>>>>> theirs
   } catch (err) {
     console.warn("Firestore indisponível. Usando data/produtos.json temporariamente.", err);
     await carregarProdutosFallback();
@@ -42,7 +50,6 @@ async function carregarProdutosFallback() {
     const res = await fetch("data/produtos.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     produtos = (await res.json()).map(p => ({ ...p, ativo: p.ativo !== false }));
->>>>>>> theirs
     renderProdutos();
   } catch (err) {
     loadingEl.innerHTML = `<p style="color:#DC2626">Erro ao carregar pratos. Verifique sua conexão.</p>`;
@@ -84,13 +91,8 @@ function renderProdutos() {
 
       <div class="espacoNomeProduto">
         <h3>${produto.nome}</h3>
-<<<<<<< ours
-        ${produto.descricao ? `<p class="produto-descricao">${produto.descricao}</p>` : ""}
-        <p class="preco">R$ ${Number(produto.preco).toFixed(2)}</p>
-=======
         ${produto.descricao ? `<p>${produto.descricao}</p>` : ""}
         <p class="preco">R$ ${Number(precoAtual).toFixed(2)}</p>
->>>>>>> theirs
       </div>
 
       <div class="botoesQuantidade">

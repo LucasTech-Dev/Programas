@@ -84,3 +84,61 @@ export async function listarProdutosLojaDemo() {
   const snapshot = await getDocs(query(produtosRef, orderBy("ordem", "asc")));
   return snapshot.docs.map((produtoDoc) => ({ idDocumento: produtoDoc.id, ...produtoDoc.data() }));
 }
+<<<<<<< ours
+
+
+async function carregarJsonLocal(nomeArquivo) {
+  const resposta = await fetch(`data/${nomeArquivo}.json?t=${Date.now()}`);
+  if (!resposta.ok) throw new Error(`Não foi possível carregar data/${nomeArquivo}.json`);
+  return resposta.json();
+}
+
+async function gravarColecaoLocal(nomeColecao, registros) {
+  if (Array.isArray(registros)) {
+    await Promise.all(registros.map((registro, indice) => {
+      const idDocumento = String(registro.id || registro.codigo || indice + 1);
+      return setDoc(doc(dbLojas, "lojas", LOJA_DEMO_ID, nomeColecao, idDocumento), {
+        ...registro,
+        lojaId: LOJA_DEMO_ID,
+        atualizadoEm: serverTimestamp()
+      }, { merge: true });
+    }));
+    return registros.length;
+  }
+
+  await setDoc(doc(dbLojas, "lojas", LOJA_DEMO_ID, nomeColecao, "principal"), {
+    ...registros,
+    lojaId: LOJA_DEMO_ID,
+    atualizadoEm: serverTimestamp()
+  }, { merge: true });
+  return 1;
+}
+
+export async function criarTabelasLojaDemo() {
+  await garantirLojaDemo();
+
+  const arquivos = ["categorias", "banners", "empresa", "tema", "seo", "config"];
+  const [produtos, ...demaisDados] = await Promise.all([
+    carregarJsonLocal("produtos"),
+    ...arquivos.map(carregarJsonLocal)
+  ]);
+
+  const totalProdutos = await gravarColecaoLocal("produtos", produtos);
+  const totais = { ["produtos"]: totalProdutos };
+
+  for (let i = 0; i < arquivos.length; i += 1) {
+    totais[arquivos[i]] = await gravarColecaoLocal(arquivos[i], demaisDados[i]);
+  }
+
+  await setDoc(doc(dbLojas, "setups", LOJA_DEMO_ID), {
+    banco: "bancoLojas",
+    entidade: LOJA_DEMO_ID,
+    colecoesCriadas: Object.keys(totais),
+    totais,
+    atualizadoEm: serverTimestamp()
+  }, { merge: true });
+
+  return totais;
+}
+=======
+>>>>>>> theirs
