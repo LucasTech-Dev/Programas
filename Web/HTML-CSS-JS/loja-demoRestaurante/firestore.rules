@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function usuario() {
+      return request.auth != null
+        ? get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data
+        : null;
+    }
+    function ativo() { return usuario() != null && usuario().status == 'ativo'; }
+    function admin() { return ativo() && usuario().tipo == 'admin'; }
+    function lojistaDa(lojaId) { return ativo() && usuario().tipo == 'cliente' && usuario().lojaId == lojaId; }
+
+    match /lojas/{lojaId} {
+      allow read: if true;
+      allow create, update, delete: if admin();
+
+      match /produtos/{produtoId} {
+        allow read: if true;
+        allow create, update, delete: if admin() || lojistaDa(lojaId);
+      }
+    }
+
+    match /usuarios/{uid} {
+      allow read: if admin() || (request.auth != null && request.auth.uid == uid);
+      allow write: if admin();
+    }
+  }
+}

@@ -9,8 +9,8 @@ const STORAGE_PURCHASE_TOTAL = "totalCompraRestaurante";
 
 let carrinho = JSON.parse(localStorage.getItem(STORAGE_CART)) || [];
 
-const listaEl = document.getElementById("listaCarrinho");
-const qtdEl = document.getElementById("quantidadeNoCarrinho");
+const listaEl     = document.getElementById("listaCarrinho");
+const qtdEl       = document.getElementById("quantidadeNoCarrinho");
 const totalResumo = document.getElementById("totalResumo");
 
 // ── Init ──────────────────────────────────────────────────
@@ -34,8 +34,8 @@ function renderCarrinho() {
   }
 
   carrinho.forEach((prod, i) => {
-    const preco = Number(prod.preco);
-    const qtd = Number(prod.quantidade);
+    const preco    = Number(prod.preco);
+    const qtd      = Number(prod.quantidade);
     const subtotal = preco * qtd;
     total += subtotal;
 
@@ -48,22 +48,14 @@ function renderCarrinho() {
       <div class="espacoImg">
         <div class="slider">
           <div class="slides">
-            ${imgs
-              .map(
-                (src) => `
+            ${imgs.map(src => `
               <div class="slide">
                 <img src="${src}" alt="${prod.nome}" loading="lazy">
-              </div>`,
-              )
-              .join("")}
+              </div>`).join("")}
           </div>
-          ${
-            imgs.length > 1
-              ? `
+          ${imgs.length > 1 ? `
           <button class="prev" aria-label="Anterior">❮</button>
-          <button class="next" aria-label="Próximo">❯</button>`
-              : ""
-          }
+          <button class="next" aria-label="Próximo">❯</button>` : ""}
         </div>
       </div>
 
@@ -71,21 +63,17 @@ function renderCarrinho() {
         <h3>${prod.nome}</h3>
         <p class="preco">R$ ${preco.toFixed(2)}</p>
         <p class="subtotal-item">Subtotal: <strong>R$ ${subtotal.toFixed(2)}</strong></p>
-        ${
-          prod.observacao
-            ? `
+        ${prod.observacao ? `
           <div class="obs-indicator" onclick="event.stopPropagation(); editarObservacao(${i})">
             <i class="mdi mdi-note-text-outline"></i>
             <span>${escapeHtml(prod.observacao)}</span>
           </div>
-        `
-            : `
+        ` : `
           <div class="obs-indicator" style="color:var(--muted);background:var(--bg);cursor:pointer" onclick="event.stopPropagation(); editarObservacao(${i})">
             <i class="mdi mdi-note-plus-outline"></i>
             <span>Adicionar observação</span>
           </div>
-        `
-        }
+        `}
       </div>
 
       <div class="botoesQuantidade">
@@ -115,8 +103,8 @@ function editarObservacao(i) {
   const item = carrinho[i];
 
   abrirModalObservacao(item, item.quantidade, (qtdFinal, observacao) => {
-    carrinho[i].quantidade = qtdFinal;
-    carrinho[i].observacao = observacao || "";
+    carrinho[i].quantidade  = qtdFinal;
+    carrinho[i].observacao  = observacao || "";
     salvar();
   });
 
@@ -178,15 +166,14 @@ function escapeHtml(str) {
 
 // ── Slider ────────────────────────────────────────────────
 function initSliders(container) {
-  container.querySelectorAll(".slider").forEach((slider) => {
-    const slides = slider.querySelector(".slides");
+  container.querySelectorAll(".slider").forEach(slider => {
+    const slides    = slider.querySelector(".slides");
     const allSlides = slider.querySelectorAll(".slide");
-    const btnNext = slider.querySelector(".next");
-    const btnPrev = slider.querySelector(".prev");
+    const btnNext   = slider.querySelector(".next");
+    const btnPrev   = slider.querySelector(".prev");
     if (!btnNext || allSlides.length <= 1) return;
 
-    let idx = 0,
-      animando = false;
+    let idx = 0, animando = false;
 
     function goTo(n) {
       if (animando) return;
@@ -196,11 +183,11 @@ function initSliders(container) {
       setTimeout(() => (animando = false), 400);
     }
 
-    btnNext.addEventListener("click", (e) => {
+    btnNext.addEventListener("click", e => {
       e.stopPropagation();
       goTo(idx + 1);
     });
-    btnPrev.addEventListener("click", (e) => {
+    btnPrev.addEventListener("click", e => {
       e.stopPropagation();
       goTo(idx - 1);
     });

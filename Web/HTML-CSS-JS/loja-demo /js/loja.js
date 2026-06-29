@@ -1,18 +1,15 @@
 // ============================================================
 // loja.js — página inicial (index.html)
-<<<<<<< ours
+
 // Lê produtos do Firestore via Firebase. O JSON local fica apenas
 // como fallback de desenvolvimento enquanto o Firebase é configurado.
 // ============================================================
 
 import { listarProdutosLojaDemo } from "./firebase-lojas.service.js";
-=======
-// Lê produtos do Firestore via ProdutoService. O JSON local fica apenas
-// como fallback de desenvolvimento enquanto o Firebase é configurado.
-// ============================================================
+
 
 import { ProdutoService } from "../services/ProdutoService.js";
->>>>>>> theirs
+
 
 const lista       = document.getElementById("listaProdutos");
 const loadingEl   = document.getElementById("loadingState");
@@ -30,15 +27,15 @@ carregarProdutos();
 
 async function carregarProdutos() {
   try {
-<<<<<<< ours
+
     produtos = await listarProdutosLojaDemo();
     renderProdutos();
-=======
+
     pararObservacao = ProdutoService.observar(novosProdutos => {
       produtos = novosProdutos;
       renderProdutos();
-    });
->>>>>>> theirs
+    }); 
+
   } catch (err) {
     console.warn("Firestore indisponível. Usando data/produtos.json temporariamente.", err);
     await carregarProdutosFallback();
