@@ -1,14 +1,12 @@
 // ============================================================
-// loja.js — página inicial (index.html)
-
-// Lê produtos do Firestore via Firebase. A seed local em JavaScript fica
-// como fallback de desenvolvimento enquanto o Firebase é configurado.
+// pesquisa.js — página busc.html
+// Busca produtos do Firestore e usa seed local se estiver offline.
 // ============================================================
 
 import { listarProdutosLojaDemo, produtosDemo } from "./firebase-lojas.service.js";
 
-
-const lista       = document.getElementById("listaProdutos");
+const listaBusca  = document.getElementById("listaBusca");
+const searchInput = document.getElementById("searchInput");
 const loadingEl   = document.getElementById("loadingState");
 const headerBadge = document.getElementById("totalCarrinhoHeader");
 const STORAGE_CART = "carrinho";
@@ -23,30 +21,40 @@ carregarProdutos();
 
 async function carregarProdutos() {
   try {
-
     produtos = await listarProdutosLojaDemo();
-    renderProdutos();
-
-
   } catch (err) {
     console.warn("Firestore indisponível. Usando produtos demo locais temporariamente.", err);
-    carregarProdutosFallback();
+    produtos = produtosDemo.map(p => ({ ...p, ativo: p.ativo !== false }));
   }
+
+  loadingEl.style.display  = "none";
+  listaBusca.style.display = "grid";
+  renderBusca(produtos);
 }
 
-function carregarProdutosFallback() {
-  produtos = produtosDemo.map(p => ({ ...p, ativo: p.ativo !== false }));
-  renderProdutos();
-}
+searchInput.addEventListener("input", () => {
+  const val = searchInput.value.toLowerCase().trim();
+  const filtrados = val
+    ? produtos.filter(p => p.nome.toLowerCase().includes(val))
+    : produtos;
+  renderBusca(filtrados);
+});
 
-function renderProdutos() {
-  loadingEl.style.display = "none";
-  lista.style.display     = "grid";
-  lista.innerHTML         = "";
+function renderBusca(lista) {
+  listaBusca.innerHTML = "";
 
-  produtos.filter(produto => produto.ativo !== false).forEach((produto, i) => {
+  if (lista.length === 0) {
+    listaBusca.innerHTML = `
+      <div class="empty-state">
+        <i class="mdi mdi-package-variant-closed"></i>
+        <p>Nenhum produto encontrado.</p>
+      </div>`;
+    return;
+  }
+
+  lista.filter(produto => produto.ativo !== false).forEach((produto, i) => {
     const id = String(produto.id);
-    quantidades[id] = 1;
+    if (!quantidades[id]) quantidades[id] = 1;
 
     const card = document.createElement("div");
     card.classList.add("produto");
@@ -65,8 +73,8 @@ function renderProdutos() {
               </div>`).join("")}
           </div>
           ${imgs.length > 1 ? `
-          <button type="button" class="prev" aria-label="Imagem anterior">❮</button>
-          <button type="button" class="next" aria-label="Próxima imagem">❯</button>` : ""}
+          <button type="button" class="prev" aria-label="Anterior">❮</button>
+          <button type="button" class="next" aria-label="Próximo">❯</button>` : ""}
         </div>
         ${produto.categoria ? `<span class="badge">${produto.categoria}</span>` : ""}
       </div>
@@ -79,7 +87,7 @@ function renderProdutos() {
 
       <div class="botoesQuantidade">
         <button data-action="sub" data-id="${id}">−</button>
-        <span id="qtd_${id}">1</span>
+        <span id="qtd_${id}">${quantidades[id]}</span>
         <button data-action="add" data-id="${id}">+</button>
       </div>
 
@@ -100,10 +108,11 @@ function renderProdutos() {
         if (action === "obs") abrirObsRapida(id);
       });
     });
-    lista.appendChild(card);
+
+    listaBusca.appendChild(card);
   });
 
-  initSliders(lista);
+  initSliders(listaBusca);
 }
 
 function addQtd(id) {
@@ -137,7 +146,6 @@ function addCarrinho(id, qtd, observacao) {
 
   localStorage.setItem(STORAGE_CART, JSON.stringify(carrinho));
   atualizarHeaderBadge();
-
   mostrarToast(observacao ? `"${produto.nome}" adicionado com observação!` : `"${produto.nome}" adicionado!`);
 }
 
@@ -168,6 +176,7 @@ function initSliders(container) {
     if (!btnNext || allSlides.length <= 1) return;
 
     let idx = 0, animando = false;
+
     function goTo(n) {
       if (animando) return;
       animando = true;
@@ -180,7 +189,3 @@ function initSliders(container) {
     btnPrev.addEventListener("click", e => { e.stopPropagation(); goTo(idx - 1); });
   });
 }
-
-window.addEventListener("beforeunload", () => {
-  if (typeof pararObservacao === "function") pararObservacao();
-});

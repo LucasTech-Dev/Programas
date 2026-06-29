@@ -25,11 +25,9 @@ Catálogo de produtos com painel admin integrado ao GitHub + deploy automático 
 │   ├── index.html      ← Login do painel admin
 │   └── produtos.html   ← Painel de gerenciamento
 │
-├── data/
-│   └── produtos.json   ← Fonte de verdade dos produtos ✅
 │
 ├── js/
-│   ├── loja.js         ← Lógica da loja (fetch do JSON)
+│   ├── loja.js         ← Lógica da loja (Firestore + fallback local)
 │   ├── pesquisa.js     ← Busca em tempo real
 │   ├── carrinho.js     ← Gerenciamento do carrinho
 │   └── whatsapp.js     ← Finalização via WhatsApp
@@ -47,9 +45,9 @@ Catálogo de produtos com painel admin integrado ao GitHub + deploy automático 
 ```
 Painel Admin (admin/produtos.html)
         ↓
-  GitHub API (PUT /contents)
+  Rascunho local / solicitação de atualização
         ↓
-  data/produtos.json atualizado
+  Firebase atualizado com os produtos
         ↓
   Cloudflare Pages detecta commit
         ↓
@@ -90,11 +88,11 @@ O token fica salvo apenas no `localStorage` do seu navegador.
 
 ## Fluxo do painel admin
 
-1. O painel carrega `data/produtos.json` direto da GitHub API
+1. O painel usa rascunho local e a publicação deve ser feita no Firebase
 2. Você adiciona, edita ou remove produtos na interface
-3. Clica em **Publicar no GitHub**
-4. O arquivo `produtos.json` é atualizado via `PUT /repos/.../contents`
-5. O Cloudflare detecta o novo commit e faz deploy automático
+3. Envia a solicitação de atualização
+4. Os produtos são gravados na coleção `lojas/lojademo/produtos` do Firestore
+5. A loja passa a ler os produtos atualizados no Firestore
 6. Em até 2 minutos a loja está atualizada
 
 ---

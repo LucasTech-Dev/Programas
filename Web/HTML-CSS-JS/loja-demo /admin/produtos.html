@@ -276,28 +276,42 @@
    const SEU_EMAIL = "lucassantanadias2008@gmail.com";
 
     // ── Estado ────────────────────────────────────────────
+    const PRODUTOS_DEMO = [
+      {
+        id: 1,
+        nome: "Cartão de visita demo",
+        categoria: "Impressos",
+        preco: 49.9,
+        imagem: "img/cartaoVisita.webp",
+        ativo: true,
+        ordem: 1
+      },
+      {
+        id: 2,
+        nome: "Banner demo",
+        categoria: "Comunicação visual",
+        preco: 89.9,
+        imagem: "img/Banner.jpg",
+        ativo: true,
+        ordem: 2
+      }
+    ];
     let produtos      = JSON.parse(localStorage.getItem("admin_produtos")) || [];
     let editandoIndex = null;
     let alterado      = false;
 
     // ── Init ──────────────────────────────────────────────
-    // Se não tiver nada salvo localmente, tenta buscar do JSON publicado
+    // Se não tiver nada salvo localmente, carrega os produtos demo embutidos
     if (produtos.length === 0) {
       carregarDaSite();
     } else {
       renderLista();
     }
 
-    async function carregarDaSite() {
-      try {
-        const res = await fetch("../data/produtos.json?t=" + Date.now());
-        if (!res.ok) throw new Error();
-        produtos = await res.json();
-        salvarLocal();
-        renderLista();
-      } catch {
-        renderLista(); // renderiza vazio se falhar
-      }
+    function carregarDaSite() {
+      produtos = PRODUTOS_DEMO.map(produto => ({ ...produto }));
+      salvarLocal();
+      renderLista();
     }
 
     // ── Salvar no localStorage (rascunho local) ───────────
@@ -436,7 +450,7 @@
     }
 
     function descartar() {
-      if (!confirm("Descartar todas as alterações e recarregar os produtos do site?")) return;
+      if (!confirm("Descartar todas as alterações e recarregar os produtos demo?")) return;
       localStorage.removeItem("admin_produtos");
       alterado = false;
       document.getElementById("requestBar").classList.remove("visible");
@@ -465,7 +479,7 @@ Fiz alterações no catálogo de produtos. Por favor, atualize o site.
 
 Data da solicitação: ${agora}
 
-=== COLE ESTE CONTEÚDO EM data/produtos.json ===
+=== PRODUTOS ATUALIZADOS PARA PUBLICAR NO FIREBASE ===
 
 ${json}
 
@@ -497,4 +511,3 @@ Obrigado!`
   </script>
 </body>
 </html>
->>>>>>> theirs
