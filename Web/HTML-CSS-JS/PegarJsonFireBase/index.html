@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Exportador Firestore</title>
+
+</head>
+
+<body>
+
+    <h1>Exportador de Estrutura do Firestore</h1>
+
+    <p>Abra o <strong>Console do Desenvolvedor (F12 -> aba Console)</strong> para ver o resultado em JSON.</p>
+
+    <div id="status">⏳ Inicializando e buscando coleções...</div>
+
+
+
+    <script type="module">
+
+        // Importações corrigidas para o SDK de Navegador (Web)
+
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+
+        import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+
+
+        // Suas credenciais do Firebase
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCUisepO_NJCm2mZHWQczgVB5AplDJa0LA",
+
+            authDomain: "biblioteca-riachuelo.firebaseapp.com",
+
+            projectId: "biblioteca-riachuelo",
+
+            storageBucket: "biblioteca-riachuelo.firebasestorage.app",
+
+            messagingSenderId: "375143207365",
+
+            appId: "1:375143207365:web:89548892164c039785bbac"
+
+        };
+
+
+
+        // adicione aqui os nomes das coleções que você quer mapear
+
+        const colecoesParaMapear = ['categorias', 'livros', 'emprestimos', 'configuracoes', 'logs', 'reservas', 'usuarios']; 
+
+
+
+        // Inicializa o Firebase
+
+        const app = initializeApp(firebaseConfig);
+
+        const db = getFirestore(app);
+
+
+
+        async function exportarEstrutura() {
+
+            const estruturaCompleta = {};
+
+            const statusDiv = document.getElementById('status');
+
+
+
+            try {
+
+                for (const nomeColecao of colecoesParaMapear) {
+
+                    estruturaCompleta[nomeColecao] = { documentos: [] };
+
+
+
+                    const q = collection(db, nomeColecao);
+
+                    const querySnapshot = await getDocs(q);
+
+
+
+                    let contador = 0;
+
+                    querySnapshot.forEach((doc) => {
+
+                        // Limita a 3 documentos por coleção para coletar apenas a estrutura de exemplo
+
+                        if (contador < 3) { 
+
+                            const dadosDoc = doc.data();
+
+                            const estruturaCampos = {};
+
+
+
+                            // Mapeia o tipo de dado de cada campo
+
+                            for (const [chave, valor] of Object.entries(dadosDoc)) {
+
+                                estruturaCampos[chave] = typeof valor;
+
+                            }
+
+
+
+                            estruturaCompleta[nomeColecao].documentos.push({
+
+                                id_exemplo: doc.id,
+
+                                campos: estruturaCampos
+
+                            });
+
+                            contador++;
+
+                        }
+
+                    });
+
+                }
+
+
+
+                // Exibe o JSON perfeitamente formatado no console
+
+                console.log("✅ ESTRUTURA DO SEU FIREBASE:");
+
+                console.log(JSON.stringify(estruturaCompleta, null, 2));
+
+                
+
+                statusDiv.innerHTML = "✅ Concluído! O JSON foi gerado no console (Aperte F12).";
+
+                statusDiv.style.color = "green";
+
+
+
+            } catch (error) {
+
+                console.error("Erro ao puxar dados do Firestore:", error);
+
+                statusDiv.innerHTML = "❌ Erro ao buscar dados. Verifique o console.";
+
+                statusDiv.style.color = "red";
+
+            }
+
+        }
+
+
+
+        // Executa a função
+
+        exportarEstrutura();
+
+    </script>
+
+</body>
+
+</html>
