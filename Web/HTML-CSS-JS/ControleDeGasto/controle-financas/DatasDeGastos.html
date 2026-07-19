@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico de Gastos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    // Script rápido anti-piscada: carrega o tema salvo antes da página renderizar
+    const temaSalvo = localStorage.getItem("sistema-tema") || "pink";
+    document.documentElement.setAttribute("data-theme", temaSalvo);
+  </script>
+</head>
+<body>
+
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="cyber-spinner"></div>
+    <p class="loading-text">SINCRO-REDE: ACESSANDO TERMINAL DIRECTORY...</p>
+  </div>
+
+  <header>
+    <h1>Histórico</h1>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <select id="theme-selector" class="theme-select" onchange="mudarTema(this.value)">
+        <option value="pink">🌸 Rosa Bebê</option>
+        <option value="military">🪖 Verde Militar</option>
+      </select>
+      
+      <a href="index.html" class="history-btn">⬅️ Voltar ao Atual</a>
+      <button onclick="sairDaConta()" class="history-btn btn-logout-cyber">Sair</button>
+    </div>
+  </header>
+
+  <div class="painel-financas">
+    <p>Selecione o período que deseja consultar.</p>
+  </div>
+
+  <div class="cards-container">
+    <div class="card" style="cursor:pointer;" onclick="window.location.href='MesGasto.html?ano=2026&mes=6'">
+      <h2 class="card-title">Junho / 2026</h2>
+      <button class="btn-primary">Ver Relatório</button>
+    </div>
+    <div class="card" style="cursor:pointer;" onclick="window.location.href='MesGasto.html?ano=2026&mes=5'">
+      <h2 class="card-title">Maio / 2026</h2>
+      <button class="btn-primary">Ver Relatório</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/DatasDeGastos.js"></script>
+</body>
+</html>

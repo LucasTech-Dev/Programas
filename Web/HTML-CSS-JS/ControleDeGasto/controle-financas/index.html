@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Financeiro | Atual</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    // Script rápido anti-piscada: carrega o tema salvo antes da página renderizar
+    const temaSalvo = localStorage.getItem("sistema-tema") || "pink";
+    document.documentElement.setAttribute("data-theme", temaSalvo);
+  </script>
+  <style>
+    /* Estilos base para os modais (adicione ao seu CSS depois se preferir) */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7); display: flex;
+      justify-content: center; align-items: center; z-index: 9999;
+    }
+    .modal-box {
+      background: var(--bg-card, #2a2a35); padding: 25px; border-radius: 12px;
+      width: 90%; max-width: 400px; text-align: center; color: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid var(--primary-color, #ff79c6);
+    }
+    .modal-actions {
+      display: flex; gap: 10px; justify-content: center; margin-top: 20px;
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="cyber-spinner"></div>
+    <p class="loading-text">SINCRO-REDE: ACESSANDO TERMINAL DIRECTORY...</p>
+  </div>
+
+  <header>
+    <h1>Mês Atual</h1>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <select id="theme-selector" class="theme-select" onchange="mudarTema(this.value)">
+        <option value="pink">🌸 Rosa Bebê</option>
+        <option value="military">🪖 Verde Militar</option>
+      </select>
+      
+      <a href="DatasDeGastos.html" class="history-btn">⏱️ Histórico</a>
+      <button onclick="sairDaConta()" class="history-btn btn-logout-cyber">Sair</button>
+    </div>
+  </header>
+
+  <div class="painel-financas">
+    <p>Renda Total Somada (Casal): <strong id="renda-display">R$ 0,00</strong></p>
+    <p>Total de Gastos do Mês: <strong id="gastos-display">R$ 0,00</strong></p>
+    <h3>Saldo Restante:</h3>
+    <h1 class="saldo-destaque" id="saldo-display">R$ 0,00</h1>
+    
+    <div style="margin-top: 15px; display: flex; gap: 10px;">
+      <input type="number" id="input-renda" placeholder="Atualizar Renda Total">
+      <button class="btn-primary" onclick="atualizarRenda()" style="width: auto; margin-top: 0;">Salvar Renda</button>
+    </div>
+  </div>
+
+  <div class="painel-financas" style="text-align: left;">
+    <h3>Adicionar Nova Conta</h3>
+    <input type="text" id="nome-conta" placeholder="Nome da conta (Ex: Shampoo)">
+    <input type="number" id="valor-conta" placeholder="Valor Total (Ex: 50)">
+    
+    <select id="tipo-conta">
+      <option value="1">Mensal (Cobrado todo mês)</option>
+      <option value="2">A cada 2 meses (Guarda 1/2 por mês)</option>
+      <option value="3">A cada 3 meses (Guarda 1/3 por mês)</option>
+      <option value="4">A cada 4 meses (Guarda 1/4 por mês)</option>
+      <option value="5">A cada 5 meses (Guarda 1/5 por mês)</option>
+      <option value="6">A cada 6 meses (Guarda 1/6 por mês)</option>
+      <option value="7">A cada 7 meses (Guarda 1/7 por mês)</option>
+      <option value="8">A cada 8 meses (Guarda 1/8 por mês)</option>
+      <option value="9">A cada 9 meses (Guarda 1/9 por mês)</option>
+      <option value="10">A cada 10 meses (Guarda 1/10 por mês)</option>
+      <option value="11">A cada 11 meses (Guarda 1/11 por mês)</option>
+      <option value="12">Anual (Guarda 1/12 por mês)</option>
+      <option value="unico">Gasto Único (Apenas este mês)</option>
+    </select>
+    
+    <button class="btn-primary" onclick="adicionarNovaConta()">Inserir Conta</button>
+  </div>
+
+  <h3 style="margin: 20px 0 10px; letter-spacing: 1px;">SUAS CONTAS</h3>
+  <div class="cards-container" id="lista-contas"></div>
+
+  <div id="modal-alert" class="modal-overlay hidden">
+    <div class="modal-box">
+      <h3 style="margin-top: 0;">Aviso</h3>
+      <p id="modal-alert-msg">Mensagem de erro aqui.</p>
+      <button class="btn-primary" onclick="fecharAlerta()">Entendi</button>
+    </div>
+  </div>
+
+  <div id="modal-confirm" class="modal-overlay hidden">
+    <div class="modal-box">
+      <h3 style="margin-top: 0;">Atenção</h3>
+      <p id="modal-confirm-msg">Deseja continuar?</p>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="respostaConfirmacao(true)">Confirmar</button>
+        <button class="btn-logout-cyber" onclick="respostaConfirmacao(false)" style="padding: 10px; border-radius: 8px;">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/index.js"></script>
+</body>
+</html>

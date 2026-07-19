@@ -1,0 +1,438 @@
+/* css/style.css */
+
+/* ========================================= */
+/* CONFIGURAÇÃO DOS TEMAS                    */
+/* ========================================= */
+
+/* Tema 1: Branco com Rosa Bebê (Padrão inicial) */
+:root, [data-theme="pink"] {
+  --bg-color: #fdf8f9;         
+  --text-main: #654f53;        
+  --text-title: #3a2226;       
+  --card-bg: rgba(255, 255, 255, 0.95); 
+  
+  --accent: #ff8da1;           
+  --accent-glow: rgba(255, 141, 161, 0.3);
+  
+  --success: #2e7d32;          
+  --success-glow: rgba(46, 125, 50, 0.15);
+  
+  --warning: #d81b60;          
+  
+  --border: #fcdce2;           
+  --border-neon: #f8b1be;      
+  --scanline-opacity: rgba(0, 0, 0, 0.02);
+
+  --font-family: 'Rajdhani', 'Segoe UI', Roboto, Helvetica, sans-serif;
+}
+
+/* Tema 2: Preto com Verde Militar */
+[data-theme="military"] {
+  --bg-color: #0b0d0a;         
+  --text-main: #a3b09a;        
+  --text-title: #e2ebd9;       
+  --card-bg: rgba(20, 24, 18, 0.85); 
+  
+  --accent: #7a9a60;           
+  --accent-glow: rgba(122, 154, 96, 0.4);
+  
+  --success: #a7c957;          
+  --success-glow: rgba(167, 201, 87, 0.3);
+  
+  --warning: #bc4749;          
+  
+  --border: #242c1f;           
+  --border-neon: #3e4c33;      
+  --scanline-opacity: rgba(0, 0, 0, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 20px;
+  background-image: linear-gradient(0deg, var(--scanline-opacity) 50%, transparent 50%);
+  background-size: 100% 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.neon-text {
+  text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
+  color: var(--text-title);
+}
+
+/* ========================================= */
+/* CABEÇALHO E PAINEL                        */
+/* ========================================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 4px 15px var(--accent-glow);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--text-title);
+  text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.history-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 8px 15px;
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+}
+
+.history-btn:hover {
+  background-color: var(--accent);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* Caixa de Seleção do Tema */
+.theme-select {
+  width: auto !important;
+  margin-bottom: 0 !important;
+  padding: 6px 30px 6px 10px !important;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 1px solid var(--accent) !important;
+  color: var(--accent) !important;
+  cursor: pointer;
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+}
+
+.painel-financas {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-neon);
+  outline: 1px solid var(--accent);
+  outline-offset: -5px;
+  padding: 30px;
+  border-radius: 0px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px var(--accent-glow);
+  backdrop-filter: blur(5px);
+}
+
+.painel-financas p {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+
+.painel-financas strong {
+  color: var(--text-title);
+}
+
+.saldo-destaque {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--success);
+  margin: 15px 0;
+  text-shadow: 0 0 10px var(--success);
+  font-family: monospace;
+}
+
+/* ========================================= */
+/* CARDS DE CONTAS                           */
+/* ========================================= */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--accent);
+  padding: 20px;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--accent-glow);
+}
+
+.card.pago {
+  border-color: var(--success);
+  opacity: 0.8;
+  box-shadow: inset 0 0 10px var(--success-glow);
+}
+
+.card.pago::before {
+  background: var(--success);
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-title);
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ========================================= */
+/* BOTÕES E ENTRADAS                         */
+/* ========================================= */
+button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn-pagar { 
+  background-color: transparent; 
+  color: var(--success); 
+  border: 1px solid var(--success);
+}
+
+.btn-pagar:hover {
+  background-color: var(--success);
+  color: var(--bg-color);
+  box-shadow: 0 0 10px var(--success);
+}
+
+.btn-voltar { 
+  background-color: transparent; 
+  color: #a9a9a9; 
+  border: 1px solid #a9a9a9;
+}
+
+.btn-voltar:hover {
+  background-color: #a9a9a9;
+  color: var(--bg-color);
+}
+
+.btn-primary { 
+  background-color: var(--accent); 
+  color: var(--bg-color); 
+  width: 100%; 
+  margin-top: 15px;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+input, select {
+  padding: 12px;
+  border: 1px solid var(--border-neon);
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--text-title);
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 0px;
+  font-family: monospace;
+}
+
+[data-theme="military"] input, [data-theme="military"] select {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+}
+
+/* Seta dinâmica do select dependendo do tema ativo */
+:root select, [data-theme="pink"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff8da1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+[data-theme="military"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237a9a60' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* ========================================= */
+/* TELA DE CARREGAMENTO                      */
+/* ========================================= */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-text {
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-top: 25px;
+  text-shadow: 0 0 8px var(--accent-glow);
+  animation: pulseNeon 1.5s infinite alternate;
+}
+
+.cyber-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid transparent;
+  border-top-color: var(--accent);
+  border-bottom-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent-glow);
+  animation: cyberSpin 1s linear infinite;
+}
+
+@keyframes cyberSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseNeon {
+  to { opacity: 0.3; }
+}
+
+.btn-logout-cyber {
+  border-color: var(--warning) !important;
+  color: var(--warning) !important;
+}
+.btn-logout-cyber:hover {
+  background-color: var(--warning) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 15px var(--warning) !important;
+}
+
+/* ========================================= */
+/* REGULAGEM ASSÍNCRONA DE RESPONSIVIDADE    */
+/* ========================================= */
+@media (max-width: 650px) {
+  body {
+    padding: 12px;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  /* Faz a caixinha de botões e seletores do topo ocupar a largura toda */
+  header div {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  .theme-select, .history-btn, .btn-logout-cyber {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+  }
+
+  .painel-financas {
+    padding: 20px 15px;
+  }
+
+  .saldo-destaque {
+    font-size: 2.2rem; /* Reduz para o valor não cortar na tela do celular */
+  }
+
+  /* Transforma a linha de "Salvar Renda" em vertical no mobile */
+  .painel-financas div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  .painel-financas div[style*="display: flex"] input {
+    margin-bottom: 5px;
+  }
+
+  .painel-financas div[style*="display: flex"] button {
+    width: 100% !important;
+  }
+
+  /* Garante que os cards fiquem em fila única perfeita */
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
