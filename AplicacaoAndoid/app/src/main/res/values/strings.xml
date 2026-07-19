@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">LoginFirebase</string>
+
+    <string name="titulo_login">Login Firebase</string>
+
+    <string name="subtitulo_login">Entre com seu e-mail e senha</string>
+
+    <string name="hint_email">E-mail</string>
+
+    <string name="hint_senha">Senha</string>
+
+    <string name="btn_entrar">Entrar</string>
+
+    <string name="btn_sair">Sair</string>
+
+    <string name="bem_vindo">Bem-vindo</string>
+
+</resources>
