@@ -10,12 +10,10 @@ from services.enriquecedor import Enriquecedor
 class ReprocessadorJson:
 
     def __init__(self):
-
         self.enriquecedor = Enriquecedor()
         self.repositorio = LivrosRepository()
 
     def carregar(self, caminho: str) -> list[Livro]:
-
         caminho = Path(caminho)
 
         if not caminho.exists():
@@ -25,47 +23,42 @@ class ReprocessadorJson:
             dados = json.load(arquivo)
 
         livros = []
-
         for item in dados:
-
             livros.append(
                 Livro(
-                    titulo=item["titulo"],
-                    isbn=item["isbn"]
+                    titulo=item.get("titulo", ""),
+                    isbn=item.get("isbn", "")
                 )
             )
 
         return livros
 
     def executar(self, caminho: str):
-
         livros = self.carregar(caminho)
 
-        print(f"{len(livros)} livros carregados.\n")
+        print(f"{len(livros)} livros carregados para reprocessamento.\n")
 
         livros_para_salvar = []
         fontes = {}
 
         for indice, livro in enumerate(livros, start=1):
-
-            print(f"[{indice}/{len(livros)}] {livro.isbn}")
+            print(f"[{indice}/{len(livros)}] ISBN: {livro.isbn}")
 
             resposta = self.enriquecedor.consultar(livro.isbn)
 
             # Encontrou em alguma API
             if resposta is not None:
-
                 fonte, livro_enriquecido = resposta
 
+                # Garante que titulo e isbn originais nao sejam perdidos se a API retornar None/vazio
+                livro_enriquecido.titulo = livro_enriquecido.titulo or livro.titulo
+                livro_enriquecido.isbn = livro_enriquecido.isbn or livro.isbn
+
                 livros_para_salvar.append(livro_enriquecido)
+                fontes[fonte] = fontes.get(fonte, 0) + 1
 
-                fontes[fonte] = (
-                    fontes.get(fonte, 0) + 1
-                )
-
-            # Não encontrou em nenhuma API
+            # Nao encontrou em nenhuma API (Fallback Local)
             else:
-
                 livros_para_salvar.append(
                     LivroEnriquecido(
                         isbn=livro.isbn,
@@ -82,24 +75,19 @@ class ReprocessadorJson:
                         fonte="Local"
                     )
                 )
+                fontes["local"] = fontes.get("local", 0) + 1
 
-                fontes["local"] = (
-                    fontes.get("local", 0) + 1
-                )
-
-        print("\nEnviando livros para o Supabase...")
-
+        print("\nEnviando livros ao Supabase em lotes...")
         self.repositorio.salvar_lote(livros_para_salvar)
 
-        print("\nResumo")
+        print("\n" + "=" * 60)
+        print("RESUMO DO REPROCESSAMENTO")
         print("=" * 60)
-
         print(f"Processados........: {len(livros)}")
         print(f"Enviados..........: {len(livros_para_salvar)}")
 
         print("\nFontes utilizadas:")
-
         for fonte, quantidade in fontes.items():
             print(f"  {fonte}: {quantidade}")
 
-        print("\nReprocessamento concluído.")
+        print("\nReprocessamento concluído com sucesso!")

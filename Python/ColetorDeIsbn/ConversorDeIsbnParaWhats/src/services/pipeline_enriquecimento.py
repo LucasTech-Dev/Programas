@@ -9,31 +9,26 @@ class PipelineEnriquecimento:
         self.enriquecedor = Enriquecedor()
 
     def executar(self, livros):
-
         resultado = ResultadoPipeline()
-
         resultado.processados = len(livros)
 
         for livro in livros:
-
             resposta = self.enriquecedor.consultar(livro.isbn)
 
             # Livro encontrado em alguma API
             if resposta is not None:
-
                 fonte, livro_enriquecido = resposta
 
+                # Garantia de preservacao dos dados originais
+                livro_enriquecido.titulo = livro_enriquecido.titulo or livro.titulo
+                livro_enriquecido.isbn = livro_enriquecido.isbn or livro.isbn
+
                 resultado.encontrados += 1
-
                 resultado.livros.append(livro_enriquecido)
-
-                resultado.fontes[fonte] = (
-                    resultado.fontes.get(fonte, 0) + 1
-                )
+                resultado.fontes[fonte] = resultado.fontes.get(fonte, 0) + 1
 
             # Nenhuma API encontrou o livro
             else:
-
                 resultado.nao_encontrados += 1
 
                 livro_minimo = LivroEnriquecido(
@@ -52,9 +47,6 @@ class PipelineEnriquecimento:
                 )
 
                 resultado.livros.append(livro_minimo)
-
-                resultado.fontes["local"] = (
-                    resultado.fontes.get("local", 0) + 1
-                )
+                resultado.fontes["local"] = resultado.fontes.get("local", 0) + 1
 
         return resultado
