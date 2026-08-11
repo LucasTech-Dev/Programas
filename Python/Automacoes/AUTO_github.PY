@@ -1,3 +1,4 @@
+import os
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -16,13 +17,13 @@ time.sleep(2)
 navegador.find_element('xpath','//*[@id="FormControl--:Rjahb:"]/div/button').click()
 time.sleep(2)
 
-navegador.find_element('xpath','//*[@id="email"]').send_keys("lucassantanadias2008@gmail.com")
+navegador.find_element('xpath','//*[@id="email"]').send_keys(os.getenv("GITHUB_EMAIL", ""))
 time.sleep(2)
 
-navegador.find_element('xpath','//*[@id="password"]').send_keys("Nathalia2506")
+navegador.find_element('xpath','//*[@id="password"]').send_keys(os.getenv("GITHUB_PASSWORD", ""))
 time.sleep(2)
 
-navegador.find_element('xpath','//*[@id="login"]').send_keys("LucasTech-ux")
+navegador.find_element('xpath','//*[@id="login"]').send_keys(os.getenv("GITHUB_USERNAME", ""))
 time.sleep(2)
 
 
