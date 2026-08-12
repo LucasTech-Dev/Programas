@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Sistema de Biblioteca | Lucas Sant'Ana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { dark: '#0a0f1d', card: '#111827', border: '#1f2937', accent: '#3b82f6' }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-brand-dark text-slate-200 antialiased font-sans">
+
+    <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+        <a href="../index.html#projetos" class="text-xs font-mono text-brand-accent hover:underline flex items-center gap-1">
+            ← Voltar ao portfólio
+        </a>
+
+        <header class="space-y-4">
+            <span class="text-xs font-mono text-slate-400">ESTUDO DE CASO</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white">Sistema de Biblioteca</h1>
+            <div class="flex flex-wrap gap-2">
+                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Node.js</span>
+                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Supabase</span>
+                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2.5 py-1 rounded">Firestore</span>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-brand-card p-6 rounded-xl border border-brand-border space-y-2">
+                <h3 class="text-white font-bold text-lg">⚠️ O Problema</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Dificuldade de controle no fluxo de empréstimos e falta de centralização da consulta ao catálogo físico e digital de livros na instituição.
+                </p>
+            </div>
+            <div class="bg-brand-card p-6 rounded-xl border border-brand-border space-y-2">
+                <h3 class="text-white font-bold text-lg">💡 A Solução</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Aplicação web integrada com rotas centralizadas, sincronização automática do status de devolução e consulta otimizada de acervo.
+                </p>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h3 class="text-xl font-bold text-white">Arquitetura de Dados</h3>
+            <div class="bg-brand-card p-6 rounded-xl border border-brand-border font-mono text-xs text-slate-300 overflow-x-auto">
+                <pre>
+┌─────────────────┐       ┌───────────────────────┐
+│    FRONTEND     │  ──>  │     LivroService      │
+└─────────────────┘       └───────────────────────┘
+                                  │       │
+                        ┌─────────┘       └─────────┐
+                        ▼                           ▼
+              ┌──────────────────┐        ┌──────────────────┐
+              │  Supabase (SQL)  │        │    Firestore     │
+              │  Catálogo Geral  │        │  Log Empréstimos │
+              └──────────────────┘        └──────────────────┘
+                </pre>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h3 class="text-xl font-bold text-white">Desafios Técnicos Solucionados</h3>
+            <div class="bg-brand-card p-6 rounded-xl border border-brand-border space-y-3 text-sm text-slate-300">
+                <p class="font-semibold text-white">Unificação de múltiplas origens de dados:</p>
+                <p class="text-slate-400">
+                    O maior desafio foi garantir o desacoplamento entre a camada de apresentação e os diferentes provedores de banco de dados. Foi implementada uma camada Service no Node.js para encapsular requisições e padronizar o payload de retorno.
+                </p>
+            </div>
+        </section>
+
+        <div class="flex gap-4 pt-4">
+            <a href="https://github.com/LucasTech-Dev/Software-Biblioteca" target="_blank" class="px-6 py-3 bg-brand-accent hover:bg-blue-600 text-white font-medium text-sm rounded-lg">
+                Ver Código no GitHub
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
