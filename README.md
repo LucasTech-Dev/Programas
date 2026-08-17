@@ -1,77 +1,132 @@
-# Olá! Eu sou Lucas Sant'Ana Dias.
+# LucasTech-Dev | Portfólio de Desenvolvimento
 
-**Desenvolvedor Back-end Node.js | Full Stack**
+<div align="center">
 
-Sou estudante do Curso Técnico em Informática e estou construindo projetos para praticar desenvolvimento web, automações, APIs, tratamento de dados e integração com bancos de dados. Este repositório reúne meus estudos e projetos pessoais de forma organizada para consulta técnica.
+### Projetos, estudos e experimentos de software
 
-## Sobre mim
+**Python • JavaScript • HTML/CSS • Kotlin • Firebase • Supabase**
 
-- Busco minha primeira oportunidade profissional como desenvolvedor júnior.
-- Tenho interesse principal em back-end com Node.js e em aplicações full stack.
-- Valorizo projetos com documentação clara, organização e evolução contínua.
+[![GitHub](https://img.shields.io/badge/GitHub-LucasTech--Dev-181717?logo=github)](https://github.com/LucasTech-Dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Lucas%20Sant'Ana%20Dias-0A66C2?logo=linkedin)](https://www.linkedin.com/)
 
-## Tecnologias confirmadas neste repositório
+</div>
 
-### Back-end e automações
+---
+
+## 👋 Sobre este repositório
+
+Este repositório reúne projetos desenvolvidos durante minha formação em Tecnologia da Informação e meus estudos independentes.
+
+O objetivo não é apenas armazenar código: cada projeto representa uma etapa de aprendizado em **desenvolvimento web, automação, integração com APIs, tratamento de dados, aplicações mobile e serviços em nuvem**.
+
+Estou construindo minha trajetória como desenvolvedor e buscando transformar cada projeto em uma oportunidade de demonstrar **organização, capacidade de aprendizado, resolução de problemas e evolução técnica**.
+
+---
+
+## 🚀 Projetos em destaque
+
+| Projeto | Tecnologias | O que demonstra |
+|---|---|---|
+| **Coletor e enriquecedor de ISBN** | Python, Requests, Pandas, OpenPyXL, Supabase | ETL, APIs, tratamento de dados e persistência |
+| **Loja Demo Restaurante** | HTML, CSS, JavaScript, Firebase | Front-end, CRUD, catálogo e integração com serviços |
+| **Controle de Gastos** | HTML, CSS, JavaScript, Firebase | Autenticação, dados e interface web |
+| **Aplicação Android** | Kotlin, Android, Firebase Auth | Desenvolvimento mobile e autenticação |
+
+> Os projetos acima são os principais candidatos a demonstração em processos seletivos. Os demais permanecem organizados como estudos, exercícios e experimentos.
+
+---
+
+## 🧰 Tecnologias e ferramentas
+
+### Desenvolvimento
 - Python
-- Flask
-- Selenium
-- Requests
-
-### Front-end
+- JavaScript
 - HTML5
 - CSS3
-- JavaScript
+- Kotlin
+- C
 
-### Banco de dados e serviços
+### APIs, dados e serviços
+- Requests
+- Pandas
+- OpenPyXL
+- Selenium
+- Flask
 - Firebase / Firestore
 - Supabase
-- SQL [A CONFIRMAR EM PROJETOS PÚBLICOS]
-
-### Mobile
-- Kotlin
-- Android
-- Firebase Authentication
 
 ### Ferramentas
 - Git
 - GitHub
 - VS Code
+- Android Studio
+- Gradle
 
-## Projetos em destaque
+> **Nota:** tecnologias como Node.js, Express, React e outros frameworks só serão adicionadas como experiência deste repositório quando houver projetos públicos que comprovem seu uso.
 
-### Conversor e enriquecedor de ISBN
-Pipeline em Python para ler dados de entrada, extrair ISBNs, consultar APIs de livros, enriquecer informações, gerar relatórios/JSON e salvar registros no Supabase.
+---
 
-- **Tecnologias:** Python, Requests, Pandas, OpenPyXL, Supabase, python-dotenv
-- **Repositório:** [`Python/ColetorDeIsbn/ConversorDeIsbnParaWhats`](Python/ColetorDeIsbn/ConversorDeIsbnParaWhats)
-- **Demonstração:** [A CONFIRMAR]
+## 📁 Organização
 
-### Loja Demo Restaurante
-Aplicação web estática de catálogo/cardápio com busca, carrinho, painel administrativo e fluxo de publicação de dados via GitHub API.
+```text
+Programas/
+├── AplicacaoAndoid/   # Projeto Android com Kotlin e Firebase
+├── C/                 # Estudos e exercícios em C
+├── Python/            # Automação, APIs e tratamento de dados
+├── Web/               # Projetos web em HTML, CSS e JavaScript
+├── README.md          # Visão geral do portfólio
+├── SECURITY.md        # Política de segurança
+└── AUDITORIA_GITHUB.md # Histórico de auditoria e melhorias
+```
 
-- **Tecnologias:** HTML, CSS, JavaScript, Firebase, GitHub API
-- **Repositório:** [`Web/HTML-CSS-JS/loja-demoRestaurante`](Web/HTML-CSS-JS/loja-demoRestaurante)
-- **Demonstração:** [A CONFIRMAR]
+Os diretórios internos possuem projetos independentes. Cada projeto relevante deve ter seu próprio README com **objetivo, tecnologias, instalação, execução e observações de segurança**.
 
-### Controle de gastos
-Aplicação web para registro e consulta de gastos com autenticação e integração Firebase.
+---
 
-- **Tecnologias:** HTML, CSS, JavaScript, Firebase
-- **Repositório:** [`Web/HTML-CSS-JS/ControleDeGasto/controle-financas`](Web/HTML-CSS-JS/ControleDeGasto/controle-financas)
-- **Demonstração:** [A CONFIRMAR]
+## 🔐 Segurança e boas práticas
 
-### Aplicação Android com Firebase
-Aplicativo Android em Kotlin com tela de login, validação de campos e autenticação via Firebase.
+Este repositório público passa por revisão periódica para evitar exposição acidental de credenciais e dados sensíveis.
 
-- **Tecnologias:** Kotlin, Android, Firebase Authentication
-- **Repositório:** [`AplicacaoAndoid`](AplicacaoAndoid)
-- **Demonstração:** [A CONFIRMAR]
+- Credenciais não devem ser armazenadas no código.
+- Variáveis de ambiente devem ser utilizadas para segredos.
+- Arquivos `.env`, ambientes virtuais, logs e artefatos locais são ignorados pelo Git quando aplicável.
+- Configurações públicas de Firebase devem ser acompanhadas por regras de segurança adequadas no Firebase/Firestore.
+- Dados pessoais, conversas, exports e arquivos gerados devem ser revisados antes de serem publicados.
 
-## Links
+Consulte [`SECURITY.md`](SECURITY.md) para a política de segurança.
 
-- **GitHub:** <https://github.com/LucasTech-Dev>
-- **Portfólio:** [LINK DO PORTFÓLIO]
-- **LinkedIn:** [LINK DO LINKEDIN]
-- **Currículo:** [LINK DO CURRÍCULO]
-- **Email:** <lucassantanadias2008@gmail.com>
+---
+
+## 📚 Como avaliar os projetos
+
+Se você está avaliando este portfólio tecnicamente, recomendo começar por:
+
+1. **Coletor de ISBN** — para observar integração com APIs e tratamento de dados.
+2. **Loja Demo Restaurante** — para observar desenvolvimento web e integração com serviços.
+3. **Controle de Gastos** — para observar autenticação e persistência.
+4. **Aplicação Android** — para observar Kotlin, organização por camadas e Firebase Authentication.
+
+Os demais diretórios mostram a evolução dos meus estudos e podem ser consultados para acompanhar minha progressão.
+
+---
+
+## 🎯 Objetivo profissional
+
+Busco uma oportunidade de entrada na área de desenvolvimento, com interesse especial em **back-end, APIs, automação e desenvolvimento full stack**.
+
+Tenho interesse em ambientes onde possa aprender com profissionais mais experientes, contribuir com soluções e evoluir continuamente como desenvolvedor.
+
+---
+
+## 🔗 Links
+
+- **GitHub:** https://github.com/LucasTech-Dev
+- **LinkedIn:** https://www.linkedin.com/in/lucas-sant-ana-dias-bb25b4374/
+
+---
+
+<div align="center">
+
+**Obrigado por visitar meu portfólio.**
+
+</div>
