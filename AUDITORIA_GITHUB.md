@@ -1,95 +1,102 @@
 # Auditoria profissional do GitHub
 
-Data da auditoria: 2026-08-11
+**Última revisão:** 2026-08-17  
+**Repositório:** `LucasTech-Dev/Programas`  
+**Objetivo:** preparar o repositório para avaliação técnica e reduzir riscos de exposição acidental.
 
-## Escopo analisado
+## 1. Resumo executivo
 
-- Perfil público `LucasTech-Dev` no GitHub.
-- Repositório local `Programas`.
-- Estrutura de pastas, READMEs, `.gitignore`, arquivos de configuração e indícios de tecnologias no código.
-- Busca por padrões comuns de segredos: `.env`, tokens, senhas, API keys, Firebase, Supabase e bancos locais.
+O repositório apresenta variedade técnica real e é adequado para servir como portfólio de formação. O maior ganho imediato está em melhorar a primeira impressão: documentação, hierarquia de projetos, nomenclatura e transparência sobre o que é projeto principal versus exercício.
 
-## A. Pontos fortes
+Também foram identificados riscos de segurança que precisam continuar sendo tratados como prioridade, especialmente histórico de credenciais, dados de entrada/saída e regras de serviços externos.
 
-- Há variedade real de projetos e estudos com Python, HTML, CSS, JavaScript, Kotlin/Android, Firebase e Supabase.
-- O projeto de ISBN tem fluxo técnico relevante para back-end/dados: leitura de entrada, parsing, consulta a APIs, enriquecimento, exportação e persistência.
-- Existem projetos web com separação parcial entre `models`, `services`, `firebase`, `js`, `style`, `admin` e `data`.
-- O perfil público do GitHub já tem descrição pessoal, localização e link de LinkedIn cadastrado.
+## 2. Pontos fortes
 
-## B. Problemas encontrados
+- Diversidade de projetos em Python, Web, Kotlin/Android e C.
+- Uso prático de APIs, automação, tratamento de dados, Firebase e Supabase.
+- O projeto de ISBN demonstra um fluxo próximo de ETL: entrada, transformação, consultas externas, enriquecimento e persistência.
+- O código Android apresenta separação entre activities, model, repository, firebase e utils.
+- O `.gitignore` já cobre ambientes virtuais, dependências, logs e arquivos `.env`.
 
-- O README principal era curto, mas citava projetos genéricos e tecnologias sem vincular claramente a evidências do código.
-- Alguns projetos importantes têm README ausente, vazio ou com instruções incompletas.
-- Há nomes de pastas pouco profissionais ou com erro de digitação, como `AplicacaoAndoid`, `TratamendoPDF`, `E-comerce_Trabalho escola` e `loja-demo ` com espaço no final.
-- Existem projetos duplicados ou parecidos de e-commerce/cardápio, o que dificulta a navegação.
-- Há arquivos gerados ou locais versionados, como planilhas, relatórios de saída e logs.
-- Não há evidência local de Node.js/Express/React neste repositório; essas tecnologias devem ficar como `[A CONFIRMAR]` até aparecerem em projetos públicos.
+## 3. Problemas de apresentação encontrados
 
-## C. Projetos que devem ser destacados
+### Alta prioridade
 
-1. `Python/ColetorDeIsbn/ConversorDeIsbnParaWhats` — demonstra Python, APIs, ETL simples, Supabase e organização por camadas.
-2. `Web/HTML-CSS-JS/loja-demoRestaurante` — demonstra aplicação web com catálogo, carrinho, painel admin e integração com Firebase/GitHub API.
-3. `Web/HTML-CSS-JS/ControleDeGasto/controle-financas` — demonstra aplicação web com Firebase e organização de telas/scripts.
-4. `AplicacaoAndoid` — demonstra Kotlin, Android e Firebase Authentication.
+- README principal anteriormente apresentava placeholders como links de portfólio/currículo e pouca orientação para o avaliador.
+- Projetos importantes não possuem documentação uniforme.
+- Há nomes de diretórios com erros ou padrão inconsistente, como `AplicacaoAndoid` e `TratamendoPDF`.
+- Existem projetos parecidos que podem parecer duplicados.
 
-## D. Projetos que devem ser arquivados ou deixados como estudo
+### Média prioridade
 
-> Recomendação apenas; nada foi deletado ou arquivado automaticamente.
+- Alguns projetos de estudo competem visualmente com projetos mais relevantes.
+- Arquivos gerados e relatórios podem aumentar ruído na raiz e dentro dos projetos.
+- Faltam screenshots/demonstrações nos projetos que mais deveriam ser apresentados.
 
-- `C/C` — exercícios de linguagem C podem permanecer como estudo, mas não devem ser destaque para vagas Node.js/Full Stack.
-- `Web/HTML-CSS-JS/Lista de tarefas` — projeto simples; útil como estudo, mas não como destaque principal.
-- `Web/HTML-CSS-JS/E-comerce_Trabalho escola` — nome pouco profissional e provável trabalho escolar; recomendar arquivar ou renomear após revisão.
-- `Web/HTML-CSS-JS/ConexaoBancoTrabalhoZé` — nome pouco profissional e possivelmente específico de trabalho; recomendar arquivar ou renomear após revisão.
-- `Web/HTML-CSS-JS/e-comercedemo` e `Web/HTML-CSS-JS/loja-demo ` — parecem versões similares ao projeto de loja; avaliar duplicidade antes de destacar.
+## 4. Segurança
 
-## E. Projetos que precisam de melhorias
+### Crítica — histórico de credencial
 
-- `Python/ColetorDeIsbn/ConversorDeIsbnParaWhats`: README profissional, `.env.example`, revisão de arquivos de saída versionados e instruções de execução.
-- `Python/Automacoes/TratamendoPDF`: README vazio e presença de `app/log.txt` versionado.
-- `Web/HTML-CSS-JS/loja-demoRestaurante`: README bom, mas com trechos comerciais que podem parecer promessa de venda; revisar para portfólio técnico.
-- `Web/HTML-CSS-JS/ControleDeGasto/controle-financas`: melhorar documentação, setup Firebase e screenshots.
-- `AplicacaoAndoid`: corrigir nome do diretório/repositório somente com autorização, pois pode quebrar links.
+Uma auditoria anterior identificou uma senha em texto claro em `Python/Automacoes/AUTO_github.PY`. O arquivo atual utiliza variáveis de ambiente (`GITHUB_EMAIL`, `GITHUB_PASSWORD` e `GITHUB_USERNAME`), o que é uma melhoria.
 
-## F. Tecnologias que realmente aparecem no código
+**Importante:** remover a senha do arquivo atual não remove a exposição caso ela tenha existido em commits antigos. A credencial deve ser considerada comprometida e revogada/trocada se ainda estiver válida.
 
-- Python, Requests, Pandas, OpenPyXL, Selenium, Flask.
-- HTML5, CSS3, JavaScript.
-- Firebase/Firestore, Supabase.
-- Kotlin, Android, Gradle.
-- C.
+### Alta — Firebase / Firestore
 
-## G. Tecnologias declaradas mas não confirmadas neste repositório
+Arquivos de configuração de aplicações web podem conter identificadores e `apiKey`. Em aplicações Firebase para navegador, esses valores podem fazer parte da configuração pública do cliente; isso não substitui regras de autenticação e autorização.
 
-- Node.js — não foi encontrado `package.json` ou back-end Node.js local.
-- Express — não foi encontrado projeto Express local.
-- React — não foi encontrado projeto React local.
-- MySQL e SQL Server — não foram encontrados arquivos/schema/scripts que confirmem uso neste repositório.
+As regras de Firestore/Storage devem ser revisadas individualmente para impedir leitura ou escrita não autorizada.
 
-## H. Arquivos potencialmente sensíveis
+### Alta — dados de entrada e saída
 
-- `Python/Automacoes/AUTO_github.PY` continha e-mail e senha em texto claro. A senha foi removida e substituída por variável de ambiente.
-- Arquivos com `firebaseConfig` e `apiKey` aparecem em projetos web. Chaves web do Firebase podem ser públicas em alguns cenários, mas devem ser revisadas junto às regras do Firebase/Firestore.
-- `Python/ColetorDeIsbn/ConversorDeIsbnParaWhats/entrada/conversa.txt` pode conter dados reais de conversas; revisar antes de manter público.
-- `Python/ColetorDeIsbn/ConversorDeIsbnParaWhats/saida/*` contém saídas geradas; revisar se há dados pessoais ou dados que não devem ficar versionados.
+O projeto de ISBN possui arquivos de entrada/conversa e arquivos de saída gerados. Eles devem ser classificados antes de permanecerem públicos:
 
-## I. Problemas de segurança
+- remover dados pessoais ou conversas reais;
+- anonimizar exemplos;
+- manter apenas amostras necessárias para demonstrar o projeto;
+- ignorar exports gerados quando eles não fizerem parte do produto.
 
-- **CRÍTICA:** senha em texto claro em script de automação. Corrigido no arquivo, mas a credencial deve ser trocada/revogada se já foi enviada ao GitHub.
-- **ALTA:** revisar regras do Firebase/Firestore e Storage nos projetos web para garantir que as chaves públicas não permitam escrita/leitura indevida.
-- **ALTA:** não salvar tokens do GitHub sem orientar o usuário sobre escopo mínimo e riscos do `localStorage`.
-- **MÉDIA:** remover logs, planilhas e saídas geradas do controle de versão quando não forem necessárias como amostra.
+### Média — automação de login
 
-## J. Melhorias prioritárias
+`AUTO_github.PY` automatiza login usando Selenium e credenciais fornecidas por ambiente. Isso reduz o risco de hardcoding, mas ainda é uma arquitetura frágil para automação de conta. Sempre que possível, prefira mecanismos oficiais de autenticação/API e tokens com escopo mínimo.
 
-- **CRÍTICA:** trocar/revogar a senha exposta anteriormente e evitar credenciais hardcoded.
-- **ALTA:** criar documentação profissional para os projetos principais.
-- **ALTA:** adicionar `.env.example` onde há variáveis obrigatórias.
-- **MÉDIA:** padronizar nomes de projetos antes de divulgá-los no currículo/portfólio.
-- **MÉDIA:** adicionar screenshots reais dos projetos relevantes.
-- **BAIXA:** reduzir decoração visual excessiva e manter READMEs objetivos.
+## 5. Alterações realizadas nesta etapa
 
-## Recomendações sobre commits e branches
+- README principal redesenhado para apresentação profissional.
+- Projetos principais organizados em uma tabela de destaque.
+- Tecnologias não comprovadas neste repositório deixaram de ser apresentadas como experiência confirmada.
+- Links de GitHub e LinkedIn foram atualizados.
+- Nova política `SECURITY.md` substituiu o template genérico do GitHub.
+- Arquivo temporário `slavando.txt` foi removido da branch de melhoria.
+- O trabalho está sendo realizado na branch `chore/github-portfolio-security` para evitar misturar a revisão com a linha principal.
 
-- Não reescrever histórico sem autorização.
-- Usar Conventional Commits para novas alterações, por exemplo `docs: atualiza perfil e auditoria`.
-- Revisar branches antigas antes de excluir; nenhuma branch foi removida.
+## 6. O que ainda precisa ser feito
+
+1. Revisar projetos web individualmente.
+2. Revisar arquivos de configuração Firebase/Supabase.
+3. Classificar/remover logs, exports e dados de teste desnecessários.
+4. Adicionar README aos projetos relevantes que ainda não possuem documentação suficiente.
+5. Corrigir nomes de diretórios com autorização e planejamento de links.
+6. Adicionar screenshots reais aos projetos de destaque.
+7. Adicionar automação de análise de segurança/dependências quando houver manifests compatíveis.
+8. Revisar o histórico Git caso exista suspeita de credenciais anteriormente publicadas.
+
+## 7. Limitações desta auditoria
+
+A análise desta etapa foi feita sobre a estrutura e os arquivos acessíveis pela integração do GitHub. O mecanismo de busca de código do repositório não estava disponível para uma varredura textual completa de todos os arquivos.
+
+Portanto, esta revisão **não deve ser interpretada como garantia de ausência de vulnerabilidades**. A próxima etapa deve fazer uma inspeção direcionada dos projetos web, Firebase, Supabase e arquivos de dados.
+
+## 8. Critério de qualidade para o portfólio
+
+Um avaliador deve conseguir responder rapidamente:
+
+- Quem desenvolveu este repositório?
+- Quais são os projetos mais relevantes?
+- Quais tecnologias foram realmente utilizadas?
+- Como executar cada projeto?
+- Como os dados são tratados?
+- Que cuidados de segurança foram adotados?
+- Onde estão os resultados/demonstrações?
+
+A nova estrutura do README foi criada para responder às primeiras perguntas imediatamente e direcionar o avaliador aos projetos mais fortes.
