@@ -1,0 +1,12 @@
+# Diretórios
+logs/
+credentials/
+
+# Arquivos
+*.log
+*.json
+
+# Ambiente virtual
+.venv/
+venv/
+env/
