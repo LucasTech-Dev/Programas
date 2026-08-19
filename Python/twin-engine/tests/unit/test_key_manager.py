@@ -4,10 +4,16 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)).replace('/unit', ''))
 
 from src.key_manager import KeyManager
+import pytest
+from unittest.mock import patch, Mock
+
 @pytest.fixture
 def key_manager():
     with patch.dict('os.environ', {'GEMINI_API_KEYS': 'key1,key2', 'GEMINI_PROJECT_ID': 'test-project'}):
-        return KeyManager()
+        # Simula falha na conexão com Redis durante os testes unitários
+        with patch('src.key_manager.Redis') as mock_redis:
+            mock_redis.return_value = None
+            return KeyManager()
 
 def test_load_keys(key_manager):
     assert len(key_manager.keys) == 2

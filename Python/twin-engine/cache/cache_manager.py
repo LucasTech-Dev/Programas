@@ -1,6 +1,5 @@
-"""
-Gerenciador de cache para armazenar respostas do Gemini
-"""
+# cache/cache_manager.py
+import json
 from typing import Optional, Dict, Any
 from pathlib import Path
 import hashlib

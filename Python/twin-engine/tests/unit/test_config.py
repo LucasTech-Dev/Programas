@@ -9,10 +9,10 @@ def test_validate_success():
 
 def test_validate_missing_keys():
     with patch.dict('os.environ', {'GEMINI_API_KEYS': '', 'GEMINI_PROJECT_ID': 'test-project'}):
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError, match="Configuração incompleta"):
             Config.validate()
 
 def test_validate_missing_project_id():
     with patch.dict('os.environ', {'GEMINI_API_KEYS': 'key1,key2', 'GEMINI_PROJECT_ID': ''}):
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError, match="Configuração incompleta"):
             Config.validate()

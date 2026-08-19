@@ -1,6 +1,4 @@
-"""
-Gerenciador de chaves de API do Gemini
-"""
+# src/key_manager.py
 import os
 import json
 import time
@@ -16,11 +14,21 @@ logger = logging.getLogger(__name__)
 
 class KeyManager:
     def __init__(self):
-        self.redis_client = Redis(host='localhost', port=6379, db=0)
+        # Tenta conectar ao Redis; se falhar, usa None e continua com cache local
+        try:
+            self.redis_client = Redis(host='localhost', port=6379, db=0)
+        except Exception:
+            self.redis_client = None
         self.disk_cache = DiskCache(ttl=Config().CACHE_TTL)
         self.memory_cache = MemoryCache(ttl=Config().CACHE_TTL)
         self.keys = []
         self.usage_stats = {}
+        # Garante que a configuração foi validada (popula GEMINI_API_KEYS a partir do env)
+        try:
+            Config.validate()
+        except Exception:
+            # Deixa a exceção subir na inicialização quando a configuração for inválida
+            raise
         self.load_keys()
         
     def load_keys(self) -> None:
@@ -44,20 +52,34 @@ class KeyManager:
         
     def _load_usage_stats(self) -> None:
         """Carrega estatísticas de uso do cache"""
-        stats_json = self.redis_client.get("usage_stats")
-        if stats_json:
-            try:
-                self.usage_stats = json.loads(stats_json)
-            except json.JSONDecodeError:
-                pass
+        if not self.redis_client:
+            return
+
+        try:
+            stats_json = self.redis_client.get("usage_stats")
+            if stats_json:
+                try:
+                    self.usage_stats = json.loads(stats_json)
+                except json.JSONDecodeError:
+                    pass
+        except Exception:
+            # Falha na leitura do Redis — ignora e segue com cache local
+            return
                 
     def save_usage_stats(self) -> None:
         """Salva estatísticas de uso no cache"""
-        self.redis_client.setex(
-            "usage_stats",
-            Config.CACHE_TTL,
-            json.dumps(self.usage_stats)
-        )
+        if not self.redis_client:
+            return
+
+        try:
+            self.redis_client.setex(
+                "usage_stats",
+                Config().CACHE_TTL,
+                json.dumps(self.usage_stats)
+            )
+        except Exception:
+            # Falha na escrita do Redis — ignora
+            return
         
     def get_available_key(self) -> Optional[Dict]:
         """Obtém a próxima chave disponível baseada em limites de taxa"""
@@ -68,11 +90,11 @@ class KeyManager:
                 continue
                 
             # Verifica RPM (Requisições por Minuto)
-            if key_data["rpm"] >= Config.MAX_RPM:
+            if key_data["rpm"] >= Config().MAX_RPM:
                 continue
                 
             # Verifica RPD (Requisições por Dia)
-            if key_data["rpd"] >= Config.MAX_RPD:
+            if key_data["rpd"] >= Config().MAX_RPD:
                 continue
                 
             return key_data

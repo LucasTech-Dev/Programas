@@ -20,5 +20,26 @@ class Config(BaseModel):
         
     @classmethod
     def validate(cls):
-        if not all([cls.GEMINI_API_KEYS, cls.GEMINI_PROJECT_ID]):
+        # Carrega valores do ambiente quando aplicável
+        env_keys = os.getenv("GEMINI_API_KEYS")
+        if env_keys is not None:
+            if isinstance(env_keys, str):
+                keys = [k.strip() for k in env_keys.split(",") if k.strip()]
+            else:
+                keys = list(env_keys)
+        else:
+            keys = cls.GEMINI_API_KEYS if isinstance(cls.GEMINI_API_KEYS, list) else []
+
+        project_id = os.getenv("GEMINI_PROJECT_ID") or cls.GEMINI_PROJECT_ID
+
+        if not keys or not project_id:
             raise ValueError("Configuração incompleta")
+
+        # Valida limites de taxa
+        if cls.MAX_RPM <= 0 or cls.MAX_RPD <= 0:
+            raise ValueError("Limites de taxa inválidos")
+
+        # Atualiza atributos da classe para uso posterior
+        cls.GEMINI_API_KEYS = keys
+        cls.GEMINI_PROJECT_ID = project_id
+        return None
