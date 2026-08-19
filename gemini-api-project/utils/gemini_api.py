@@ -1,67 +1,121 @@
-import logging
-import time
-from typing import Dict, Optional
+# utils/gemini_api.py
 
-from google.cloud.resourcemanager_v3 import ProjectsClient
-from google.cloud.serviceusage_v1 import ServiceUsageClient
-from google.cloud.iam_v1 import IamClient
-from google.oauth2 import service_account
-from google.cloud.exceptions import GoogleCloudError
+import logging
+import subprocess
+import time
+import os
+from typing import Dict, Optional
 
 logger = logging.getLogger(__name__)
 
-def create_project(project_id: str, organization_id: str) -> Optional[str]:
-    """Cria um novo projeto GCP."""
+def check_gcloud_installed() -> bool:
+    """Verifica se o gcloud está instalado."""
     try:
-        credentials = service_account.Credentials.from_service_account_file("credentials/chave.json")
-        client = ProjectsClient(credentials=credentials)
+        subprocess.run(["gcloud", "--version"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return True
+    except subprocess.CalledProcessError:
+        logger.error("gcloud não está instalado ou não está configurado corretamente.")
+        return False
+
+def check_virtual_env() -> bool:
+    """Verifica se o ambiente virtual está ativo."""
+    return "VIRTUAL_ENV" in os.environ
+
+def activate_virtual_env() -> bool:
+    """Ativa o ambiente virtual."""
+    try:
+        venv_path = os.path.join(os.getcwd(), ".venv")
+        activate_script = os.path.join(venv_path, "bin", "activate")
         
-        project_body = {
-            'project_id': project_id,
-            'name': f'API Gemini {project_id}',
-            'parent': {'type': 'organization', 'id': organization_id}
-        }
+        if not os.path.exists(activate_script):
+            logger.error(f"Ambiente virtual não encontrado em {venv_path}")
+            return False
+            
+        subprocess.run(f"source {activate_script}", shell=True, check=True)
+        return True
+    except subprocess.CalledProcessError:
+        logger.error("Falha ao ativar o ambiente virtual.")
+        return False
+
+def create_project(project_id: str, organization_id: str) -> Optional[str]:
+    """Cria um novo projeto GCP usando o gcloud CLI."""
+    if not check_virtual_env():
+        if not activate_virtual_env():
+            return None
+            
+    if not check_gcloud_installed():
+        return None
         
-        request = client.create_project(request=project_body)
+    try:
+        # Executa o comando oficial de criação
+        cmd = f"gcloud projects create {project_id} --name='API Gemini {project_id}' --organization={organization_id}"
+        logger.info(f"Executando comando: {cmd}")
+        subprocess.run(cmd, shell=True, check=True, capture_output=True)
+        
         logger.info(f"Projeto {project_id} criado com sucesso!")
-        return request.name
-        
-    except GoogleCloudError as e:
+        return project_id
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Erro ao criar projeto {project_id} via CLI: {e.stderr.decode()}")
+        return None
+    except Exception as e:
         logger.error(f"Erro ao criar projeto {project_id}: {str(e)}")
         return None
 
 def enable_gemini_api(project_id: str) -> bool:
     """Habilita a API do Gemini no projeto."""
-    try:
-        credentials = service_account.Credentials.from_service_account_file("credentials/chave.json")
-        client = ServiceUsageClient(credentials=credentials)
+    if not check_virtual_env():
+        if not activate_virtual_env():
+            return False
+            
+    if not check_gcloud_installed():
+        return False
         
-        api_name = f"aiplatform.googleapis.com"
-        service_request = client.enable_service(
-            request={"name": f"projects/{project_id}/services/{api_name}"}
-        )
+    try:
+        # Ativa a API do Gemini
+        cmd = f"gcloud services enable aiplatform.googleapis.com --project={project_id}"
+        logger.info(f"Executando comando: {cmd}")
+        subprocess.run(cmd, shell=True, check=True, capture_output=True)
+        
         logger.info(f"API do Gemini habilitada no projeto {project_id}")
         return True
-        
-    except GoogleCloudError as e:
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Erro ao habilitar API do Gemini no projeto {project_id}: {e.stderr.decode()}")
+        return False
+    except Exception as e:
         logger.error(f"Erro ao habilitar API do Gemini no projeto {project_id}: {str(e)}")
         return False
 
 def generate_credentials(project_id: str) -> Optional[Dict]:
     """Gera credenciais para o projeto."""
+    if not check_virtual_env():
+        if not activate_virtual_env():
+            return None
+            
+    if not check_gcloud_installed():
+        return None
+        
     try:
-        credentials = service_account.Credentials.from_service_account_file("credentials/chave.json")
-        client = IamClient(credentials=credentials)
+        # Cria uma conta de serviço para o projeto
+        cmd = f"gcloud iam service-accounts create gemini-sa-{project_id} --display-name='Gemini Service Account for {project_id}' --project={project_id}"
+        logger.info(f"Executando comando: {cmd}")
+        subprocess.run(cmd, shell=True, check=True, capture_output=True)
         
-        key_request = client.create_service_account_key(
-            request={
-                "name": f"projects/{project_id}/serviceAccounts/{project_id}@{project_id}.iam.gserviceaccount.com"
-            }
-        )
+        # Concede permissões à conta de serviço
+        cmd = f"gcloud projects add-iam-policy-binding {project_id} --member='serviceAccount:gemini-sa-{project_id}@{project_id}.iam.gserviceaccount.com' --role='roles/editor'"
+        logger.info(f"Executando comando: {cmd}")
+        subprocess.run(cmd, shell=True, check=True, capture_output=True)
+        
+        # Gera as credenciais
+        cmd = f"gcloud iam service-accounts keys create ./credentials/{project_id}_key.json --iam-account=gemini-sa-{project_id}@{project_id}.iam.gserviceaccount.com"
+        logger.info(f"Executando comando: {cmd}")
+        subprocess.run(cmd, shell=True, check=True, capture_output=True)
+        
         logger.info(f"Credenciais geradas para o projeto {project_id}")
-        return key_request
-        
-    except GoogleCloudError as e:
+        return {"status": "success", "message": f"Credenciais salvas em ./credentials/{project_id}_key.json"}
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Erro ao gerar credenciais para o projeto {project_id}: {e.stderr.decode()}")
+        return None
+    except Exception as e:
         logger.error(f"Erro ao gerar credenciais para o projeto {project_id}: {str(e)}")
         return None
 
@@ -70,14 +124,15 @@ def wait_for_operation(operation: str, timeout: int = 60) -> bool:
     start_time = time.time()
     while time.time() - start_time < timeout:
         try:
-            credentials = service_account.Credentials.from_service_account_file("credentials/chave.json")
-            client = ProjectsClient(credentials=credentials)
-            operation_status = client.get_operation(name=operation)
-            if operation_status.done:
-                if operation_status.error:
-                    logger.error(f"Erro na operação: {operation_status.error.message}")
-                    return False
+            # Verifica o status da operação
+            cmd = f"gcloud projects describe {operation}"
+            logger.info(f"Executando comando: {cmd}")
+            result = subprocess.run(cmd, shell=True, capture_output=True)
+            
+            if result.returncode == 0:
+                logger.info(f"Operação {operation} concluída!")
                 return True
+                
             time.sleep(5)
         except Exception as e:
             logger.error(f"Erro ao verificar operação: {str(e)}")
