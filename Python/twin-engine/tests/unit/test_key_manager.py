@@ -1,8 +1,9 @@
 # tests/unit/test_key_manager.py
-import pytest
-from unittest.mock import Mock, patch
-from src.key_manager import KeyManager
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)).replace('/unit', ''))
 
+from src.key_manager import KeyManager
 @pytest.fixture
 def key_manager():
     with patch.dict('os.environ', {'GEMINI_API_KEYS': 'key1,key2', 'GEMINI_PROJECT_ID': 'test-project'}):

@@ -1,9 +1,11 @@
-"""
-Ponto de entrada principal do Twin Engine
-"""
+# src/main.py
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import argparse
 import json
-from .key_manager import KeyManager
+from key_manager import KeyManager
 
 def main():
     parser = argparse.ArgumentParser(description="Twin Engine Gemini API Key Manager")

@@ -17,8 +17,8 @@ logger = logging.getLogger(__name__)
 class KeyManager:
     def __init__(self):
         self.redis_client = Redis(host='localhost', port=6379, db=0)
-        self.disk_cache = DiskCache(ttl=Config.CACHE_TTL)
-        self.memory_cache = MemoryCache(ttl=Config.CACHE_TTL)
+        self.disk_cache = DiskCache(ttl=Config().CACHE_TTL)
+        self.memory_cache = MemoryCache(ttl=Config().CACHE_TTL)
         self.keys = []
         self.usage_stats = {}
         self.load_keys()
